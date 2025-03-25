@@ -27,7 +27,7 @@ export default async function Image() {
         <div style={{ fontSize: 72, fontWeight: 'bold', marginBottom: 20 }}>Kartik Labhshetwar</div>
         <div style={{ fontSize: 36, color: '#9ca3af', marginBottom: 40 }}>Full-Stack Developer | Software Engineer</div>
         <div style={{ fontSize: 28, color: '#22d3ee', display: 'flex', alignItems: 'center', gap: 10 }}>
-          <span>*</span> <span>I build products that solve real problems</span>
+          <span>*</span> <span>I build products that solve real problems. Available for new opportunities.</span>
         </div>
       </div>
     ),
