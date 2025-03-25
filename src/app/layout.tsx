@@ -1,17 +1,31 @@
 import type { Metadata } from "next";
-import {Fanwood_Text} from "next/font/google";
+import {Nunito_Sans} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 
-const fanwood = Fanwood_Text({
+const fanwood = Nunito_Sans({
   weight: ['400'],
-  style: ['italic', 'normal'],
+  style: ['normal'],
   subsets: ['latin']
 })
 
 export const metadata: Metadata = {
-  title: "Kartik",
-  description: "my dead simple portfolio",
+  title: 'Kartik Labhshetwar | Full-Stack Developer | Software engineer',
+  description: 'I build products that solve real problems. Available for new opportunities.',
+  openGraph: {
+    title: 'Kartik Labhshetwar | Full-Stack Developer | Software engineer',
+    description: 'I build products that solve real problems. Available for new opportunities.',
+    url: 'https://kartik017.vercel.app/',
+    siteName: 'Kartik Labhshetwar Portfolio',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Kartik Labhshetwar | Full-Stack Developer | Software engineer',
+    description: 'I build products that solve real problems. Available for new opportunities.',
+    creator: '@code_kartik',
+  },
 };
 
 export default function RootLayout({

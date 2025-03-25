@@ -6,20 +6,8 @@ import Footer from "@/components/Footer"
 import OnekoCat from "@/components/OnekoCat"
 import Reach from "@/components/Reach"
 import Experience from "@/components/Experience"
-import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const [currentSkillIndex, setCurrentSkillIndex] = useState(0);
-  const skills = ["websites", "backends", "apps"];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSkillIndex((prev) => (prev + 1) % skills.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <div className="min-h-screen">
       <OnekoCat />
@@ -38,34 +26,46 @@ export default function Home() {
               Available for new opportunities
             </p>
           </div>
-          <div className="mt-3 space-y-2">
-            <p className="text-lg md:text-xl font-light">
-              I make <span className="text-neutral-800 dark:text-neutral-200 font-medium opacity-0 animate-fadeIn">{skills[currentSkillIndex]}</span>
+          <div className="mt-5 space-y-4">
+            <p className="text-base md:text-lg text-neutral-800 dark:text-neutral-200">
+              <span className="text-cyan-500 dark:text-cyan-400">*</span> i love building <span className="text-cyan-500 dark:text-cyan-400">products</span> that solve real problems. crafting <span className="text-cyan-500 dark:text-cyan-400">websites</span> and <span className="text-cyan-500 dark:text-cyan-400">apps</span> for the past year, with a focus on <span className="text-cyan-500 dark:text-cyan-400">user experience</span> and clean code.
             </p>
-            <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 font-light">
-              I&apos;m Kartik, a 21 year old developer living in India. I am a self-taught developer who loves to code and build things.
-            </p>
+            
+            <div className="flex flex-wrap gap-2 mt-2">
+              <span className="px-4 py-2 bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-md text-sm md:text-base">
+                full-stack
+              </span>
+              <span className="px-4 py-2 bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-md text-sm md:text-base">
+                ai
+              </span>
+              <span className="px-4 py-2 bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-md text-sm md:text-base">
+                ui/ux
+              </span>
+            </div>
+            
             <a
               href="https://drive.google.com/file/d/1h040xt9mLKCMFEDwhCn3xuH7R5PyuToZ/view?usp=sharing"
-              className="inline-flex items-center justify-center px-3 py-2 bg-white/20 text-black dark:text-white rounded-md border border-black/20 dark:border-white/10 hover:cursor-pointer font-medium"
+              className="inline-flex items-center justify-center px-3 py-2 bg-neutral-100 dark:bg-neutral-800/30 text-neutral-800 dark:text-neutral-200 rounded-md border border-neutral-300 dark:border-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-700/50 transition-colors font-medium"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="flex items-center text-sm lg:text-base 3xl:text-lg">
+              <div className="flex items-center text-sm lg:text-base">
                 <span>View CV</span>
               </div>
             </a>
           </div>
-          
         </div>
-        <div className="w-full">
-          <h2 className="text-xl md:text-2xl font-medium mb-4">Work</h2>
-            <Projects/>
-        </div>
+
         <div className="w-full">
           <h2 className="text-xl md:text-2xl font-medium mb-4">Experience</h2>
           <Experience />
         </div>
+
+        <div className="w-full">
+          <h2 className="text-xl md:text-2xl font-medium mb-4">Work</h2>
+            <Projects/>
+        </div>
+        
         {/* <div className="w-full">
           <h2 className="text-lg font-medium mb-2">Skills</h2>
           <p className="text-xs md:text-sm font-light">
