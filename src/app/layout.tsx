@@ -33,6 +33,12 @@ export default function RootLayout({
         {children}
         </ThemeProvider>
       </body>
+      <script
+          src="https://script.refix.ai/script.min.js"
+          type="text/javascript"
+          data-refix-token="c9a48825-4062-464a-941d-c958ddf21a96"
+          defer
+      ></script>
     </html>
   );
 }
