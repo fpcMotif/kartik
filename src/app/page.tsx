@@ -45,6 +45,16 @@ export default function Home() {
             <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 font-light">
               I&apos;m Kartik, a 21 year old developer living in India. I am a self-taught developer who loves to code and build things.
             </p>
+            <a
+              href="https://drive.google.com/file/d/1h040xt9mLKCMFEDwhCn3xuH7R5PyuToZ/view?usp=sharing"
+              className="inline-flex items-center justify-center px-3 py-2 bg-white/20 text-black dark:text-white rounded-md border border-black/20 dark:border-white/10 hover:cursor-pointer font-medium"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="flex items-center text-sm lg:text-base 3xl:text-lg">
+                <span>View CV</span>
+              </div>
+            </a>
           </div>
           
         </div>
