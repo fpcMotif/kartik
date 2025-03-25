@@ -5,7 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 const fanwood = Fanwood_Text({
   weight: ['400'],
-  style: ['normal','italic'],
+  style: ['italic', 'normal'],
   subsets: ['latin']
 })
 
