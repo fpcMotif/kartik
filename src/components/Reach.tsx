@@ -32,7 +32,7 @@ export default function Reach() {
           target="_blank"
           rel="noopener noreferrer"
           className="px-4 py-2 bg-neutral-700 dark:bg-neutral-800 text-neutral-100 
-                   rounded-full text-sm hover:bg-neutral-800 dark:hover:bg-neutral-700 
+                   rounded-full text-md hover:bg-neutral-800 dark:hover:bg-neutral-700 
                    transition-colors duration-200"
         >
           {link.name}

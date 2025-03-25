@@ -15,7 +15,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSkillIndex((prev) => (prev + 1) % skills.length);
-    }, 5000);
+    }, 3000);
 
     return () => clearInterval(interval);
   }, []);
