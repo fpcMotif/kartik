@@ -3,10 +3,13 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import BlogPostClient from '@/components/BlogPostClient'
 
+interface BlogPostParams {
+  id: string
+}
+
 interface BlogPostPageProps {
-  params: {
-    id: string
-  }
+  params: BlogPostParams;
+  searchParams: { [key: string]: string | string[] | undefined };
 }
 
 export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {

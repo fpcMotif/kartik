@@ -159,6 +159,7 @@ export default function OnekoCat() {
         cancelAnimationFrame(animationFrameId.current);
       }
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nekoPos, mousePos, frameCount, idleTime, idleAnimation, idleAnimationFrame]);
 
   return (
