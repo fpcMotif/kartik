@@ -6,6 +6,7 @@ import Footer from "@/components/Footer"
 import OnekoCat from "@/components/OnekoCat"
 import Reach from "@/components/Reach"
 import Experience from "@/components/Experience"
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -13,6 +14,11 @@ export default function Home() {
       <OnekoCat />
       <div className="flex justify-end p-4 absolute top-0 right-0">
           <ModeToggle/>
+      </div>
+      <div className="flex justify-end p-4 absolute top-1 right-15">
+          <Link href={"/blogs"} className="text-lg md:text-xl hover:underline">
+              blogs
+          </Link>
       </div>
       <div className="flex flex-col items-start justify-center px-6 md:px-12 lg:ml-100 pt-20 md:pt-28 space-y-8 md:space-y-12 max-w-3xl mx-auto">
         <div>
@@ -64,6 +70,21 @@ export default function Home() {
         <div className="w-full">
           <h2 className="text-xl md:text-2xl font-medium mb-4">Work</h2>
             <Projects/>
+        </div>
+        
+        <div className="w-full">
+          <h2 className="text-xl md:text-2xl font-medium mb-4">Blog</h2>
+          <div className="mb-4">
+            <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 mb-4">
+              I occasionally write about web development, AI, and other technical topics.
+            </p>
+            <Link 
+              href="/blogs"
+              className="inline-flex items-center text-base md:text-lg hover:underline"
+            >
+              View all posts →
+            </Link>
+          </div>
         </div>
         
         {/* <div className="w-full">

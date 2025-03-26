@@ -10,7 +10,7 @@ export default function Experience() {
     {
       company: "Lamarr",
       position: "Full stack developer Intern",
-      duration: "November 2024 – Dec 2024",
+      duration: "Nov 2024 – Dec 2024",
       description: `Developed and deployed cutting-edge solutions, including multi-select preferences, 
         browser-based video recording, and API integrations like WhatsApp/email reminders. 
         Optimized workflows with autosave features and real-time scraping, 
