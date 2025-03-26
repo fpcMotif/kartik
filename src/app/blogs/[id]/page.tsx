@@ -3,16 +3,12 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import BlogPostClient from '@/components/BlogPostClient'
 
-interface BlogPostParams {
-  id: string
+type Props = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
 }
 
-interface BlogPostPageProps {
-  params: BlogPostParams;
-  searchParams: { [key: string]: string | string[] | undefined };
-}
-
-export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const blog = getBlogById(params.id)
   
   if (!blog) {
@@ -40,7 +36,7 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
   }
 }
 
-export default function BlogPostPage({ params }: BlogPostPageProps) {
+export default function BlogPostPage({ params }: Props) {
   const blog = getBlogById(params.id)
   
   if (!blog) {
