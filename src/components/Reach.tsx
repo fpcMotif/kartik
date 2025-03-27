@@ -21,6 +21,10 @@ export default function Reach() {
       name: "say hello",
       url: "mailto:kartik.labhshetwar@gmail.com",
     },
+    {
+      name: "book a meet",
+      url: "https://cal.com/kartik-labhshetwar/15min",
+    },
   ];
 
   return (

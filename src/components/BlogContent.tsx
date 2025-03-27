@@ -31,7 +31,19 @@ export const BlogContent: FC<BlogContentProps> = ({ blog }) => {
       </header>
       
       <div className="content prose-sm sm:prose-base md:prose-lg">
-        <ReactMarkdown>{blog.content}</ReactMarkdown>
+        <ReactMarkdown
+          components={{
+            p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
+            h1: ({ children }) => <h1 className="text-3xl font-bold mt-8 mb-4">{children}</h1>,
+            h2: ({ children }) => <h2 className="text-2xl font-semibold mt-6 mb-3">{children}</h2>,
+            h3: ({ children }) => <h3 className="text-xl font-medium mt-4 mb-2">{children}</h3>,
+            ul: ({ children }) => <ul className="list-disc pl-6 mb-4">{children}</ul>,
+            ol: ({ children }) => <ol className="list-decimal pl-6 mb-4">{children}</ol>,
+            li: ({ children }) => <li className="mb-1">{children}</li>,
+          }}
+        >
+          {blog.content}
+        </ReactMarkdown>
       </div>
     </article>
   )

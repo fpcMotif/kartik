@@ -12,15 +12,13 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <OnekoCat />
-      <div className="flex justify-end p-4 absolute top-0 right-0">
-          <ModeToggle/>
-      </div>
-      <div className="flex justify-end p-4 absolute top-1 right-15">
+      <div className="flex flex-col items-start px-6 md:px-12 lg:ml-100 pt-4 md:pt-6 space-y-8 md:space-y-12 max-w-3xl mx-auto">
+        <div className="w-full flex justify-end items-center gap-4">
           <Link href={"/blogs"} className="text-lg md:text-xl hover:underline">
-              blogs
+            blogs
           </Link>
-      </div>
-      <div className="flex flex-col items-start justify-center px-6 md:px-12 lg:ml-100 pt-20 md:pt-28 space-y-8 md:space-y-12 max-w-3xl mx-auto">
+          <ModeToggle />
+        </div>
         <div>
           <h1 className="text-2xl md:text-4xl font-medium">Kartik Labhshetwar</h1>
           <div className="flex items-center gap-2 mt-2">
@@ -59,6 +57,11 @@ export default function Home() {
                 <span>View CV</span>
               </div>
             </a>
+
+
+            <Link href={'https://cal.com/kartik-labhshetwar/15min'} target="_blank" className=" pl-4 text-lg md:text-xl hover:underline" >
+                book a meet
+            </Link>
           </div>
         </div>
 
@@ -72,7 +75,7 @@ export default function Home() {
             <Projects/>
         </div>
         
-        <div className="w-full">
+        {/* <div className="w-full">
           <h2 className="text-xl md:text-2xl font-medium mb-4">Blog</h2>
           <div className="mb-4">
             <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 mb-4">
@@ -85,7 +88,7 @@ export default function Home() {
               View all posts →
             </Link>
           </div>
-        </div>
+        </div> */}
         
         {/* <div className="w-full">
           <h2 className="text-lg font-medium mb-2">Skills</h2>

@@ -3,14 +3,14 @@ import {Nunito_Sans} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 
-const fanwood = Nunito_Sans({
+const nunito = Nunito_Sans({
   weight: ['400'],
   style: ['normal'],
   subsets: ['latin']
 })
 
 export const metadata: Metadata = {
-  title: 'Kartik Labhshetwar | Full-Stack Developer | Software engineer',
+  title: 'kartik labhshetwar',
   description: 'I build products that solve real problems. Available for new opportunities.',
   openGraph: {
     title: 'Kartik Labhshetwar | Full-Stack Developer | Software engineer',
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={fanwood.className}
+        className={nunito.className}
       >
          <ThemeProvider
             attribute="class"
