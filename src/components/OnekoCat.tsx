@@ -1,3 +1,5 @@
+'use client'
+
 import { useEffect, useRef, useState } from 'react';
 
 interface Position {
@@ -179,4 +181,4 @@ export default function OnekoCat() {
       }}
     />
   );
-} 
+}

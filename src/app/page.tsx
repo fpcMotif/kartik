@@ -1,12 +1,13 @@
 'use client'
 
 import {ModeToggle} from "@/components/theme-toggle"
-import Projects from "@/components/Projects";
 import Footer from "@/components/Footer"
 import OnekoCat from "@/components/OnekoCat"
 import Reach from "@/components/Reach"
 import Experience from "@/components/Experience"
 import Link from "next/link";
+import { projects } from '@/data/projects'
+import { ProjectCard } from '@/components/ProjectCard'
 
 export default function Home() {
   return (
@@ -14,6 +15,9 @@ export default function Home() {
       <OnekoCat />
       <div className="flex flex-col items-start px-6 md:px-12 lg:ml-100 pt-4 md:pt-6 space-y-8 md:space-y-12 max-w-3xl mx-auto">
         <div className="w-full flex justify-end items-center gap-4">
+          <Link href={"/projects"} className="text-lg md:text-xl hover:underline">
+            projects
+          </Link>
           <Link href={"/blogs"} className="text-lg md:text-xl hover:underline">
             blogs
           </Link>
@@ -72,7 +76,17 @@ export default function Home() {
 
         <div className="w-full">
           <h2 className="text-xl md:text-2xl font-medium mb-4">Work</h2>
-            <Projects/>
+          <div className="space-y-2">
+            {projects.slice(0, 3).map(project => (
+              <ProjectCard key={project.id} project={project} />
+            ))}
+          </div>
+          <Link 
+            href="/projects"
+            className="inline-flex items-center mt-6 text-base md:text-lg hover:underline"
+          >
+            View all projects →
+          </Link>
         </div>
         
         {/* <div className="w-full">
