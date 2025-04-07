@@ -10,7 +10,7 @@ const inter = Inter_Tight({
 })
 
 export const metadata: Metadata = {
-  title: 'kartik labhshetwar',
+  title: 'Kartik Labhshetwar',
   description: 'I build products that solve real problems. Available for new opportunities.',
   openGraph: {
     title: 'Kartik Labhshetwar | Full-Stack Developer | Software engineer',
