@@ -18,6 +18,10 @@ export default function Reach() {
       url: "https://www.linkedin.com/in/kartikcode/",
     },
     {
+      name: "peerlist",
+      url: "https://peerlist.io/code_kartik",
+    },
+    {
       name: "say hello",
       url: "mailto:kartik.labhshetwar@gmail.com",
     },
@@ -28,19 +32,19 @@ export default function Reach() {
   ];
 
   return (
-    <div className="flex flex-wrap gap-3">
+    <div className="flex flex-wrap gap-2">
       {socialLinks.map((link) => (
-        <a
-          key={link.name}
-          href={link.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="px-4 py-2 bg-neutral-700 dark:bg-neutral-800 text-neutral-100 
-                   rounded-full text-md hover:bg-neutral-800 dark:hover:bg-neutral-700 
-                   transition-colors duration-200"
-        >
-          {link.name}
-        </a>
+      <a
+        key={link.name}
+        href={link.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="px-3 py-1.5 bg-neutral-700 dark:bg-neutral-800 text-neutral-100 
+             rounded-full text-sm sm:text-md sm:px-4 sm:py-2 hover:bg-neutral-800 
+             dark:hover:bg-neutral-700 transition-colors duration-200"
+      >
+        {link.name}
+      </a>
       ))}
     </div>
   );

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import {Nunito_Sans} from "next/font/google";
+import {Inter_Tight} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 
-const nunito = Nunito_Sans({
-  weight: ['400'],
-  style: ['normal'],
+const inter = Inter_Tight({
+  weight: '400',
+  style: 'normal',
   subsets: ['latin']
 })
 
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={nunito.className}
+        className={inter.className}
       >
          <ThemeProvider
             attribute="class"

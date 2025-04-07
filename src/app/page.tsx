@@ -9,29 +9,38 @@ import Link from "next/link";
 import { projects } from '@/data/projects'
 import { ProjectCard } from '@/components/ProjectCard'
 
+import { Instrument_Serif } from 'next/font/google'
+
+// Initialize the font
+const instrumentSerif = Instrument_Serif({ 
+  weight: '400',
+  subsets: ['latin'],
+})
+
+
 export default function Home() {
   return (
     <div className="min-h-screen">
       <OnekoCat />
       <div className="flex flex-col items-start px-6 md:px-12 lg:ml-100 pt-4 md:pt-6 space-y-8 md:space-y-12 max-w-3xl mx-auto">
         <div className="w-full flex justify-end items-center gap-4">
-          <Link href={"/projects"} className="text-lg md:text-xl hover:underline">
+          <Link href={"/projects"} className="text-md md:text-lg hover:underline">
             projects
           </Link>
-          <Link href={"/blogs"} className="text-lg md:text-xl hover:underline">
+          <Link href={"/blogs"} className="text-md md:text-lg hover:underline">
             blogs
           </Link>
           <ModeToggle />
         </div>
         <div>
-          <h1 className="text-2xl md:text-4xl font-medium">Kartik Labhshetwar</h1>
+          <h1 className={`text-2xl md:text-3xl ${instrumentSerif.className}`}>Kartik Labhshetwar</h1>
           <div className="flex items-center gap-2 mt-2">
-            <span className="relative flex h-3 w-3">
+            {/* <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span>
-            <p className="text-md md:text-lg text-neutral-600 dark:text-neutral-400">
-              Available for new opportunities
+            </span> */}
+            <p className="text-xs md:text-sm text-neutral-600 dark:text-neutral-400">
+              engineer <span className="mx-1">• developer</span> 
             </p>
           </div>
           <div className="mt-5 space-y-4">
@@ -57,13 +66,13 @@ export default function Home() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              <div className="flex items-center text-sm lg:text-base">
+              <div className={`flex items-center text-sm lg:text-base`}>
                 <span>View CV</span>
               </div>
             </a>
 
 
-            <Link href={'https://cal.com/kartik-labhshetwar/15min'} target="_blank" className=" pl-4 text-lg md:text-xl hover:underline" >
+            <Link href={'https://cal.com/kartik-labhshetwar/15min'} target="_blank" className={`pl-4 text-lg md:text-xl hover:underline ${instrumentSerif.className}`} >
                 book a meet
             </Link>
           </div>
