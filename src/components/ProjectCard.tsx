@@ -1,6 +1,6 @@
 import { Project } from '@/types/project'
 import { FaGithub} from "react-icons/fa6";
-import { TbExternalLink } from "react-icons/tb";
+import { FiArrowUpRight } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -27,12 +27,12 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
           <h1 className="text-2xl md:text-4xl font-medium">{project.title}</h1>
           <div className="flex items-center gap-4">
             {project.liveLink && (
-              <Link href={project.liveLink} target="_blank" className="hover:opacity-70">
-                <TbExternalLink className="size-5 md:size-6" />
+              <Link href={project.liveLink} target="_blank" className="bg-neutral-200 dark:bg-neutral-800 p-2 rounded-full hover:opacity-70">
+                <FiArrowUpRight className="size-5 md:size-6" />
               </Link>
             )}
             {project.githubLink && (
-              <Link href={project.githubLink} target="_blank" className="hover:opacity-70">
+              <Link href={project.githubLink} target="_blank" className="bg-neutral-200 dark:bg-neutral-800 p-2 rounded-full hover:opacity-70">
                 <FaGithub className="size-5 md:size-6" />
               </Link>
             )}
