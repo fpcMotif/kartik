@@ -5,16 +5,14 @@ import Footer from "@/components/Footer"
 import OnekoCat from "@/components/OnekoCat"
 import Reach from "@/components/Reach"
 import Experience from "@/components/Experience"
-import Link from "next/link";
+import Link from "next/link"
+import Image from "next/image"
 import { projects } from '@/data/projects'
 import { ProjectCard } from '@/components/ProjectCard'
+import localFont from 'next/font/local'
 
-import { Instrument_Serif } from 'next/font/google'
-
-// Initialize the font
-const instrumentSerif = Instrument_Serif({ 
-  weight: '400',
-  subsets: ['latin'],
+const clashDisplay = localFont({ 
+  src: '../fonts/ClashDisplay-Semibold.woff2',
 })
 
 
@@ -33,15 +31,24 @@ export default function Home() {
           <ModeToggle />
         </div>
         <div>
-          <h1 className={`text-2xl md:text-3xl ${instrumentSerif.className}`}>Kartik Labhshetwar</h1>
-          <div className="flex items-center gap-2 mt-2">
-            {/* <span className="relative flex h-3 w-3">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-            </span> */}
-            <p className="text-xs md:text-sm text-neutral-600 dark:text-neutral-400">
-              engineer <span className="mx-1">• developer</span> 
-            </p>
+          <div className="flex items-center gap-6 mb-4">
+            <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 relative">
+              <Image
+                src="/kartik.jpg"
+                alt="Kartik Labhshetwar"
+                fill
+                priority
+                className="rounded-full object-cover"
+              />
+            </div>
+            <div>
+              <h1 className={`text-2xl md:text-4xl ${clashDisplay.className}`}>Kartik Labhshetwar</h1>
+              <div className="flex items-center gap-2 mt-2">
+                <p className="text-sm md:text-md text-neutral-600 dark:text-neutral-400">
+                  engineer <span className="mx-1">• developer</span> 
+                </p>
+              </div>
+            </div>
           </div>
           <div className="mt-5 space-y-4">
             <p className="text-base md:text-lg text-neutral-800 dark:text-neutral-200">
@@ -72,7 +79,7 @@ export default function Home() {
             </a>
 
 
-            <Link href={'https://cal.com/kartik-labhshetwar/15min'} target="_blank" className={`pl-4 text-lg md:text-xl hover:underline ${instrumentSerif.className}`} >
+            <Link href={'https://cal.com/kartik-labhshetwar/15min'} target="_blank" className={`pl-4 text-lg md:text-xl hover:underline ${clashDisplay.className}`} >
                 book a meet
             </Link>
           </div>
