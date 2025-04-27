@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {Inter_Tight} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
-import { BackgroundBeams } from "@/components/ui/background-beams"
 
 const inter = Inter_Tight({
   weight: '400',
@@ -43,7 +42,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <BackgroundBeams className="opacity-200" />
           <div className="relative z-10">
             {children}
           </div>
