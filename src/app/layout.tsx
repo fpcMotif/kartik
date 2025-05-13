@@ -19,12 +19,19 @@ export const metadata: Metadata = {
     siteName: 'Kartik Labhshetwar Portfolio',
     locale: 'en_US',
     type: 'website',
+    images: [{
+      url: '/opengraph.png',
+      width: 1200,
+      height: 630,
+      alt: 'Kartik Labhshetwar - Portfolio'
+    }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Kartik Labhshetwar | Full-Stack Developer | Software engineer',
     description: 'I build products that solve real problems. Available for new opportunities.',
     creator: '@code_kartik',
+    images: ['/open-graph.png'],
   },
 };
 
