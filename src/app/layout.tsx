@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     type: 'website',
     images: [{
-      url: '/opengraph.png',
+      url: '/open-graph.png',
       width: 1200,
       height: 630,
       alt: 'Kartik Labhshetwar - Portfolio'
