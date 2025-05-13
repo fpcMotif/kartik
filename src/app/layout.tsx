@@ -26,13 +26,6 @@ export const metadata: Metadata = {
       alt: 'Kartik Labhshetwar - Portfolio'
     }],
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Kartik Labhshetwar | Full-Stack Developer | Software engineer',
-    description: 'I build products that solve real problems. Available for new opportunities.',
-    creator: '@code_kartik',
-    images: ['/open-graph.png'],
-  },
 };
 
 export default function RootLayout({
