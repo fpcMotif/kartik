@@ -13,8 +13,6 @@ export const metadata: Metadata = {
   title: 'Kartik Labhshetwar',
   description: 'I build products that solve real problems. Available for new opportunities.',
   openGraph: {
-    title: 'Kartik Labhshetwar | Full-Stack Developer | Software engineer',
-    description: 'I build products that solve real problems. Available for new opportunities.',
     url: 'https://kartik017.vercel.app/',
     siteName: 'Kartik Labhshetwar Portfolio',
     locale: 'en_US',
