@@ -9,12 +9,12 @@ import Link from "next/link"
 // import Image from "next/image"
 import { projects } from '@/data/projects'
 import { ProjectCard } from '@/components/ProjectCard'
-import localFont from 'next/font/local'
+// import localFont from 'next/font/local'
 import { Geist } from "next/font/google"
 
-const clashDisplay = localFont({ 
-  src: '../fonts/ClashDisplay-Semibold.woff2',
-})
+// const clashDisplay = localFont({ 
+//   src: '../fonts/ClashDisplay-Semibold.woff2',
+// })
 
 const geistMono = Geist({
   weight: ['400', '500', '600'],
@@ -38,7 +38,7 @@ export default function Home() {
           <ModeToggle />
         </div>
         <div>
-          <div className="flex items-center gap-6 mb-4 p-4">
+          <div className="flex items-center gap-6 mb-4">
             {/* <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 relative">
               <Image
                 src="/kartik.jpg"
@@ -86,7 +86,7 @@ export default function Home() {
             </a>
 
 
-            <Link href={'https://cal.com/kartik-labhshetwar/15min'} target="_blank" className={`pl-4 text-lg md:text-xl hover:underline ${clashDisplay.className}`} >
+            <Link href={'https://cal.com/kartik-labhshetwar/15min'} target="_blank" className={`pl-4 text-lg md:text-xl hover:underline ${geistMono.className}`} >
                 book a meet
             </Link>
           </div>
