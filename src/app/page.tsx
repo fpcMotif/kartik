@@ -6,13 +6,20 @@ import OnekoCat from "@/components/OnekoCat"
 import Reach from "@/components/Reach"
 import Experience from "@/components/Experience"
 import Link from "next/link"
-import Image from "next/image"
+// import Image from "next/image"
 import { projects } from '@/data/projects'
 import { ProjectCard } from '@/components/ProjectCard'
 import localFont from 'next/font/local'
+import { Geist } from "next/font/google"
 
 const clashDisplay = localFont({ 
   src: '../fonts/ClashDisplay-Semibold.woff2',
+})
+
+const geistMono = Geist({
+  weight: ['400', '500', '600'],
+  subsets: ['latin'],
+  variable: '--font-geist-mono',
 })
 
 
@@ -31,8 +38,8 @@ export default function Home() {
           <ModeToggle />
         </div>
         <div>
-          <div className="flex items-center gap-6 mb-4 border border-neutral-800 dark:border-neutral-300 p-4">
-            <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 relative">
+          <div className="flex items-center gap-6 mb-4 p-4">
+            {/* <div className="w-20 h-20 md:w-24 md:h-24 shrink-0 relative">
               <Image
                 src="/kartik.jpg"
                 alt="Kartik Labhshetwar"
@@ -40,9 +47,9 @@ export default function Home() {
                 priority
                 className="rounded-full object-cover"
               />
-            </div>
+            </div> */}
             <div>
-              <h1 className={`text-2xl md:text-4xl dark:text-neutral-200 ${clashDisplay.className}`}>Kartik Labhshetwar</h1>
+              <h1 className={`text-3xl md:text-4xl font-medium gap-2 dark:text-neutral-200 ${geistMono.className}`}>Kartik Labhshetwar</h1>
               <div className="flex items-center gap-2 mt-2">
                 <p className="text-sm md:text-md text-neutral-600 dark:text-neutral-400">
                   engineer <span className="mx-1">• developer</span> 
