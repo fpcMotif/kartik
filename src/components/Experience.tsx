@@ -7,15 +7,6 @@ interface ExperienceItem {
 
 export default function Experience() {
   const experiences: ExperienceItem[] = [
-    // {
-    //   company: "TurboML",
-    //   position: "Software Engineering Intern",
-    //   duration: "April 2025 – Current",
-    //   description: `Working as a Software Engineer at TurboML on Puch AI, 
-    //   a multilingual WhatsApp-based AI assistant built with FastAPI, Python, and WhatsApp API. 
-    //   I’m developing features like Swiggy integration, preset commands, and task reminders to enhance 
-    //   user experience and accessibility across 11 Indian languages.`,
-    // },
      {
       company: "Lamarr",
       position: "Full stack developer Intern",
