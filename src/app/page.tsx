@@ -27,7 +27,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <OnekoCat />
-      <div className="flex flex-col items-start px-6 md:px-12 lg:ml-100 pt-4 md:pt-6 space-y-8 md:space-y-12 max-w-3xl mx-auto">
+      <div className="flex flex-col items-start px-6 md:px-12 pt-4 md:pt-6 space-y-8 md:space-y-12 max-w-3xl w-full mx-auto">
         <div className="w-full flex justify-end items-center gap-4">
           <Link href={"/projects"} className="text-md md:text-lg hover:underline">
             projects
