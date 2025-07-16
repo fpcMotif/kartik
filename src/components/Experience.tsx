@@ -13,8 +13,8 @@ export default function Experience() {
   const experiences: ExperienceItem[] = [
     {
       company: "Turbo ML",
-      position: "Software Engineering Intern",
-      duration: "April 2025 – Present",
+      position: "Software Engineering Intern (AI) ",
+      duration: "April 2025 – July 2025",
       description: `Developed and deployed cutting-edge solutions, including multi-select preferences, 
         browser-based video recording, and API integrations like WhatsApp/email reminders. 
         Optimized workflows with autosave features and real-time scraping, 
@@ -24,8 +24,8 @@ export default function Experience() {
     },
     {
       company: "Puch AI",
-      position: "Software Engineering Intern",
-      duration: "June 2025 – Present",
+      position: "Software Engineering Intern (AI)",
+      duration: "June 2025 – July 2025",
       description: `Developed and deployed cutting-edge solutions, including multi-select preferences, 
         browser-based video recording, and API integrations like WhatsApp/email reminders. 
         Optimized workflows with autosave features and real-time scraping, 
