@@ -22,17 +22,17 @@ export default function Experience() {
       href: "https://turboml.com/",
       logoUrl: "/turboml.jpg",
     },
-    {
-      company: "Puch AI",
-      position: "Software Engineering Intern (AI)",
-      duration: "June 2025 – July 2025",
-      description: `Developed and deployed cutting-edge solutions, including multi-select preferences, 
-        browser-based video recording, and API integrations like WhatsApp/email reminders. 
-        Optimized workflows with autosave features and real-time scraping, 
-        leveraging Next.js, Supabase, and Cloudflare workers.`,
-      href: "https://puch.ai",
-      logoUrl: "/puchai.jpg",
-    },
+    // {
+    //   company: "Puch AI",
+    //   position: "Software Engineering Intern (AI)",
+    //   duration: "June 2025 – July 2025",
+    //   description: `Developed and deployed cutting-edge solutions, including multi-select preferences, 
+    //     browser-based video recording, and API integrations like WhatsApp/email reminders. 
+    //     Optimized workflows with autosave features and real-time scraping, 
+    //     leveraging Next.js, Supabase, and Cloudflare workers.`,
+    //   href: "https://puch.ai",
+    //   logoUrl: "/puchai.jpg",
+    // },
     {
       company: "Lamarr",
       position: "Full stack developer Intern",
