@@ -47,47 +47,65 @@ export default function Experience() {
   ];
 
   return (
-    <div className="space-y-2">
-      {experiences.map((exp) => (
-        <div key={exp.company} className="flex items-center gap-4 mb-4">
-          {exp.logoUrl && (
-            <Avatar className="border size-12 m-auto bg-muted-background dark:bg-foreground">
-              <AvatarImage
-                src={exp.logoUrl}
-                alt={exp.company}
-                className="object-contain"
-              />
-              <AvatarFallback>{exp.company[0]}</AvatarFallback>
-            </Avatar>
-          )}
-          <div className="flex-1">
-            <div className="flex justify-between items-start">
-              <div className="max-w-[70%]">
-                {exp.href ? (
-                  <a
-                    href={exp.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-lg md:text-xl font-medium text-neutral-800 dark:text-neutral-200 hover:underline"
-                  >
-                    {exp.company}
-                  </a>
-                ) : (
-                  <h3 className="text-lg md:text-xl font-medium text-neutral-800 dark:text-neutral-200">
-                    {exp.company}
-                  </h3>
+    <div className="w-full max-w-4xl mx-auto">
+      <div className="space-y-8">
+        {experiences.map((exp, index) => (
+          <div key={exp.company} className="group">
+            <div className="flex items-start gap-6">
+              {/* Company Logo */}
+              <div className="flex-shrink-0">
+                {exp.logoUrl && (
+                  <Avatar className="border size-14 bg-muted-background dark:bg-foreground">
+                    <AvatarImage
+                      src={exp.logoUrl}
+                      alt={exp.company}
+                      className="object-contain"
+                    />
+                    <AvatarFallback>{exp.company[0]}</AvatarFallback>
+                  </Avatar>
                 )}
-                <p className="text-sm md:text-lg text-neutral-800 dark:text-neutral-400">
-                  {exp.position}
-                </p>
               </div>
-              <p className="text-sm md:text-base text-neutral-800 dark:text-neutral-400 whitespace-nowrap">
-                {exp.duration}
-              </p>
+              
+              {/* Content */}
+              <div className="flex-1 min-w-0">
+                <div className="flex justify-between items-start mb-2">
+                  <div className="flex-1 min-w-0 pr-4">
+                    {exp.href ? (
+                      <a
+                        href={exp.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-white hover:underline transition-colors"
+                      >
+                        {exp.company}
+                      </a>
+                    ) : (
+                      <h3 className="text-xl md:text-2xl font-semibold text-neutral-900 dark:text-white">
+                        {exp.company}
+                      </h3>
+                    )}
+                    <p className="text-base md:text-lg text-neutral-600 dark:text-neutral-400 mt-1">
+                      {exp.position}
+                    </p>
+                  </div>
+                  
+                  {/* Duration */}
+                  <div className="flex-shrink-0 text-right">
+                    <p className="text-sm md:text-base text-neutral-500 dark:text-neutral-500 font-medium">
+                      {exp.duration}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
+            
+            {/* Divider (except for last item) */}
+            {index < experiences.length - 1 && (
+              <div className="mt-6 border-b border-neutral-200 dark:border-neutral-700"></div>
+            )}
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
