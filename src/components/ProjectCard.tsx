@@ -3,11 +3,30 @@ import { FaGithub} from "react-icons/fa6";
 import { FiArrowUpRight } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
+import Video from "next-video";
+import donezovideo from '/videos/donezo.mp4';
+import mindMentorVideo from '/videos/mind-mentor.mp4';
+import satyaCheckVideo from '/videos/satya-check.mp4';
+
 
 interface ProjectCardProps {
   project: Project;
   isDetailed?: boolean;
 }
+
+// Map video IDs to imported video assets
+const getVideoSource = (videoId: string) => {
+  switch (videoId) {
+    case 'donezo':
+      return donezovideo;
+    case 'mind-mentor':
+      return mindMentorVideo;
+    case 'satya-check':
+      return satyaCheckVideo;
+    default:
+      return null;
+  }
+};
 
 export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) => {
   if (!isDetailed) {
@@ -47,13 +66,17 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
         </div>
       </header>
 
-      {project.video ? (
+      {project.video && getVideoSource(project.video) ? (
         <div className="mt-8 mb-8 aspect-video w-full">
-          <video 
-            src={project.video}
+          <Video
+            src={getVideoSource(project.video)!}
+            poster={project.image}
             className="w-full h-full rounded-lg object-cover"
             controls
             playsInline
+            autoPlay
+            muted
+            loop
           />
         </div>
       ) : project.image && (
