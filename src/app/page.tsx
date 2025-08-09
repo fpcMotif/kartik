@@ -8,7 +8,7 @@ import Experience from "@/components/Experience"
 import Link from "next/link"
 // import Image from "next/image"
 import { projects } from '@/data/projects'
-import { ProjectCard } from '@/components/ProjectCard'
+import { ProjectHeroCard } from '@/components/ProjectHeroCard'
 // import localFont from 'next/font/local'
 import { Geist } from "next/font/google"
 
@@ -99,14 +99,14 @@ export default function Home() {
 
         <div className="w-full">
           <h2 className="text-xl md:text-2xl font-medium mb-4">Work</h2>
-          <div className="space-y-2">
+          <div className="space-y-6 mb-6">
             {projects.slice(0, 3).map(project => (
-              <ProjectCard key={project.id} project={project} />
+              <ProjectHeroCard key={project.id} project={project} />
             ))}
           </div>
           <Link 
             href="/projects"
-            className="inline-flex items-center mt-6 text-base md:text-lg hover:underline"
+            className="inline-flex items-center text-base md:text-lg hover:underline"
           >
             View all projects →
           </Link>

@@ -4,7 +4,8 @@ export const projects: Project[] = [
   {
     id: 'mind-mentor',
     title: "Mind Mentor AI",
-    description: "Mind Mentor AI revolutionizes educational assistance through advanced AI technology. This innovative platform harnesses the power of Groq AI and large language models to provide personalized learning experiences, intelligent study plan generation, and dynamic resource curation. Built with modern web technologies, it offers an intuitive interface for seamless interaction with AI-powered educational tools, making learning more efficient and engaging.",
+    description: "An AI-powered educational assistant that revolutionizes learning through advanced AI technology.",
+    longDescription: "Harnesses the power of Groq AI and large language models for personalized learning experiences\n\nProvides intelligent study plan generation and dynamic resource curation\n\nBuilt with modern web technologies offering an intuitive interface\n\nSeamless interaction with AI-powered educational tools makes learning more efficient and engaging",
     liveLink: "https://mind-mentor-pearl.vercel.app/",
     githubLink: "https://github.com/KartikLabhshetwar/mind-mentor",
     video: 'mind-mentor',
@@ -23,7 +24,8 @@ export const projects: Project[] = [
   {
     id: 'satya-check',
     title: "SatyaCheck",
-    description: "SatyaCheck is an innovative fact-checking platform that combines cutting-edge AI technology with browser integration to combat misinformation. Leveraging Google's Gemini Pro AI, it analyzes news articles and social media content in real-time, providing users with credibility assessments and source verification. The Chrome extension seamlessly integrates with users' browsing experience, offering instant fact-checking capabilities while maintaining a clean and intuitive interface.",
+    description: "An innovative fact-checking platform that combines cutting-edge AI technology with browser integration to combat misinformation.",
+    longDescription: "Leverages Google's Gemini Pro AI to analyze news articles and social media content in real-time\n\nProvides users with credibility assessments and source verification\n\nChrome extension seamlessly integrates with users' browsing experience\n\nOffers instant fact-checking capabilities while maintaining a clean and intuitive interface",
     liveLink: "https://satya-check.vercel.app/",
     githubLink: "https://github.com/21prnv/SatyaCheck",
     video: "satya-check",
@@ -42,7 +44,8 @@ export const projects: Project[] = [
   {
     id: 'donezo',
     title: "Donezo",
-    description: "Donezo transforms the way professionals track and reflect on their work through AI-powered weekly review emails. Drawing inspiration from the communication styles of tech visionaries like Elon Musk and Steve Jobs, it generates personalized, insightful summaries of your achievements and progress. The application combines modern front-end design with robust backend scheduling to deliver timely, engaging content that helps users maintain perspective on their professional journey.",
+    description: "AI-powered weekly review email platform that transforms how professionals track and reflect on their work.",
+    longDescription: "Draws inspiration from communication styles of tech visionaries like Elon Musk and Steve Jobs\n\nGenerates personalized, insightful summaries of achievements and progress\n\nCombines modern front-end design with robust backend scheduling\n\nDelivers timely, engaging content that helps users maintain perspective on their professional journey",
     liveLink: "https://donezo-theta.vercel.app/",
     githubLink: "https://github.com/UmangAgarwal257/Donezo",
     video: "donezo",
@@ -62,7 +65,8 @@ export const projects: Project[] = [
   {
     id: 'learnx',
     title: "LearnX",
-    description: "LearnX is a comprehensive course marketplace platform that seamlessly connects educators with learners. Built on the MERN stack with TypeScript, it features secure user authentication, streamlined course management, and integrated payment processing through Razorpay. The platform emphasizes user experience with intuitive navigation, responsive design, and robust content delivery, making online education accessible and engaging.",
+    description: "A comprehensive course marketplace platform that seamlessly connects educators with learners.",
+    longDescription: "Built on the MERN stack with TypeScript for robust architecture\n\nFeatures secure user authentication and streamlined course management\n\nIntegrated payment processing through Razorpay for seamless transactions\n\nEmphasizes user experience with intuitive navigation and responsive design\n\nRobust content delivery makes online education accessible and engaging",
     liveLink: "https://learnx-frontend.onrender.com/",
     githubLink: "https://github.com/KartikLabhshetwar/LearnX",
     image: '/images/learnx.png',
@@ -80,7 +84,8 @@ export const projects: Project[] = [
   {
     id: 'taskmaster',
     title: "TaskMaster",
-    description: "TaskMaster redefines task management with its dynamic Kanban board implementation and detailed list views. This full-stack application combines the flexibility of Next.js with the reliability of MongoDB to deliver a seamless task organization experience. Features include real-time updates, drag-and-drop functionality, and customizable workflows, all wrapped in an elegant, responsive interface that prioritizes productivity and user experience.",
+    description: "A dynamic task management platform with Kanban board implementation and detailed list views.",
+    longDescription: "Combines the flexibility of Next.js with the reliability of MongoDB\n\nDelivers seamless task organization experience with real-time updates\n\nFeatures drag-and-drop functionality and customizable workflows\n\nWrapped in an elegant, responsive interface that prioritizes productivity and user experience",
     liveLink: "https://task-management-dashboard-zeta.vercel.app/",
     githubLink: "https://github.com/KartikLabhshetwar/task-management-dashboard",
     image:'/images/taskmaster.png',

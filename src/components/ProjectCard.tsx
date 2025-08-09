@@ -46,12 +46,12 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
           <h1 className="text-2xl md:text-4xl font-medium">{project.title}</h1>
           <div className="flex items-center gap-4">
             {project.liveLink && (
-              <Link href={project.liveLink} target="_blank" className="bg-neutral-200 dark:bg-neutral-800 p-2 rounded-full hover:opacity-70">
+              <Link href={project.liveLink} target="_blank" className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-2 rounded-full hover:opacity-70">
                 <FiArrowUpRight className="size-5 md:size-6" />
               </Link>
             )}
             {project.githubLink && (
-              <Link href={project.githubLink} target="_blank" className="bg-neutral-200 dark:bg-neutral-800 p-2 rounded-full hover:opacity-70">
+              <Link href={project.githubLink} target="_blank" className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-2 rounded-full hover:opacity-70">
                 <FaGithub className="size-5 md:size-6" />
               </Link>
             )}
@@ -59,7 +59,7 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
         </div>
         <div className="flex flex-wrap gap-2 mb-6">
           {project.tags.map(tag => (
-            <span key={tag} className="px-3 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 rounded-full text-xs">
+            <span key={tag} className="px-3 py-1 bg-neutral-100 border-2 border-neutral-500 dark:bg-neutral-800 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 rounded-full text-xs">
               {tag}
             </span>
           ))}
@@ -93,33 +93,34 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
         </div>
       )}
 
-      <div className="mb-8">
-        <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed">
-          {project.description}
-          {project.tweetUrl && (
-            <>
-              {' '}
-              <Link 
-                href={project.tweetUrl} 
-                target="_blank" 
-                className="text-cyan-500 dark:text-cyan-600 hover:underline"
-              >
-                you can view the tweet here
-              </Link>
-            </>
-          )}
-        </p>
-      </div>
-
-      {project.longDescription && (
-        <div className="mt-8 space-y-4">
-          {project.longDescription.split('\n\n').map((paragraph, index) => (
-            <p key={index} className="text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-relaxed">
-              {paragraph}
-            </p>
-          ))}
+      <div className="mb-8 space-y-4">
+        <div className="prose-list">
+          <ul className="list-disc list-inside space-y-3 text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-relaxed">
+            <li className="text-neutral-600 dark:text-neutral-400">
+              {project.description}
+              {project.tweetUrl && (
+                <>
+                  {' '}
+                  <Link 
+                    href={project.tweetUrl} 
+                    target="_blank" 
+                    className="text-cyan-500 dark:text-cyan-600 hover:underline"
+                  >
+                    you can view the tweet here
+                  </Link>
+                </>
+              )}
+            </li>
+            {project.longDescription && 
+              project.longDescription.split('\n\n').map((paragraph, index) => (
+                <li key={index} className="text-neutral-600 dark:text-neutral-400">
+                  {paragraph}
+                </li>
+              ))
+            }
+          </ul>
         </div>
-      )}
+      </div>
     </article>
   );
 };

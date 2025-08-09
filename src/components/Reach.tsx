@@ -39,9 +39,9 @@ export default function Reach() {
         href={link.url}
         target="_blank"
         rel="noopener noreferrer"
-        className="px-3 py-1.5 bg-neutral-700 dark:bg-neutral-800 text-neutral-100 
-             rounded-full text-sm sm:text-md sm:px-4 sm:py-2 hover:bg-neutral-800 
-             dark:hover:bg-neutral-700 transition-colors duration-200"
+        className="px-3 py-1.5 bg-neutral-200 dark:bg-neutral-900 text-neutral-700 border-2 border-neutral-500
+             rounded-full text-sm sm:text-md sm:px-4 sm:py-2 hover:bg-neutral-400 
+             dark:hover:bg-neutral-800 transition-colors duration-200 dark:border-neutral-800 dark:text-neutral-400"
       >
         {link.name}
       </a>
