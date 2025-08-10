@@ -40,7 +40,10 @@ export const PageLoader = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed inset-0 z-50 bg-white dark:bg-black flex flex-col items-center justify-center"
+          className="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center"
+          style={{ 
+            backgroundColor: 'var(--loader-bg)' 
+          }}
         >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
