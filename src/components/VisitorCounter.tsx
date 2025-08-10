@@ -32,64 +32,60 @@ export default function VisitorCounter({
       try {
         setIsLoading(true);
         
-        // Check if we've already tracked this session
-        const sessionTracked = sessionStorage.getItem('visitorTracked');
+        // Always try to track visitor first, let the server decide if it's new or returning
+        console.log('Attempting to track visitor...');
+        const response = await fetch('/api/visitors', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
         
-        if (!sessionTracked) {
-          // Track new visitor
-          const response = await fetch('/api/visitors', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-          });
-          
-          if (!response.ok) {
-            throw new Error('Failed to track visitor');
-          }
-          
-          const data: VisitorResponse = await response.json();
-          
-          if (isMounted) {
-            if (data.success) {
-              setCount(data.totalVisitors);
-              sessionStorage.setItem('visitorTracked', 'true');
-              
-              if (data.isNewVisitor) {
-                console.log('New visitor tracked. Total visitors:', data.totalVisitors);
-              }
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data: VisitorResponse = await response.json();
+        console.log('Visitor tracking response:', data);
+        
+        if (isMounted) {
+          if (data.success) {
+            setCount(data.totalVisitors);
+            
+            if (data.isNewVisitor) {
+              console.log('New visitor counted! Total visitors:', data.totalVisitors);
             } else {
-              throw new Error(data.error || 'Failed to track visitor');
+              console.log('Returning visitor. Total visitors:', data.totalVisitors);
             }
-          }
-        } else {
-          // Get current count without incrementing
-          const response = await fetch('/api/visitors', {
-            method: 'GET',
-          });
-          
-          if (!response.ok) {
-            throw new Error('Failed to fetch visitor count');
-          }
-          
-          const data: VisitorResponse = await response.json();
-          
-          if (isMounted) {
-            if (data.success) {
-              setCount(data.totalVisitors);
-            } else {
-              throw new Error(data.error || 'Failed to fetch visitor count');
-            }
+          } else {
+            throw new Error(data.error || 'Failed to track visitor');
           }
         }
       } catch (err) {
         console.error('Error with visitor tracking:', err);
         
         if (isMounted) {
-          setError(err instanceof Error ? err.message : 'Unknown error');
-          // Fallback: try to show a cached count or default to 0
-          const cachedCount = localStorage.getItem('lastVisitorCount');
-          setCount(cachedCount ? parseInt(cachedCount) : 0);
+          // Try to get current count as fallback
+          try {
+            const response = await fetch('/api/visitors', { method: 'GET' });
+            if (response.ok) {
+              const data: VisitorResponse = await response.json();
+              if (data.success) {
+                setCount(data.totalVisitors);
+                console.log('Fallback: Got visitor count from GET request:', data.totalVisitors);
+              } else {
+                throw new Error('GET request failed');
+              }
+            } else {
+              throw new Error('GET request failed');
+            }
+          } catch (fallbackErr) {
+            console.error('Fallback failed:', fallbackErr);
+            setError(err instanceof Error ? err.message : 'Unknown error');
+            // Final fallback to cached count
+            const cachedCount = localStorage.getItem('lastVisitorCount');
+            setCount(cachedCount ? parseInt(cachedCount) : 0);
+          }
         }
       } finally {
         if (isMounted) {

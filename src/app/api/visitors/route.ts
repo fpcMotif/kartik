@@ -52,21 +52,31 @@ async function writeVisitorData(data: VisitorData) {
   await fs.writeFile(DATA_FILE, JSON.stringify(serializable, null, 2));
 }
 
-// Get client IP address
-function getClientIP(request: NextRequest): string {
+// Get client IP address and user agent for better uniqueness detection
+function getClientIdentifier(request: NextRequest): string {
   const forwarded = request.headers.get('x-forwarded-for');
   const realIP = request.headers.get('x-real-ip');
+  const userAgent = request.headers.get('user-agent') || 'unknown';
+  
+  let baseIP = 'unknown';
   
   if (forwarded) {
-    return forwarded.split(',')[0].trim();
+    baseIP = forwarded.split(',')[0].trim();
+  } else if (realIP) {
+    baseIP = realIP;
   }
   
-  if (realIP) {
-    return realIP;
+  // For localhost/development, create unique identifier using user agent hash
+  if (baseIP === 'unknown' || baseIP === '::1' || baseIP === '127.0.0.1') {
+    // Create a simple hash of user agent for development uniqueness
+    const hash = userAgent.split('').reduce((a, b) => {
+      a = ((a << 5) - a) + b.charCodeAt(0);
+      return a & a;
+    }, 0);
+    return `dev-${Math.abs(hash)}`;
   }
   
-  // Fallback to a default if no IP is available
-  return 'unknown';
+  return baseIP;
 }
 
 // GET endpoint - fetch current visitor count
@@ -89,10 +99,12 @@ export async function GET() {
 // POST endpoint - increment visitor count
 export async function POST(request: NextRequest) {
   try {
-    const clientIP = getClientIP(request);
+    const clientIP = getClientIdentifier(request);
     const data = await readVisitorData();
     
-    // Check if this IP has visited before (within last 24 hours)
+    console.log(`Visitor attempt from identifier: ${clientIP}`);
+    
+    // Check if this identifier has visited before
     const hasVisited = data.uniqueIPs.has(clientIP);
     
     if (!hasVisited) {
@@ -103,6 +115,8 @@ export async function POST(request: NextRequest) {
       
       await writeVisitorData(data);
       
+      console.log(`New visitor added. Total: ${data.totalVisitors}`);
+      
       return NextResponse.json({
         totalVisitors: data.totalVisitors,
         isNewVisitor: true,
@@ -110,6 +124,7 @@ export async function POST(request: NextRequest) {
       });
     } else {
       // Returning visitor
+      console.log(`Returning visitor. Total: ${data.totalVisitors}`);
       return NextResponse.json({
         totalVisitors: data.totalVisitors,
         isNewVisitor: false,

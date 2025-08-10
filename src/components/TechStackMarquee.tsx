@@ -31,7 +31,7 @@ const techStack = [
   { name: "Git", category: "tool", icon: "/tech-icons/Git.svg", color: "bg-gray-500" },
   { name: "Docker", category: "tool", icon: "/tech-icons/docker.svg", color: "bg-gray-500" },
   { name: "Azure", category: "tool", icon: "/tech-icons/Azure.svg", color: "bg-gray-500" },
-  { name: "AWS", category: "tool", icon: "/tech-icons/aws.svg", color: "bg-gray-500" },
+  { name: "AWS", category: "tool", icon: "/tech-icons/AWS.svg", color: "bg-gray-500" },
   { name: "Google Cloud", category: "tool", icon: "/tech-icons/gcp.svg", color: "bg-gray-500" },
   { name: "Jira", category: "tool", icon: "/tech-icons/Jira.svg", color: "bg-gray-500" },
   { name: "Nix OS", category: "tool", icon: "/tech-icons/NixOS.svg", color: "bg-gray-500" },
