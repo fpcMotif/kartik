@@ -3,7 +3,7 @@
 import { BlogContent } from '@/components/BlogContent'
 import Link from 'next/link'
 import OnekoCat from '@/components/OnekoCat'
-import { ModeToggle } from '@/components/theme-toggle'
+import MinimalNavigation from '@/components/MinimalNavigation'
 import { BlogPost } from '@/types/blog'
 
 interface BlogPostClientProps {
@@ -12,21 +12,23 @@ interface BlogPostClientProps {
 
 export default function BlogPostClient({ blog }: BlogPostClientProps) {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen w-full bg-white dark:bg-black">
+      <MinimalNavigation />
       <OnekoCat />
-      <div className="flex flex-col items-start px-6 md:px-12 lg:ml-100 pt-4 md:pt-6 space-y-8 md:space-y-12 max-w-3xl mx-auto">
-        <div className="w-full flex justify-end items-center">
-          <ModeToggle />
-        </div>
-        <div className="w-full">
-          <Link 
-            href="/blogs" 
-            className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 md:mb-8 inline-flex items-center hover:underline transition-colors"
-          >
-            <span className="mr-2">←</span>
-            <span>Back to blogs</span>
-          </Link>
-          <BlogContent blog={blog} />
+      
+      {/* Blog Content */}
+      <div className="w-full relative pt-16 sm:pt-16">
+        <div className="px-4 sm:px-8 md:px-16 py-8 sm:py-10 md:py-12">
+          <div className="max-w-3xl mx-auto">
+            <Link 
+              href="/blogs" 
+              className="text-sm sm:text-base md:text-lg mb-4 sm:mb-6 md:mb-8 inline-flex items-center hover:underline transition-colors"
+            >
+              <span className="mr-2">←</span>
+              <span>Back to blogs</span>
+            </Link>
+            <BlogContent blog={blog} />
+          </div>
         </div>
       </div>
     </div>
