@@ -46,7 +46,7 @@ export default function NewHeroSection() {
             <div className="text-base">
               {/* Current Role Section */}
               <ContentSection
-                subtitle="Engineer | AI Engineer | Full-stack Developer"
+                subtitle="AI Engineer | Full-stack Developer"
                 title='Building <a class="text-[#006FEE] hover:underline" href="/projects">products</a> and AI agents that solve real problems <span class="opacity-70 font-light">— Crafting digital experiences with clean code and exceptional UX.</span>'
                 className="mt-6"
               >
@@ -107,7 +107,7 @@ export default function NewHeroSection() {
               
               {/* Technical Contributions */}
               <div className="sm:px-12 px-6">
-                <h2 className="text-md mb-2 opacity-30 mt-6">Technical Expertise</h2>
+                <h2 className="text-md mb-2 opacity-30 mt-6">Technical Contributions</h2>
                 <div className="space-y-4 dark:text-white/70 text-black/70 pb-6">
                   <ContentParagraph>
                     <span className="font-medium dark:text-white text-black">At Turbo ML,</span> I spent 3 months building some pretty cool stuff. Think Redis Sorted Sets handling time-based tasks under 24-hour constraints, WhatsApp Business API integrations with custom commands, and secure MCP protocols using hash-based user identification. The kind of work that keeps you up at night because it&apos;s actually interesting.
