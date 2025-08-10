@@ -3,7 +3,7 @@
 import { BlogContent } from '@/components/BlogContent'
 import Link from 'next/link'
 import OnekoCat from '@/components/OnekoCat'
-import Navigation from '@/components/Navigation'
+import MinimalNavigation from '@/components/MinimalNavigation'
 import { BlogPost } from '@/types/blog'
 
 interface BlogPostClientProps {
@@ -13,13 +13,11 @@ interface BlogPostClientProps {
 export default function BlogPostClient({ blog }: BlogPostClientProps) {
   return (
     <div className="min-h-screen w-full bg-white dark:bg-black">
+      <MinimalNavigation />
       <OnekoCat />
       
-      {/* Navigation */}
-      <Navigation />
-      
       {/* Blog Content */}
-      <div className="w-full relative">
+      <div className="w-full relative pt-16 sm:pt-20">
         <div className="px-4 sm:px-8 md:px-16 py-8 sm:py-10 md:py-12">
           <div className="max-w-3xl mx-auto">
             <Link 

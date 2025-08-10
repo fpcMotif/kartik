@@ -39,7 +39,7 @@ export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCa
                 <Video
                   src={videoSource}
                   poster={project.image}
-                  className="w-full h-full rounded-lg"
+                  className="w-full h-full rounded-sm"
                   playsInline
                   autoPlay
                   muted

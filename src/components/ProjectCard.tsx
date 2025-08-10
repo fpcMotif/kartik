@@ -42,17 +42,17 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
   return (
     <article className="prose prose-neutral dark:prose-invert prose-headings:font-medium max-w-none px-2 sm:px-0">
       <header className="not-prose mb-6 sm:mb-8">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 gap-3 sm:gap-0">
-          <h1 className="text-xl sm:text-2xl md:text-4xl font-medium">{project.title}</h1>
-          <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-start justify-between mb-4 sm:mb-6 gap-3">
+          <h1 className="text-xl sm:text-2xl md:text-4xl font-medium flex-1 min-w-0">{project.title}</h1>
+          <div className="flex items-center gap-2 flex-shrink-0">
             {project.liveLink && (
-              <Link href={project.liveLink} target="_blank" className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-1.5 sm:p-2 rounded-full hover:opacity-70">
-                <FiArrowUpRight className="size-4 sm:size-5 md:size-6" />
+              <Link href={project.liveLink} target="_blank" className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-1.5 rounded-full hover:opacity-70">
+                <FiArrowUpRight className="size-4" />
               </Link>
             )}
             {project.githubLink && (
-              <Link href={project.githubLink} target="_blank" className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-1.5 sm:p-2 rounded-full hover:opacity-70">
-                <FaGithub className="size-4 sm:size-5 md:size-6" />
+              <Link href={project.githubLink} target="_blank" className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-1.5 rounded-full hover:opacity-70">
+                <FaGithub className="size-4" />
               </Link>
             )}
           </div>
