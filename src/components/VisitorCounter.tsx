@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface VisitorCounterProps {
   className?: string;
@@ -50,24 +50,38 @@ export default function VisitorCounter({
     <motion.div 
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       className={`inline-flex items-center gap-2 ${className}`}
     >
-      <motion.span
-        key={count}
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="text-sm dark:text-white/70 text-black/70"
-        suppressHydrationWarning
-      >
-        <span className="font-medium dark:text-white text-black" suppressHydrationWarning>
-          {count.toLocaleString()}
-        </span>
+      <div className="text-sm dark:text-white/70 text-black/70">
+        <AnimatePresence mode="wait">
+          <motion.span
+            key={count}
+            initial={{ opacity: 0, scale: 0.5, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 1.5, y: -20 }}
+            transition={{ 
+              duration: 0.8, 
+              ease: [0.25, 0.25, 0, 1],
+              scale: { duration: 0.6 }
+            }}
+            className="font-medium dark:text-white text-black inline-block"
+            suppressHydrationWarning
+          >
+            {count.toLocaleString()}
+          </motion.span>
+        </AnimatePresence>
         {showLabel && (
-          <span className="ml-1 opacity-70">
+          <motion.span 
+            className="ml-1 opacity-70"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.7 }}
+            transition={{ duration: 0.4, delay: 0.3 }}
+          >
             {labelText}
-          </span>
+          </motion.span>
         )}
-      </motion.span>
+      </div>
     </motion.div>
   );
 }
