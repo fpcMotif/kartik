@@ -9,42 +9,138 @@ interface VisitorCounterProps {
   labelText?: string;
 }
 
+interface VisitorResponse {
+  totalVisitors: number;
+  isNewVisitor?: boolean;
+  success: boolean;
+  error?: string;
+}
+
 export default function VisitorCounter({ 
   className = "", 
   showLabel = true, 
   labelText = "visitors" 
 }: VisitorCounterProps) {
   const [count, setCount] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    try {
-      const today = new Date().toDateString();
-      const lastVisitDate = localStorage.getItem('lastVisitDate');
-      const storedCount = localStorage.getItem('visitorCount');
-      const currentCount = storedCount ? parseInt(storedCount) : 0;
-      
-      // Only increment if this is a new session (different day or first visit)
-      if (lastVisitDate !== today) {
-        const newCount = currentCount + 1;
-        localStorage.setItem('visitorCount', newCount.toString());
-        localStorage.setItem('lastVisitDate', today);
+    let isMounted = true;
+
+    const trackVisitor = async () => {
+      try {
+        setIsLoading(true);
         
-        console.log('New visitor session:', newCount);
-        setCount(newCount);
-      } else {
-        // Same day visit - don't increment
-        console.log('Same session - count unchanged:', currentCount);
-        setCount(currentCount);
+        // Check if we've already tracked this session
+        const sessionTracked = sessionStorage.getItem('visitorTracked');
+        
+        if (!sessionTracked) {
+          // Track new visitor
+          const response = await fetch('/api/visitors', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          });
+          
+          if (!response.ok) {
+            throw new Error('Failed to track visitor');
+          }
+          
+          const data: VisitorResponse = await response.json();
+          
+          if (isMounted) {
+            if (data.success) {
+              setCount(data.totalVisitors);
+              sessionStorage.setItem('visitorTracked', 'true');
+              
+              if (data.isNewVisitor) {
+                console.log('New visitor tracked. Total visitors:', data.totalVisitors);
+              }
+            } else {
+              throw new Error(data.error || 'Failed to track visitor');
+            }
+          }
+        } else {
+          // Get current count without incrementing
+          const response = await fetch('/api/visitors', {
+            method: 'GET',
+          });
+          
+          if (!response.ok) {
+            throw new Error('Failed to fetch visitor count');
+          }
+          
+          const data: VisitorResponse = await response.json();
+          
+          if (isMounted) {
+            if (data.success) {
+              setCount(data.totalVisitors);
+            } else {
+              throw new Error(data.error || 'Failed to fetch visitor count');
+            }
+          }
+        }
+      } catch (err) {
+        console.error('Error with visitor tracking:', err);
+        
+        if (isMounted) {
+          setError(err instanceof Error ? err.message : 'Unknown error');
+          // Fallback: try to show a cached count or default to 0
+          const cachedCount = localStorage.getItem('lastVisitorCount');
+          setCount(cachedCount ? parseInt(cachedCount) : 0);
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoading(false);
+        }
       }
-    } catch (error) {
-      console.error('Error updating visitor count:', error);
-      // Fallback to showing 0 if localStorage fails
-      setCount(0);
-    }
+    };
+
+    trackVisitor();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
-  // Don't render anything until client-side count is set
-  if (count === null) return null;
+  // Cache the count in localStorage when it updates
+  useEffect(() => {
+    if (count !== null) {
+      localStorage.setItem('lastVisitorCount', count.toString());
+    }
+  }, [count]);
+
+  // Don't render anything until we have data
+  if (isLoading || count === null) {
+    return (
+      <motion.div 
+        className={`inline-flex items-center gap-2 ${className}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.5 }}
+      >
+        <div className="text-sm dark:text-white/70 text-black/70">
+          <div className="animate-pulse">Loading...</div>
+        </div>
+      </motion.div>
+    );
+  }
+
+  if (error) {
+    return (
+      <motion.div 
+        className={`inline-flex items-center gap-2 ${className}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        <div className="text-sm dark:text-red-400 text-red-600">
+          <span className="font-medium">{count?.toLocaleString() || '0'}</span>
+          {showLabel && <span className="ml-1 opacity-70">{labelText}</span>}
+        </div>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div 
