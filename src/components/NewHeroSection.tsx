@@ -11,6 +11,7 @@ import ExperienceContent from './ExperienceContent'
 import Reachout from './Reachout'
 import CallToAction from './CallToAction'
 import ContributionsDisplay from './ContributionsDisplay'
+import TechStackMarquee from './TechStackMarquee'
 
 export default function NewHeroSection() {
   return (
@@ -81,7 +82,7 @@ export default function NewHeroSection() {
               {/* GitHub Contributions */}
               <div className="sm:px-12 px-6 mt-4">
                 <h2 className="text-sm sm:text-md opacity-30 leading-relaxed -tracking-[0.01em] mb-4">
-                  GitHub Activity <span className="opacity-30">●</span> @KartikLabhshetwar
+                  GitHub Contributions <span className="opacity-30">●</span> @KartikLabhshetwar
                 </h2>
                 <div className="mb-6">
                   <ContributionsDisplay
@@ -90,6 +91,13 @@ export default function NewHeroSection() {
                     className="w-full"
                   />
                 </div>
+              </div>
+              
+              <SectionBorder className="mt-0 pt-0" />
+              
+              {/* Tech Stack Section */}
+              <div className="sm:px-12 px-6 mt-6 mb-6">
+                <TechStackMarquee className="w-full" />
               </div>
               
               <SectionBorder className="mt-0 pt-0" />
