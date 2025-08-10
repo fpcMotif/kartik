@@ -9,8 +9,8 @@ interface BannerSectionProps {
 }
 
 export default function BannerSection({ 
-  quote = "Knowing everything is knowing nothing",
-  bannerImage = "/kartik.jpg"
+  quote = "Build • Ship • Learn • Repeat",
+  bannerImage = "/mountain.jpg"
 }: BannerSectionProps) {
   return (
     <div className="w-full mb-2 relative">
@@ -29,7 +29,7 @@ export default function BannerSection({
         <BannerOverlay position="left" />
         <BannerOverlay position="right" />
         <div className="absolute inset-0 flex items-center justify-center">
-          <p className="text-white text-xl italic font-serif">{quote}</p>
+          <p className="text-white text-xl italic font-[family-name:var(--font-instrument-serif)]">{quote}</p>
         </div>
       </div>
     </div>

@@ -16,7 +16,7 @@ export default function BlogsListClient({ blogs }: BlogsListClientProps) {
       <OnekoCat />
       
       {/* Page Content */}
-      <div className="w-full relative pt-16 sm:pt-20">
+      <div className="w-full relative pt-16 sm:pt-16">
         <div className="px-4 sm:px-8 md:px-16 py-8 sm:py-10 md:py-12">
           <div className="max-w-3xl mx-auto">
             <div className="mb-8 sm:mb-10">

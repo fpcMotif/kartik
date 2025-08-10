@@ -16,7 +16,7 @@ export default function ProjectsListClient({ projects }: ProjectsListClientProps
       <OnekoCat />
       
       {/* Page Header */}
-      <div className="w-full relative bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-200 dark:border-neutral-700 pt-16 sm:pt-20">
+      <div className="w-full relative bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-200 dark:border-neutral-700 pt-16 sm:pt-16">
         <div className="px-4 sm:px-8 md:px-16 py-8 sm:py-10 md:py-12">
           <div className="max-w-5xl mx-auto">
             <h1 className="text-2xl sm:text-3xl md:text-4xl font-medium mb-3 sm:mb-4 text-center">projects</h1>

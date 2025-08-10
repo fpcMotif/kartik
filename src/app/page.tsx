@@ -9,7 +9,7 @@ export default function Home() {
     <div>
       <MinimalNavigation />
       <OnekoCat />
-      <div className="pt-16 sm:pt-20">
+      <div className="pt-16 sm:pt-16">
         <NewHeroSection />
       </div>
     </div>

@@ -17,7 +17,7 @@ export default function MinimalNavigation() {
   
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-md border-b border-neutral-200/50 dark:border-neutral-700/50">
-      <div className="px-4 sm:px-8 py-3 sm:py-4">
+      <div className="px-4 sm:px-8 py-3 sm:py-2.5">
         <div className="max-w-4xl mx-auto flex justify-between items-center">
           <Link 
             href="/"

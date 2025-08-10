@@ -18,8 +18,8 @@ interface ProfileHeaderProps {
 
 export default function ProfileHeader({
   name = "Kartik Labhshetwar",
-  age = "22",
-  title = "engineer • developer • designer",
+  age = "21",
+  title = "engineer • developer • builder",
   profileImage = "/kartik_bw.png",
   socialLinks = {
     twitter: "https://x.com/code_kartik",
@@ -37,7 +37,7 @@ export default function ProfileHeader({
       />
       <div className="text-left sm:flex sm:justify-between sm:items-center w-full sm:px-8 px-4 flex-col sm:flex-row">
         <div>
-          <h1 className="font-serif text-3xl sm:text-4xl tracking-[0.01em] font-medium mb-0">
+          <h1 className="font-[family-name:var(--font-instrument-serif)] text-3xl sm:text-4xl tracking-[0.01em] font-medium mb-0">
             {name}
           </h1>
           <p className="opacity-40 text-[14px]">

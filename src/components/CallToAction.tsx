@@ -19,7 +19,7 @@ export default function CallToAction({
 }: CallToActionProps) {
   return (
     <div className="sm:px-12 px-6 mt-6 pb-8 sm:flex sm:justify-between sm:items-center w-full flex-col">
-      <p className="opacity-50 font-serif text-xl mb-4 sm:mb-3">{preText}</p>
+      <p className="opacity-50 font-[family-name:var(--font-instrument-serif)] text-xl mb-4 sm:mb-3">{preText}</p>
       <div className="gradient bg-gradient-to-b from-[#252525] to-[#3B3B3B] rounded-lg p-[1px] relative overflow-hidden w-full sm:w-auto mt-4 sm:mt-0">
         <a 
           href={linkUrl} 

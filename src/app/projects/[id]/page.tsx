@@ -51,7 +51,7 @@ export default async function ProjectPage({ params }: Props) {
       <OnekoCat />
 
       {/* Project Detail Section - Full Width with Borders */}
-      <section className="w-full border-b border-neutral-200 dark:border-neutral-700 relative bg-neutral-50/30 dark:bg-neutral-900/30 pt-16 sm:pt-20">
+      <section className="w-full border-b border-neutral-200 dark:border-neutral-700 relative bg-neutral-50/30 dark:bg-neutral-900/30 pt-16 sm:pt-16">
         <div className="w-full relative">
           
           <div className="px-4 sm:px-8 md:px-16 py-12 sm:py-16 md:py-20 relative z-20">
