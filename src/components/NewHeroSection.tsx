@@ -7,8 +7,9 @@ import ProfileHeader from './ProfileHeader'
 import ContentSection from './ContentSection'
 import ContentParagraph from './ContentParagraph'
 import SectionBorder from './SectionBorder'
-import CallToAction from './CallToAction'
 import ExperienceContent from './ExperienceContent'
+import Reachout from './Reachout'
+import CallToAction from './CallToAction'
 
 export default function NewHeroSection() {
   return (
@@ -31,7 +32,7 @@ export default function NewHeroSection() {
             name="Kartik Labhshetwar"
             age="21"
             title="engineer • developer • builder"
-            profileImage="/kartik_bw.png"
+            profileImage="/kartik.jpg"
             socialLinks={{
               twitter: "https://x.com/code_kartik",
               github: "https://github.com/KartikLabhshetwar",
@@ -63,6 +64,16 @@ export default function NewHeroSection() {
                   <span className="font-medium dark:text-white text-black">I build from zero.</span> Whether it&apos;s frontend, backend, full-stack applications, or AI-powered experiences, I work across the entire development lifecycle. From UI/UX to deployment to user feedback, I care less about technology debates and more about delivering results that people love using.
                 </ContentParagraph>
               </ContentSection>
+
+              <SectionBorder className="mt-0 pt-0" />
+
+               {/* Experience Section */}
+              <div className="sm:px-12 px-6">
+                <h2 className="text-md mb-2 opacity-30 mt-6">Professional Experience</h2>
+                <ExperienceContent />
+              </div>
+              
+              
               
               <SectionBorder className="mt-0 pt-0" />
               
@@ -108,13 +119,6 @@ export default function NewHeroSection() {
                     <span className="font-medium dark:text-white text-black">At Lamarr —</span> Resolved 10+ critical issues in a month maintaining 99.9% uptime. Built Greenhouse integrations, browser video recording, and WhatsApp/email API connections. When systems break at 3 AM, you learn optimization fast.
                   </ContentParagraph>
                   <ContentParagraph>
-                    <span className="font-medium dark:text-white text-black">Built </span>
-                    <Link href="/projects/learnx" className="text-[#006FEE] hover:underline">@LearnX</Link>
-                    <span> course marketplace, </span>
-                    <Link href="/projects/donezo" className="text-[#006FEE] hover:underline">@Donezo</Link>
-                    <span> AI weekly reviews, and various projects using JavaScript, TypeScript, Python, React, Next.js, Fast API, Node.js, Langchain, MCP and cloud platforms. Each taught me something about scale and what actually matters.</span>
-                  </ContentParagraph>
-                  <ContentParagraph>
                     <span className="font-medium dark:text-white text-black">
                       <Link href="https://github.com/KartikLabhshetwar" target='_blank' className="text-[#006FEE] hover:underline">0→1</Link> product development
                     </span>
@@ -122,19 +126,21 @@ export default function NewHeroSection() {
                   </ContentParagraph>
                 </div>
               </div>
+
+            <SectionBorder className="mt-0 pt-0" />
+
+              {/* call to action*/}
+              <CallToAction/>
               
               <SectionBorder className="mt-0 pt-0" />
               
-              {/* Experience Section */}
-              <div className="sm:px-12 px-6">
-                <h2 className="text-md mb-2 opacity-30 mt-6">Professional Experience</h2>
-                <ExperienceContent />
+              {/* Reachout Section */}
+              <div className="mt-6">
+                <Reachout 
+                  title="Let's connect"
+                  subtitle="Find me on these platforms"
+                />
               </div>
-              
-              <SectionBorder className="mt-0 pt-0" />
-              
-              {/* Call to Action */}
-              <CallToAction />
             </div>
           </div>
         </div>

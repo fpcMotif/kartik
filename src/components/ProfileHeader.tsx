@@ -1,6 +1,5 @@
-'use client'
-import { TbFileCv } from "react-icons/tb";
-import { FaLinkedin, FaXTwitter, FaGithub } from "react-icons/fa6";
+'use client';
+import { FaLinkedin, FaXTwitter, FaGithub, FaPaperclip } from "react-icons/fa6";
 
 interface ProfileHeaderProps {
   name?: string
@@ -19,7 +18,7 @@ export default function ProfileHeader({
   name = "Kartik Labhshetwar",
   age = "21",
   title = "engineer • developer • builder",
-  profileImage = "/kartik_bw.png",
+  profileImage = "/kartik.jpg",
   socialLinks = {
     twitter: "https://x.com/code_kartik",
     github: "https://github.com/KartikLabhshetwar",
@@ -57,7 +56,7 @@ export default function ProfileHeader({
           )}
           {socialLinks.resume && (
             <a className="hover:opacity-80" href={socialLinks.resume} target="_blank" rel="noopener noreferrer">
-              <TbFileCv size={18} />
+              <FaPaperclip size={18} />
             </a>
           )}
          
