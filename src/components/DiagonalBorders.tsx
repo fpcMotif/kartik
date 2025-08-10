@@ -1,52 +1,33 @@
+import HorizontalDiagonalBorders from '@/components/HorizontalDiagonalBorders'
+import VerticalDiagonalBorders from '@/components/VerticalDiagonalBorders'
+
 interface DiagonalBordersProps {
   position?: 'left' | 'right' | 'both' | 'top' | 'bottom' | 'horizontal'
   className?: string
+  width?: string
+  height?: string
 }
 
-export default function DiagonalBorders({ position = 'both', className = 'text-neutral-300 dark:text-neutral-600' }: DiagonalBordersProps) {
-  const verticalBorderStyle: React.CSSProperties = {
-    width: "50px",
-    height: "100%",
-    backgroundImage: "repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)",
-    backgroundSize: "10px 10px",
+export default function DiagonalBorders({ 
+  position = 'both', 
+  className = 'text-neutral-300 dark:text-neutral-800',
+  width = '50px',
+  height = '30px'
+}: DiagonalBordersProps) {
+  
+  // Handle horizontal positions
+  if (position === 'horizontal') {
+    return <HorizontalDiagonalBorders position="both" className={className} height={height} />
   }
-
-  const horizontalBorderStyle: React.CSSProperties = {
-    height: "50px",
-    width: "100%",
-    backgroundImage: "repeating-linear-gradient(45deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)",
-    backgroundSize: "10px 10px",
+  
+  if (position === 'top') {
+    return <HorizontalDiagonalBorders position="top" className={className} height={height} />
   }
-
-  return (
-    <>
-      {/* Vertical Borders */}
-      {(position === 'left' || position === 'both') && (
-        <div
-          style={{ ...verticalBorderStyle, borderRight: "1px solid" }}
-          className={`absolute left-0 top-0 z-10 ${className}`}
-        />
-      )}
-      {(position === 'right' || position === 'both') && (
-        <div
-          style={{ ...verticalBorderStyle, borderLeft: "1px solid" }}
-          className={`absolute right-0 top-0 z-10 ${className}`}
-        />
-      )}
-      
-      {/* Horizontal Borders */}
-      {(position === 'top' || position === 'horizontal') && (
-        <div
-          style={{ ...horizontalBorderStyle, borderBottom: "1px solid" }}
-          className={`absolute top-0 left-0 z-10 ${className}`}
-        />
-      )}
-      {(position === 'bottom' || position === 'horizontal') && (
-        <div
-          style={{ ...horizontalBorderStyle, borderTop: "1px solid" }}
-          className={`absolute bottom-0 left-0 z-10 ${className}`}
-        />
-      )}
-    </>
-  )
+  
+  if (position === 'bottom') {
+    return <HorizontalDiagonalBorders position="bottom" className={className} height={height} />
+  }
+  
+  // Handle vertical positions (left, right, both)
+  return <VerticalDiagonalBorders position={position} className={className} width={width} />
 }

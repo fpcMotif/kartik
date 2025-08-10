@@ -55,29 +55,6 @@ export default async function ProjectPage({ params }: Props) {
       {/* Project Detail Section - Full Width with Borders */}
       <section className="w-full border-b border-neutral-200 dark:border-neutral-700 relative bg-neutral-50/30 dark:bg-neutral-900/30">
         <div className="w-full relative">
-          {/* Inner Side Borders */}
-          <div
-            style={{
-              width: "50px",
-              height: "100%",
-              borderRight: "1px solid",
-              backgroundImage:
-                "repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)",
-              backgroundSize: "10px 10px",
-            } as React.CSSProperties}
-            className='absolute left-0 top-0 text-neutral-300 dark:text-neutral-600 z-10'
-          />
-          <div
-            style={{
-              width: "50px",
-              height: "100%",
-              borderLeft: "1px solid",
-              backgroundImage:
-                "repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)",
-              backgroundSize: "10px 10px",
-            } as React.CSSProperties}
-            className='absolute right-0 top-0 text-neutral-300 dark:text-neutral-600 z-10'
-          />
           
           <div className="px-4 sm:px-8 md:px-16 py-12 sm:py-16 md:py-20 relative z-20">
             <div className="max-w-5xl mx-auto">

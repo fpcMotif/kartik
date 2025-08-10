@@ -16,8 +16,8 @@ export default function ContactSection() {
               </div>
               
               {/* Background Effects */}
-              <div className="absolute h-full w-full bg-gradient-to-t from-neutral-50/75 dark:from-neutral-900/75 via-transparent to-neutral-50/75 dark:to-neutral-900/75 top-0 left-1/2 -translate-x-1/2"></div>
-              <div className="absolute h-full w-full bg-gradient-to-r from-neutral-50/75 dark:from-neutral-900/75 via-transparent to-neutral-50/75 dark:to-neutral-900/75 top-0 left-1/2 -translate-x-1/2"></div>
+              <div className="absolute h-full w-full bg-gradient-to-t from-neutral-50/75 dark:from-neutral-900/50 via-transparent to-neutral-50/75 dark:to-neutral-900/50 top-0 left-1/2 -translate-x-1/2"></div>
+              <div className="absolute h-full w-full bg-gradient-to-r from-neutral-50/75 dark:from-neutral-900/50 via-transparent to-neutral-50/75 dark:to-neutral-900/50 top-0 left-1/2 -translate-x-1/2"></div>
             </div>
           </div>
         </div>
