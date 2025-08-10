@@ -21,22 +21,22 @@ export default function MinimalNavigation() {
         <div className="max-w-4xl mx-auto flex justify-between items-center">
           <Link 
             href="/"
-            className="text-lg sm:text-xl font-serif font-medium hover:opacity-80 transition-opacity"
+            className="text-lg sm:text-xl font-[family-name:var(--font-instrument-serif)] font-medium hover:opacity-80 hover:underline transition-opacity"
           >
             Kartik
           </Link>
           <div className="flex items-center gap-4 sm:gap-6">
             <Link 
               href="/projects" 
-              className={`text-sm sm:text-base hover:opacity-80 transition-opacity ${
+              className={`text-sm sm:text-base font-[family-name:var(--font-instrument-serif)] hover:opacity-80 hover:underline transition-opacity ${
                 isActive('/projects') ? 'opacity-100' : 'opacity-60'
               }`}
             >
-              projects
+              proof-of-work
             </Link>
             <Link 
               href="/blogs" 
-              className={`text-sm sm:text-base hover:opacity-80 transition-opacity ${
+              className={`text-sm sm:text-base hover:opacity-80 hover:underline transition-opacity ${
                 isActive('/blogs') ? 'opacity-100' : 'opacity-60'
               }`}
             >

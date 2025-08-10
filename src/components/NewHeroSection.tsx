@@ -35,7 +35,8 @@ export default function NewHeroSection() {
             socialLinks={{
               twitter: "https://x.com/code_kartik",
               github: "https://github.com/KartikLabhshetwar",
-              linkedin: "https://www.linkedin.com/in/kartik-labhshetwar/"
+              linkedin: "https://www.linkedin.com/in/kartik-labhshetwar/",
+              resume: "https://drive.google.com/file/d/1hIM6tNkN2UzIgRt3S5zk6UJoLCiYuQ1s/view?usp=sharing",
             }}
           />
           
@@ -45,7 +46,7 @@ export default function NewHeroSection() {
               {/* Current Role Section */}
               <ContentSection
                 subtitle="Engineer | AI Engineer | Full-stack Developer"
-                title='Building innovative <a class="text-[#006FEE] hover:underline" href="/projects">solutions</a> with modern tech <span class="opacity-70 font-light">— Creating digital experiences that solve real problems.</span>'
+                title='Building <a class="text-[#006FEE] hover:underline" href="/projects">products</a> and AI agents that solve real problems <span class="opacity-70 font-light">— Crafting digital experiences with clean code and exceptional UX.</span>'
                 className="mt-6"
               >
                 <div></div>
@@ -68,27 +69,25 @@ export default function NewHeroSection() {
               {/* Contributions Section */}
               <div className="sm:px-12 px-6 mt-4">
                 <h2 className="text-sm sm:text-md opacity-30 leading-relaxed -tracking-[0.01em] mb-2">
-                  Recent Projects till <span className="opacity-30">●</span> {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  Recent Contributions till <span className="opacity-30">●</span> {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
                 </h2>
                 <div className="space-y-4 dark:text-white/70 text-black/70 pb-6">
                   <ContentParagraph>
-                    <span className="font-medium dark:text-white text-black">Do I use the AI to build?</span> Absolutely.
+                    <span className="font-medium dark:text-white text-black">Do I use AI to build?</span> Absolutely. My first open source contribution was adding a mem0 MCP integration to the Klavis AI ecosystem contributing to tools that other developers actually use.
                   </ContentParagraph>
                   <ContentParagraph>
                     <span className="font-medium dark:text-white text-black">Built </span>
                     <Link href="/projects/mind-mentor" className="text-[#006FEE] hover:underline">Mind Mentor AI</Link>
-                    <span> An AI-powered educational assistant that revolutionizes learning through advanced AI technology. Using Groq AI for lightning-fast responses and Next.js for seamless user experience.</span>
+                    <span> : An AI-powered educational assistant using Groq AI for lightning-fast responses and Next.js for seamless user experience. </span>
+                    <Link href="/projects/satya-check" className="text-[#006FEE] hover:underline">@SatyaCheck</Link>
+                    <span> helps combat misinformation with real-time fact-checking because truth matters in the digital age.</span>
                   </ContentParagraph>
                   <ContentParagraph>
                     <span className="font-medium dark:text-white text-black">Shipped products across </span>
                     <Link href="/projects" className="text-[#006FEE] hover:underline">Web</Link>
-                    <span>, </span>
+                    <span> and </span>
                     <Link href="/projects" className="text-[#006FEE] hover:underline">AI applications</Link>
-                    <span> that people actually use. </span>
-                    <Link href="/projects/satya-check" className="text-[#006FEE] hover:underline">@SatyaCheck</Link>
-                    <span> helps combat misinformation with </span>
-                    <span className="font-medium">real-time fact-checking</span>
-                    <span> because truth matters in the digital age.</span>
+                    <span> that people actually use. From educational tools to fact-checking systems, I build solutions that solve real problems in the real world.</span>
                   </ContentParagraph>
                 </div>
               </div>
@@ -106,17 +105,14 @@ export default function NewHeroSection() {
                     <span className="font-medium dark:text-white text-black">Here&apos;s where it gets interesting </span> I reverse engineered Blinkit and Swiggy APIs to understand their data structures and endpoints, then created an AI agent that could intelligently route food delivery and grocery orders. Not your typical API integration tutorial this was about understanding how these platforms really work under the hood and building something smarter on top of it.
                   </ContentParagraph>
                   <ContentParagraph>
-                    <span className="font-medium dark:text-white text-black">Real-world impact at Lamarr :</span>  Resolved 10+ high-priority issues in a month while maintaining 99.9% uptime. Built Greenhouse integrations, browser-based video recording, and API connections for WhatsApp/email reminders. When systems break at 3 AM, you learn optimization fast.
-                  </ContentParagraph>
-                  <ContentParagraph>
-                    <span className="font-medium dark:text-white text-black">My toolkit isn&apos;t just buzzwords </span> JavaScript, TypeScript, Python, Java across React, Next.js, Express, MongoDB, PostgreSQL. I&apos;ve deployed on Azure, AWS, GCP, worked with Docker containers, and yes, even configured Nix OS because sometimes you need that level of control.
+                    <span className="font-medium dark:text-white text-black">At Lamarr —</span> Resolved 10+ critical issues in a month maintaining 99.9% uptime. Built Greenhouse integrations, browser video recording, and WhatsApp/email API connections. When systems break at 3 AM, you learn optimization fast.
                   </ContentParagraph>
                   <ContentParagraph>
                     <span className="font-medium dark:text-white text-black">Built </span>
                     <Link href="/projects/learnx" className="text-[#006FEE] hover:underline">@LearnX</Link>
-                    <span> from scratch — A comprehensive course marketplace connecting educators with learners. </span>
+                    <span> course marketplace, </span>
                     <Link href="/projects/donezo" className="text-[#006FEE] hover:underline">@Donezo</Link>
-                    <span> for AI-powered weekly reviews. Each project taught me something new about scale, user experience, and what actually matters.</span>
+                    <span> AI weekly reviews, and various projects using JavaScript, TypeScript, Python, React, Next.js, Fast API, Node.js, Langchain, MCP and cloud platforms. Each taught me something about scale and what actually matters.</span>
                   </ContentParagraph>
                   <ContentParagraph>
                     <span className="font-medium dark:text-white text-black">

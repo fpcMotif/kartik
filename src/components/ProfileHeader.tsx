@@ -1,6 +1,6 @@
 'use client'
-
-import Image from 'next/image'
+import { TbFileCv } from "react-icons/tb";
+import { FaLinkedin, FaXTwitter, FaGithub } from "react-icons/fa6";
 
 interface ProfileHeaderProps {
   name?: string
@@ -9,10 +9,9 @@ interface ProfileHeaderProps {
   profileImage?: string
   socialLinks?: {
     twitter?: string
-    cosmos?: string
+    resume?: string
     github?: string
     linkedin?: string
-    threads?: string
   }
 }
 
@@ -25,6 +24,7 @@ export default function ProfileHeader({
     twitter: "https://x.com/code_kartik",
     github: "https://github.com/KartikLabhshetwar",
     linkedin: "https://www.linkedin.com/in/kartik-labhshetwar/",
+    resume: "https://drive.google.com/file/d/1hIM6tNkN2UzIgRt3S5zk6UJoLCiYuQ1s/view?usp=sharing",
   }
 }: ProfileHeaderProps) {
   return (
@@ -45,29 +45,25 @@ export default function ProfileHeader({
           </p>
         </div>
         <div className="flex justify-start space-x-4 mt-3 sm:mt-0">
+        {socialLinks.github && (
+            <a className="hover:opacity-80" href={socialLinks.github} target="_blank" rel="noopener noreferrer">
+              <FaGithub size={18} />
+            </a>
+          )}
           {socialLinks.twitter && (
             <a className="hover:opacity-80" href={socialLinks.twitter} target="_blank" rel="noopener noreferrer">
-              <Image alt="Twitter" width={18} height={18} src="/x.svg" style={{ color: 'transparent' }} />
+              <FaXTwitter size={18} />
             </a>
           )}
-          {socialLinks.cosmos && (
-            <a className="hover:opacity-80" href={socialLinks.cosmos} target="_blank" rel="noopener noreferrer">
-              <Image alt="Cosmos" width={18} height={18} src="/cosmos.svg" style={{ color: 'transparent' }} />
+          {socialLinks.resume && (
+            <a className="hover:opacity-80" href={socialLinks.resume} target="_blank" rel="noopener noreferrer">
+              <TbFileCv size={18} />
             </a>
           )}
-          {socialLinks.github && (
-            <a className="hover:opacity-80" href={socialLinks.github} target="_blank" rel="noopener noreferrer">
-              <Image alt="Git" width={18} height={18} src="/github.svg" style={{ color: 'transparent' }} />
-            </a>
-          )}
+         
           {socialLinks.linkedin && (
             <a className="hover:opacity-80" href={socialLinks.linkedin} target="_blank" rel="noopener noreferrer">
-              <Image alt="Linkedin" width={18} height={18} src="/linkedin.svg" style={{ color: 'transparent' }} />
-            </a>
-          )}
-          {socialLinks.threads && (
-            <a className="hover:opacity-80" href={socialLinks.threads} target="_blank" rel="noopener noreferrer">
-              <Image alt="Threads" width={18} height={18} src="/threads.svg" style={{ color: 'transparent' }} />
+              <FaLinkedin size={18} />
             </a>
           )}
         </div>
