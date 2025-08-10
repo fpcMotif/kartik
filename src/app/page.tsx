@@ -1,10 +1,10 @@
 'use client'
 
-import {ModeToggle} from "@/components/theme-toggle"
 import Footer from "@/components/Footer"
 import OnekoCat from "@/components/OnekoCat"
 import Reach from "@/components/Reach"
 import Experience from "@/components/Experience"
+import Navigation from "@/components/Navigation"
 import Link from "next/link"
 // import Image from "next/image"
 import { projects } from '@/data/projects'
@@ -28,25 +28,8 @@ export default function Home() {
     <div className="min-h-screen w-full bg-white dark:bg-black">
       <OnekoCat />
 
-      {/* Navigation Section - Full Width */}
-      <section className="w-full relative z-10 border-b border-neutral-200 dark:border-neutral-700 bg-neutral-50/20 dark:bg-neutral-900/20">
-        <div className="px-16 py-8">
-          <div className="max-w-5xl mx-auto flex justify-between items-center">
-            <div className="flex items-center">
-              <span className="text-lg font-medium">Kartik</span>
-            </div>
-            <div className="flex items-center gap-6">
-              <Link href={"/projects"} className="text-md md:text-lg hover:underline transition-colors">
-                projects
-              </Link>
-              <Link href={"/blogs"} className="text-md md:text-lg hover:underline transition-colors">
-                blogs
-              </Link>
-              <ModeToggle />
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Navigation Section */}
+      <Navigation />
 
       {/* Hero Section - Full Width with Borders */}
       <section className="w-full border-b border-neutral-200 dark:border-neutral-700 relative bg-neutral-50/30 dark:bg-neutral-900/30">

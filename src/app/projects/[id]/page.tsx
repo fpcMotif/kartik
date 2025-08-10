@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation'
 import { Metadata } from 'next'
 import { ProjectCard } from '@/components/ProjectCard'
 import OnekoCat from '@/components/OnekoCat'
-import { ModeToggle } from '@/components/theme-toggle'
+import Navigation from '@/components/Navigation'
 import Link from 'next/link'
 
 type Props = {
@@ -49,36 +49,8 @@ export default async function ProjectPage({ params }: Props) {
     <div className="min-h-screen w-full bg-white dark:bg-black">
       <OnekoCat />
       
-      {/* Global Side Borders */}
-      <div
-        style={{
-          width: "50px",
-          height: "100%",
-          borderRight: "1px solid",
-          backgroundImage:
-            "repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)",
-          backgroundSize: "10px 10px",
-        } as React.CSSProperties}
-        className='fixed left-0 top-0 z-0 text-neutral-200 dark:text-neutral-800'
-      />
-      <div
-        style={{
-          width: "50px",
-          height: "100%",
-          borderLeft: "1px solid",
-          backgroundImage:
-            "repeating-linear-gradient(315deg, currentColor 0, currentColor 1px, transparent 0, transparent 50%)",
-          backgroundSize: "10px 10px",
-        } as React.CSSProperties}
-        className='fixed right-0 top-0 z-0 text-neutral-200 dark:text-neutral-800'
-      />
-
-      {/* Navigation Section */}
-      <section className="w-full relative z-10">
-        <div className="flex justify-end items-center gap-4 px-16 pt-6">
-          <ModeToggle />
-        </div>
-      </section>
+      {/* Navigation */}
+      <Navigation />
 
       {/* Project Detail Section - Full Width with Borders */}
       <section className="w-full border-b border-neutral-200 dark:border-neutral-700 relative bg-neutral-50/30 dark:bg-neutral-900/30">
