@@ -40,7 +40,7 @@ export const PageLoader = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center"
+          className="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center min-h-[100svh]"
           style={{ 
             backgroundColor: 'var(--loader-bg)' 
           }}
@@ -49,7 +49,7 @@ export const PageLoader = ({
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-col items-center space-y-6"
+            className="flex flex-col items-center justify-center space-y-6 w-full px-4"
           >
             <Loader text={text} />
             

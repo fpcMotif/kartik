@@ -10,8 +10,8 @@ export const Loader = ({
   className = '' 
 }: LoaderProps) => {
   return (
-    <div className={`flex items-center justify-center ${className}`}>
-      <div className="loader" style={{ fontSize: '40px' }}>
+    <div className={`flex items-center justify-center w-full h-full ${className}`}>
+      <div className="loader text-center text-lg sm:text-4xl">
         <style jsx>{`
           .loader:before {
             content: "${text}";
