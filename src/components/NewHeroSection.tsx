@@ -12,6 +12,7 @@ import Reachout from './Reachout'
 import CallToAction from './CallToAction'
 import ContributionsDisplay from './ContributionsDisplay'
 import TechStackMarquee from './TechStackMarquee'
+import { AnimatedShinyText } from './magicui/animated-shiny-text'
 
 export default function NewHeroSection() {
   return (
@@ -71,10 +72,35 @@ export default function NewHeroSection() {
 
                {/* Experience Section */}
               <div className="sm:px-12 px-6">
-                <h2 className="text-md mb-2 opacity-30 mt-6">Professional Experience</h2>
+                <h2 className="text-md mb-2 opacity-30 mt-6"><AnimatedShinyText>Professional Experience</AnimatedShinyText></h2>
                 <ExperienceContent />
               </div>
+
+                <SectionBorder className="mt-0 pt-0" />
               
+                 {/* Technical Contributions */}
+              <div className="sm:px-12 px-6">
+                <h2 className="text-md mb-2 opacity-20 mt-6"><AnimatedShinyText>Technical Contributions</AnimatedShinyText></h2>
+                <div className="space-y-4 dark:text-white/70 text-black/70 pb-6">
+                  <ContentParagraph>
+                    <span className="font-medium dark:text-white text-black">At Turbo ML,</span> I spent 3 months building some pretty cool stuff. Think Redis Sorted Sets handling time-based tasks under 24-hour constraints, WhatsApp Business API integrations with custom commands, and secure MCP protocols using hash-based user identification. The kind of work that keeps you up at night because it&apos;s actually interesting.
+                  </ContentParagraph>
+                  <ContentParagraph>
+                    <span className="font-medium dark:text-white text-black">Here&apos;s where it gets interesting </span> I reverse engineered Blinkit and Swiggy APIs to understand their data structures and endpoints, then created an AI agent that could intelligently route food delivery and grocery orders. Not your typical API integration tutorial this was about understanding how these platforms really work under the hood and building something smarter on top of it.
+                  </ContentParagraph>
+                  <ContentParagraph>
+                    <span className="font-medium dark:text-white text-black">At Lamarr —</span> Resolved 10+ critical issues in a month maintaining 99.9% uptime. Built Greenhouse integrations, browser video recording, and WhatsApp/email API connections. When systems break at 3 AM, you learn optimization fast.
+                  </ContentParagraph>
+                  <ContentParagraph>
+                    <span className="font-medium dark:text-white text-black">
+                      <Link href="https://github.com/KartikLabhshetwar" target='_blank' className="text-[#006FEE] hover:underline">0→1</Link> product development
+                    </span>
+                    <span> specialist for startups and personal projects. Faster iterations, clearer outcomes.</span>
+                  </ContentParagraph>
+                </div>
+              </div>
+
+
               
               
               <SectionBorder className="mt-0 pt-0" />
@@ -82,7 +108,7 @@ export default function NewHeroSection() {
               {/* GitHub Contributions */}
               <div className="sm:px-12 px-6 mt-4">
                 <h2 className="text-sm sm:text-md opacity-30 leading-relaxed -tracking-[0.01em] mb-4">
-                  GitHub Contributions <span className="opacity-30">●</span> @KartikLabhshetwar
+                  <AnimatedShinyText>GitHub Contributions</AnimatedShinyText> <span className="opacity-30">●</span> @KartikLabhshetwar
                 </h2>
                 <div className="mb-6">
                   <ContributionsDisplay
@@ -105,7 +131,7 @@ export default function NewHeroSection() {
               {/* Contributions Section */}
               <div className="sm:px-12 px-6 mt-4">
                 <h2 className="text-sm sm:text-md opacity-30 leading-relaxed -tracking-[0.01em] mb-2">
-                  Recent Contributions till <span className="opacity-30">●</span> {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  <AnimatedShinyText>Recent Contributions till <span className="opacity-30">●</span> {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}</AnimatedShinyText>
                 </h2>
                 <div className="space-y-4 dark:text-white/70 text-black/70 pb-6">
                   <ContentParagraph>
@@ -129,30 +155,6 @@ export default function NewHeroSection() {
               </div>
               
               <SectionBorder className="mt-0 pt-0" />
-              
-              {/* Technical Contributions */}
-              <div className="sm:px-12 px-6">
-                <h2 className="text-md mb-2 opacity-30 mt-6">Technical Contributions</h2>
-                <div className="space-y-4 dark:text-white/70 text-black/70 pb-6">
-                  <ContentParagraph>
-                    <span className="font-medium dark:text-white text-black">At Turbo ML,</span> I spent 3 months building some pretty cool stuff. Think Redis Sorted Sets handling time-based tasks under 24-hour constraints, WhatsApp Business API integrations with custom commands, and secure MCP protocols using hash-based user identification. The kind of work that keeps you up at night because it&apos;s actually interesting.
-                  </ContentParagraph>
-                  <ContentParagraph>
-                    <span className="font-medium dark:text-white text-black">Here&apos;s where it gets interesting </span> I reverse engineered Blinkit and Swiggy APIs to understand their data structures and endpoints, then created an AI agent that could intelligently route food delivery and grocery orders. Not your typical API integration tutorial this was about understanding how these platforms really work under the hood and building something smarter on top of it.
-                  </ContentParagraph>
-                  <ContentParagraph>
-                    <span className="font-medium dark:text-white text-black">At Lamarr —</span> Resolved 10+ critical issues in a month maintaining 99.9% uptime. Built Greenhouse integrations, browser video recording, and WhatsApp/email API connections. When systems break at 3 AM, you learn optimization fast.
-                  </ContentParagraph>
-                  <ContentParagraph>
-                    <span className="font-medium dark:text-white text-black">
-                      <Link href="https://github.com/KartikLabhshetwar" target='_blank' className="text-[#006FEE] hover:underline">0→1</Link> product development
-                    </span>
-                    <span> specialist for startups and personal projects. Faster iterations, clearer outcomes.</span>
-                  </ContentParagraph>
-                </div>
-              </div>
-
-            <SectionBorder className="mt-0 pt-0" />
 
               {/* call to action*/}
               <CallToAction/>
