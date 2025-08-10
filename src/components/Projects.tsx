@@ -50,19 +50,19 @@ const Projects = () => {
   const displayedProjects = showAll ? projects : projects.slice(0, 3);
 
   return (
-    <div className="max-w-3xl mx-auto mt-8">
-      <div className="space-y-8">
+    <div className="max-w-3xl mx-auto mt-6 sm:mt-8 px-4 sm:px-0">
+      <div className="space-y-6 sm:space-y-8">
         {displayedProjects.map((project, index) => (
-          <div key={index} className="border-b border-neutral-500 pb-6">
-            <div className="flex items-center justify-between mb-2">
-              <Link href={project.liveLink} target="_blank" className="text-lg md:text-xl hover:underline">
-                {project.title}
+          <div key={index} className="border-b border-neutral-500 pb-4 sm:pb-6">
+            <div className="flex items-center justify-between mb-2 gap-2">
+              <Link href={project.liveLink} target="_blank" className="text-base sm:text-lg md:text-xl hover:underline flex-1 min-w-0">
+                <span className="block truncate">{project.title}</span>
               </Link>
-              <Link href={project.githubLink} target="_blank" className="hover:opacity-70">
-                <FaGithub className="size-5 md:size-6" />
+              <Link href={project.githubLink} target="_blank" className="hover:opacity-70 flex-shrink-0">
+                <FaGithub className="size-4 sm:size-5 md:size-6" />
               </Link>
             </div>
-            <p className="text-sm md:text-lg text-neutral-600 dark:text-neutral-400 mb-3">
+            <p className="text-sm sm:text-base md:text-lg text-neutral-600 dark:text-neutral-400 mb-3">
               {project.description}
             </p>
           </div>
@@ -71,7 +71,7 @@ const Projects = () => {
       {projects.length > 3 && (
         <button
           onClick={() => setShowAll(!showAll)}
-          className="mt-8 text-sm md:text-base hover:underline"
+          className="mt-6 sm:mt-8 text-sm md:text-base hover:underline"
         >
           {showAll ? "Show Less" : "View More"}
         </button>

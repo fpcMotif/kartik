@@ -17,12 +17,12 @@ export default function Navigation() {
   
   return (
     <section className="w-full relative z-10 border-b border-neutral-200 dark:border-neutral-700 bg-neutral-50/20 dark:bg-neutral-900/20">
-      <div className="px-16 py-8">
+      <div className="px-4 sm:px-8 md:px-16 py-4 sm:py-6 md:py-8">
         <div className="max-w-5xl mx-auto flex justify-center items-center">
-          <div className="flex items-center gap-8">
+          <div className="flex items-center gap-4 sm:gap-6 md:gap-8">
             <Link 
               href="/"
-              className={`text-lg font-medium hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors ${
+              className={`text-base sm:text-lg font-medium hover:text-neutral-600 dark:hover:text-neutral-300 transition-colors ${
                 isActive('/') ? 'text-neutral-900 dark:text-neutral-100' : ''
               }`}
             >
@@ -30,7 +30,7 @@ export default function Navigation() {
             </Link>
             <Link 
               href="/projects" 
-              className={`text-md md:text-lg hover:underline transition-colors ${
+              className={`text-sm sm:text-md md:text-lg hover:underline transition-colors ${
                 isActive('/projects') ? 'underline text-neutral-900 dark:text-neutral-100' : ''
               }`}
             >
@@ -38,7 +38,7 @@ export default function Navigation() {
             </Link>
             <Link 
               href="/blogs" 
-              className={`text-md md:text-lg hover:underline transition-colors ${
+              className={`text-sm sm:text-md md:text-lg hover:underline transition-colors ${
                 isActive('/blogs') ? 'underline text-neutral-900 dark:text-neutral-100' : ''
               }`}
             >

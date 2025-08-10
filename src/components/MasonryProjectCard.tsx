@@ -29,7 +29,7 @@ export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCa
   const videoSource = project.video ? getVideoSource(project.video) : null;
 
   return (
-    <div className={`rounded-lg border border-[#2E2E2E] bg-[#111111] p-1 ${className}`}>
+    <div className={`rounded-lg border border-neutral-300 dark:border-[#2E2E2E] bg-white dark:bg-[#111111] p-1 shadow-sm dark:shadow-none ${className}`}>
       <div className="flex flex-col gap-1">
         {/* Media Section */}
         <div className="relative overflow-hidden rounded-lg">
@@ -55,7 +55,7 @@ export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCa
                 height={267}
                 className="w-full h-auto transition-all duration-500 ease-in-out blur-0 scale-100 rounded-lg"
                 style={{ color: 'transparent' }}
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                 quality={95}
               />
             ) : (
@@ -64,12 +64,9 @@ export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCa
           </div>
           
           {/* Title and Year Overlay */}
-          <div className="absolute bottom-0 w-full p-2 flex items-center justify-between">
-            <h3 className="font-normal text-[#EDEDED] text-sm m-0 line-clamp-1">
+          <div className="absolute bottom-0 w-full p-2 flex items-center justify-between bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+            <h3 className="font-normal text-white text-xs sm:text-sm m-0 line-clamp-1">
               {project.title}
-            </h3>
-            <h3 className="text-[#EDEDED] text-sm m-0 shrink-0">
-              2024
             </h3>
           </div>
         </div>
@@ -80,7 +77,7 @@ export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCa
             className="block" 
             href={`/projects/${project.id}`}
           >
-            <button className="w-full rounded-lg bg-[#1C1C1C] border border-[#2E2E2E] px-4 py-3 text-[#a8a8a8] text-base hover:bg-[#2E2E2E] transition-colors">
+            <button className="w-full rounded-lg bg-neutral-100 dark:bg-[#1C1C1C] border border-neutral-300 dark:border-[#2E2E2E] px-3 sm:px-4 py-2.5 sm:py-3 text-neutral-700 dark:text-[#a8a8a8] text-sm sm:text-base hover:bg-neutral-200 dark:hover:bg-[#2E2E2E] transition-colors">
               {project.liveLink ? "View Code →" : project.githubLink ? "View Code →" : "Read Article →"}
             </button>
           </Link>

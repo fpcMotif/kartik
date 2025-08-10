@@ -79,7 +79,7 @@ export default async function ProjectPage({ params }: Props) {
             className='absolute right-0 top-0 text-neutral-300 dark:text-neutral-600 z-10'
           />
           
-          <div className="px-16 py-20 relative z-20">
+          <div className="px-4 sm:px-8 md:px-16 py-12 sm:py-16 md:py-20 relative z-20">
             <div className="max-w-5xl mx-auto">
               <Link 
                 href="/projects" 

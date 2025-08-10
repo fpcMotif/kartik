@@ -32,7 +32,7 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
   if (!isDetailed) {
     return (
       <Link href={`/projects/${project.id}`}>
-        <div className="hover:underline py-2 text-lg md:text-xl pb-5 border-b border-neutral-600 dark:border-neutral-500">
+        <div className="hover:underline py-2 text-base sm:text-lg md:text-xl pb-4 sm:pb-5 border-b border-neutral-600 dark:border-neutral-500">
           {project.title}
         </div>
       </Link>
@@ -40,26 +40,26 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
   }
 
   return (
-    <article className="prose prose-neutral dark:prose-invert prose-headings:font-medium max-w-none">
-      <header className="not-prose mb-8">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-2xl md:text-4xl font-medium">{project.title}</h1>
-          <div className="flex items-center gap-4">
+    <article className="prose prose-neutral dark:prose-invert prose-headings:font-medium max-w-none px-2 sm:px-0">
+      <header className="not-prose mb-6 sm:mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 sm:mb-6 gap-3 sm:gap-0">
+          <h1 className="text-xl sm:text-2xl md:text-4xl font-medium">{project.title}</h1>
+          <div className="flex items-center gap-3 sm:gap-4">
             {project.liveLink && (
-              <Link href={project.liveLink} target="_blank" className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-2 rounded-full hover:opacity-70">
-                <FiArrowUpRight className="size-5 md:size-6" />
+              <Link href={project.liveLink} target="_blank" className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-1.5 sm:p-2 rounded-full hover:opacity-70">
+                <FiArrowUpRight className="size-4 sm:size-5 md:size-6" />
               </Link>
             )}
             {project.githubLink && (
-              <Link href={project.githubLink} target="_blank" className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-2 rounded-full hover:opacity-70">
-                <FaGithub className="size-5 md:size-6" />
+              <Link href={project.githubLink} target="_blank" className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-1.5 sm:p-2 rounded-full hover:opacity-70">
+                <FaGithub className="size-4 sm:size-5 md:size-6" />
               </Link>
             )}
           </div>
         </div>
-        <div className="flex flex-wrap gap-2 mb-6">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-6">
           {project.tags.map(tag => (
-            <span key={tag} className="px-3 py-1 bg-neutral-100 border-2 border-neutral-500 dark:bg-neutral-800 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 rounded-full text-xs">
+            <span key={tag} className="px-2 sm:px-3 py-0.5 sm:py-1 bg-neutral-100 border-2 border-neutral-500 dark:bg-neutral-800 dark:border-neutral-700 text-neutral-800 dark:text-neutral-200 rounded-full text-xs">
               {tag}
             </span>
           ))}
@@ -67,7 +67,7 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
       </header>
 
       {project.video && getVideoSource(project.video) ? (
-        <div className="mt-8 mb-8 aspect-video w-full">
+        <div className="mt-6 sm:mt-8 mb-6 sm:mb-8 aspect-video w-full">
           <Video
             src={getVideoSource(project.video)!}
             poster={project.image}
@@ -80,22 +80,22 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
           />
         </div>
       ) : project.image && (
-        <div className="mt-8 mb-8 w-full aspect-video relative"> {/* Changed height to aspect-video */}
+        <div className="mt-6 sm:mt-8 mb-6 sm:mb-8 w-full aspect-video relative"> {/* Changed height to aspect-video */}
           <Image 
             src={project.image}
             alt={project.title}
             fill
             className="rounded-lg object-contain" // Changed to object-contain
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, (max-width: 1200px) 70vw, 60vw"
             quality={95}
             priority
           />
         </div>
       )}
 
-      <div className="mb-8 space-y-4">
+      <div className="mb-6 sm:mb-8 space-y-3 sm:space-y-4">
         <div className="prose-list">
-          <ul className="list-disc list-inside space-y-3 text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-relaxed">
+          <ul className="list-disc list-inside space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-relaxed">
             <li className="text-neutral-600 dark:text-neutral-400">
               {project.description}
               {project.tweetUrl && (

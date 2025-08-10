@@ -20,7 +20,7 @@ export default function BlogPostClient({ blog }: BlogPostClientProps) {
       
       {/* Blog Content */}
       <div className="w-full relative">
-        <div className="px-16 py-12">
+        <div className="px-4 sm:px-8 md:px-16 py-8 sm:py-10 md:py-12">
           <div className="max-w-3xl mx-auto">
             <Link 
               href="/blogs" 
