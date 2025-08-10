@@ -54,29 +54,52 @@ async function writeVisitorData(data: VisitorData) {
 
 // Get client IP address and user agent for better uniqueness detection
 function getClientIdentifier(request: NextRequest): string {
-  const forwarded = request.headers.get('x-forwarded-for');
-  const realIP = request.headers.get('x-real-ip');
-  const userAgent = request.headers.get('user-agent') || 'unknown';
+  // Get IP from various headers (important for production deployment)
+  const headers = [
+    'cf-connecting-ip',        // Cloudflare
+    'x-real-ip',               // Nginx
+    'x-forwarded-for',         // Load balancers
+    'x-client-ip',             // Apache
+    'x-forwarded',             // General
+    'forwarded-for',           // General
+    'forwarded'                // General
+  ];
   
-  let baseIP = 'unknown';
+  let clientIP = 'unknown';
   
-  if (forwarded) {
-    baseIP = forwarded.split(',')[0].trim();
-  } else if (realIP) {
-    baseIP = realIP;
+  // Try to get IP from headers in order of preference
+  for (const header of headers) {
+    const value = request.headers.get(header);
+    if (value) {
+      // Handle comma-separated IPs (take the first one)
+      clientIP = value.split(',')[0].trim();
+      if (clientIP && clientIP !== 'unknown') {
+        break;
+      }
+    }
   }
   
-  // For localhost/development, create unique identifier using user agent hash
-  if (baseIP === 'unknown' || baseIP === '::1' || baseIP === '127.0.0.1') {
-    // Create a simple hash of user agent for development uniqueness
+  // Fallback for local development
+  const isLocalhost = !clientIP || 
+                     clientIP === 'unknown' || 
+                     clientIP === '::1' || 
+                     clientIP === '127.0.0.1' ||
+                     clientIP.startsWith('192.168.') ||
+                     clientIP.startsWith('10.') ||
+                     clientIP.startsWith('172.');
+  
+  if (isLocalhost) {
+    // For development, create unique identifier
+    const userAgent = request.headers.get('user-agent') || 'unknown';
     const hash = userAgent.split('').reduce((a, b) => {
       a = ((a << 5) - a) + b.charCodeAt(0);
       return a & a;
     }, 0);
-    return `dev-${Math.abs(hash)}`;
+    clientIP = `dev-${Math.abs(hash)}`;
   }
   
-  return baseIP;
+  console.log(`Client IP resolved: ${clientIP}`);
+  return clientIP;
 }
 
 // GET endpoint - fetch current visitor count
@@ -100,17 +123,24 @@ export async function GET() {
 export async function POST(request: NextRequest) {
   try {
     const clientIP = getClientIdentifier(request);
+    const browserFingerprint = request.headers.get('x-browser-fingerprint');
+    
+    // Create a unique visitor ID combining IP and browser fingerprint
+    const visitorId = browserFingerprint 
+      ? `${clientIP}-${browserFingerprint}` 
+      : clientIP;
+    
     const data = await readVisitorData();
     
-    console.log(`Visitor attempt from identifier: ${clientIP}`);
+    console.log(`Visitor attempt from ID: ${visitorId} (IP: ${clientIP})`);
     
-    // Check if this identifier has visited before
-    const hasVisited = data.uniqueIPs.has(clientIP);
+    // Check if this visitor ID has visited before
+    const hasVisited = data.uniqueIPs.has(visitorId);
     
     if (!hasVisited) {
       // New unique visitor
       data.totalVisitors += 1;
-      data.uniqueIPs.add(clientIP);
+      data.uniqueIPs.add(visitorId);
       data.lastUpdated = new Date().toISOString();
       
       await writeVisitorData(data);
@@ -120,7 +150,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         totalVisitors: data.totalVisitors,
         isNewVisitor: true,
-        success: true
+        success: true,
+        debug: { visitorId, clientIP, browserFingerprint: !!browserFingerprint }
       });
     } else {
       // Returning visitor
@@ -128,7 +159,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({
         totalVisitors: data.totalVisitors,
         isNewVisitor: false,
-        success: true
+        success: true,
+        debug: { visitorId, clientIP, browserFingerprint: !!browserFingerprint }
       });
     }
   } catch (error) {

@@ -28,16 +28,52 @@ export default function VisitorCounter({
   useEffect(() => {
     let isMounted = true;
 
+    // Generate a unique browser fingerprint for better tracking
+    const generateBrowserFingerprint = () => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.textBaseline = 'top';
+        ctx.font = '14px Arial';
+        ctx.fillText('Browser fingerprint', 2, 2);
+      }
+      
+      const fingerprint = {
+        userAgent: navigator.userAgent,
+        language: navigator.language,
+        platform: navigator.platform,
+        cookieEnabled: navigator.cookieEnabled,
+        screenResolution: `${screen.width}x${screen.height}`,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        canvas: canvas.toDataURL(),
+        timestamp: Date.now()
+      };
+      
+      // Create a hash of the fingerprint
+      const fingerprintString = JSON.stringify(fingerprint);
+      let hash = 0;
+      for (let i = 0; i < fingerprintString.length; i++) {
+        const char = fingerprintString.charCodeAt(i);
+        hash = ((hash << 5) - hash) + char;
+        hash = hash & hash; // Convert to 32bit integer
+      }
+      
+      return Math.abs(hash).toString();
+    };
+
     const trackVisitor = async () => {
       try {
         setIsLoading(true);
         
-        // Always try to track visitor first, let the server decide if it's new or returning
-        console.log('Attempting to track visitor...');
+        // Generate unique browser fingerprint
+        const fingerprint = generateBrowserFingerprint();
+        
+        console.log('Attempting to track visitor with fingerprint:', fingerprint);
         const response = await fetch('/api/visitors', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'X-Browser-Fingerprint': fingerprint,
           },
         });
         
