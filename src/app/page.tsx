@@ -8,7 +8,7 @@ import Experience from "@/components/Experience"
 import Link from "next/link"
 // import Image from "next/image"
 import { projects } from '@/data/projects'
-import { BentoGrid } from '@/components/BentoGrid'
+import { MasonryGrid } from '@/components/MasonryGrid'
 // import localFont from 'next/font/local'
 import { Geist } from "next/font/google"
 
@@ -158,29 +158,28 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Work Section - Full Width with Borders */}
+      {/* Work Section - Full Width with Dark Background */}
       <section className="w-full border-b border-neutral-200 dark:border-neutral-700 relative">
         <div className="w-full relative">
-          
-          <div className="px-8 md:px-16 py-20 relative z-20">
+          <div className="px-8 md:px-16 py-12 relative z-20 bg-white dark:bg-black">
             <div className="max-w-[1600px] mx-auto">
-              <h2 className="text-3xl md:text-4xl font-medium mb-12 text-center tracking-tight">
+              <h2 className="text-3xl md:text-4xl font-medium mb-8 text-center tracking-tight">
                 Work
               </h2>
-              
-              {/* Bento Grid */}
-              <div className="mb-12">
-                <BentoGrid projects={projects} />
-              </div>
-              
-              <div className="text-center">
-                <Link 
-                  href="/projects"
-                  className="inline-flex items-center text-lg md:text-xl hover:underline transition-colors font-medium"
-                >
-                  View all projects →
-                </Link>
-              </div>
+            </div>
+          </div>
+          
+          {/* Masonry Grid - Full Width */}
+          <MasonryGrid projects={projects} />
+          
+          <div className="px-8 md:px-16 py-12 relative z-20 bg-white dark:bg-black">
+            <div className="text-center">
+              <Link 
+                href="/projects"
+                className="inline-flex items-center text-lg md:text-xl hover:underline transition-colors font-medium"
+              >
+                View all projects →
+              </Link>
             </div>
           </div>
         </div>
