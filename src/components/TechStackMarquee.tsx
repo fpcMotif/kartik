@@ -12,7 +12,6 @@ const techStack = [
   { name: "TypeScript", category: "language", icon: "/tech-icons/typescript.svg", color: "bg-gray-500" },
   { name: "Java", category: "language", icon: "/tech-icons/java.svg", color: "bg-gray-500" },
   { name: "Python", category: "language", icon: "/tech-icons/python.svg", color: "bg-gray-500" },
-  { name: "C", category: "language", icon: "/tech-icons/c.svg", color: "bg-gray-500" },
   { name: "SQL", category: "language", icon: "/tech-icons/sql.svg", color: "bg-gray-500" },
   
   // Frameworks & Libraries
