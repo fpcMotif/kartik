@@ -1,6 +1,7 @@
 'use client'
 import { FaLinkedin, FaXTwitter, FaGithub, FaPaperclip } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
+import VisitorCounter from "./VisitorCounter";
 
 interface ReachoutProps {
   title?: string
@@ -111,9 +112,16 @@ export default function Reachout({
         
         {/* Footer Section */}
         <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-800">
-          <div className="flex flex-col space-y-1 sm:space-y-2 lg:flex-row lg:justify-between lg:items-center lg:space-y-0 text-center sm:text-left">
-            <div className="text-xs dark:text-white/40 text-black/40 order-2 sm:order-1">
-              © {new Date().getFullYear()} Kartik Labhshetwar.
+          <div className="flex flex-col space-y-2 sm:space-y-3 lg:flex-row lg:justify-between lg:items-center lg:space-y-0 text-center sm:text-left">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0 order-2 sm:order-1">
+              <div className="text-xs dark:text-white/40 text-black/40">
+                © {new Date().getFullYear()} Kartik Labhshetwar.
+              </div>
+              <VisitorCounter 
+                className="text-xs justify-center sm:justify-start" 
+                showLabel={true} 
+                labelText=" visits" 
+              />
             </div>
             <div className="text-xs dark:text-white/40 text-black/40 order-1 sm:order-2">
               Last updated: {new Date().toLocaleDateString('en-US', { 
