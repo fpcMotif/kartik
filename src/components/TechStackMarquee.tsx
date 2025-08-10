@@ -105,8 +105,8 @@ export default function TechStackMarquee({ className = "" }: TechStackMarqueePro
         </Marquee>
 
         {/* Fade edges for better visual effect */}
-        <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-white dark:from-black to-transparent pointer-events-none z-10" />
-        <div className="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-white dark:from-black to-transparent pointer-events-none z-10" />
+        <div className="absolute left-0 top-0 w-20 h-full bg-gradient-to-r from-white dark:from-[hsl(0,3%,6.5%)] to-transparent pointer-events-none z-10" />
+        <div className="absolute right-0 top-0 w-20 h-full bg-gradient-to-l from-white dark:from-[hsl(0,3%,6.5%)] to-transparent pointer-events-none z-10" />
       </div>
     </div>
   );
