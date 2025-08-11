@@ -17,14 +17,13 @@ export const useInfiniteScroll = <T>(
     initialItems,
     itemsPerLoad,
     threshold = 0.1,
-    rootMargin = '200px'
+    rootMargin = '100px'
   } = options;
 
   const [displayedItems, setDisplayedItems] = useState<T[]>([]);
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const observer = useRef<IntersectionObserver | null>(null);
-  const observedElements = useRef<Set<HTMLDivElement>>(new Set());
 
   // Initialize displayed items
   useEffect(() => {
@@ -39,7 +38,6 @@ export const useInfiniteScroll = <T>(
 
     setIsLoading(true);
     
-    // Simulate network delay for better UX
     setTimeout(() => {
       setDisplayedItems(current => {
         const currentLength = current.length;
@@ -51,54 +49,32 @@ export const useInfiniteScroll = <T>(
         
         return newItems;
       });
-    }, 300);
+    }, 100);
   }, [items, itemsPerLoad, isLoading, hasMore]);
 
   // Set up intersection observer
   const lastElementRef = useCallback((node: HTMLDivElement | null) => {
     if (isLoading) return;
+    if (observer.current) observer.current.disconnect();
     
-    // Initialize observer if not exists
-    if (!observer.current) {
-      observer.current = new IntersectionObserver(
-        (entries) => {
-          // Check if any observed element is intersecting
-          const isIntersecting = entries.some(entry => entry.isIntersecting);
-          if (isIntersecting && hasMore && !isLoading) {
-            loadMore();
-          }
-        },
-        {
-          threshold,
-          rootMargin
+    observer.current = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting && hasMore && !isLoading) {
+          loadMore();
         }
-      );
-    }
+      },
+      { threshold, rootMargin }
+    );
     
-    if (node) {
-      // Add new node to observed elements
-      observer.current.observe(node);
-      observedElements.current.add(node);
-    }
-    
-    // Clean up old elements that are no longer in the DOM
-    observedElements.current.forEach(element => {
-      if (!document.contains(element)) {
-        observer.current?.unobserve(element);
-        observedElements.current.delete(element);
-      }
-    });
+    if (node) observer.current.observe(node);
   }, [isLoading, hasMore, loadMore, threshold, rootMargin]);
 
   // Cleanup
   useEffect(() => {
-    const currentObserver = observer.current;
-    const currentObservedElements = observedElements.current;
     return () => {
-      if (currentObserver) {
-        currentObserver.disconnect();
+      if (observer.current) {
+        observer.current.disconnect();
       }
-      currentObservedElements.clear();
     };
   }, []);
 
@@ -106,7 +82,6 @@ export const useInfiniteScroll = <T>(
     displayedItems,
     hasMore,
     isLoading,
-    lastElementRef,
-    loadMore
+    lastElementRef
   };
 };

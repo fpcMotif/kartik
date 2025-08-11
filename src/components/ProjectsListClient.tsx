@@ -48,9 +48,7 @@ export default function ProjectsListClient({ projects }: ProjectsListClientProps
 
           {/* Masonry Grid */}
           <div className="relative">
-            <FadeInUp delay={0.6}>
-              <MasonryGrid projects={projects} />
-            </FadeInUp>
+            <MasonryGrid projects={projects} />
           </div>
         </div>
       </PageTransition>

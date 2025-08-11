@@ -3,9 +3,9 @@
 import { Project } from '@/types/project'
 import { MasonryProjectCard } from './MasonryProjectCard'
 import { ProjectSkeleton } from './ProjectSkeleton'
-import { StaggerContainer, StaggerItem } from './ui/PageTransitions'
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
 import { motion } from 'framer-motion'
+import { useMemo } from 'react'
 
 interface MasonryGridProps {
   projects: Project[];
@@ -19,143 +19,122 @@ export const MasonryGrid = ({ projects, className = "" }: MasonryGridProps) => {
     isLoading,
     lastElementRef
   } = useInfiniteScroll(projects, {
-    initialItems: 3, // Load first 3 projects initially
-    itemsPerLoad: 3, // Load 3 more projects each time (one for each column)
+    initialItems: 3, // Start with 3 projects
+    itemsPerLoad: 3, // Load 3 more each time
     threshold: 0.1,
-    rootMargin: '200px' // Increased margin for better detection
+    rootMargin: '100px'
   });
 
-  // Distribute projects across columns
-  const getColumnProjects = (columnIndex: number) => {
-    return displayedItems.filter((_, index) => index % 3 === columnIndex);
-  };
+  // Memoize column distribution to avoid recalculating on every render
+  const columnData = useMemo(() => {
+    const col1: Project[] = [];
+    const col2: Project[] = [];
+    const col3: Project[] = [];
 
-  // Get remaining projects for mobile view
-  const getMobileRemainingProjects = () => {
-    return displayedItems.filter((_, index) => index % 3 !== 0);
-  };
+    displayedItems.forEach((project, index) => {
+      const colIndex = index % 3;
+      if (colIndex === 0) col1.push(project);
+      else if (colIndex === 1) col2.push(project);
+      else col3.push(project);
+    });
 
-  // Find the last few items to attach observers
-  const getLastItemsInColumns = () => {
-    const lastItems = displayedItems.slice(-3); // Get last 3 items
-    return lastItems;
+    // For mobile, combine col2 and col3 into remaining items
+    const mobileRemaining = [...col2, ...col3];
+    
+    return { col1, col2, col3, mobileRemaining };
+  }, [displayedItems]);
+
+  const { col1, col2, col3, mobileRemaining } = columnData;
+
+  // Only attach observer to the very last item to reduce overhead
+  const shouldAttachObserver = (project: Project, isLastInArray: boolean) => {
+    return isLastInArray && displayedItems[displayedItems.length - 1]?.id === project.id;
   };
 
   return (
     <div className={`min-h-screen w-full bg-neutral-100 dark:bg-[#161616] p-2 sm:p-3.5 ${className}`}>
-      <StaggerContainer staggerDelay={0.1}>
-        <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
-          {/* Column 1 */}
-          <div className="flex flex-col gap-1.5">
-            {getColumnProjects(0).map((project) => {
-              const lastItems = getLastItemsInColumns();
-              const isObserverTarget = lastItems.includes(project);
-              
-              return (
-                <StaggerItem key={project.id}>
-                  <div
-                    ref={isObserverTarget ? lastElementRef : null}
-                  >
-                    <MasonryProjectCard project={project} />
-                  </div>
-                </StaggerItem>
-              );
-            })}
-          </div>
-          
-          {/* Column 2 - Hidden on mobile, shows from sm breakpoint */}
-          <div className="hidden sm:flex flex-col gap-1.5">
-            {getColumnProjects(1).map((project) => {
-              const lastItems = getLastItemsInColumns();
-              const isObserverTarget = lastItems.includes(project);
-              
-              return (
-                <StaggerItem key={project.id}>
-                  <div
-                    ref={isObserverTarget ? lastElementRef : null}
-                  >
-                    <MasonryProjectCard project={project} />
-                  </div>
-                </StaggerItem>
-              );
-            })}
-          </div>
-          
-          {/* Column 3 - Hidden on mobile and tablet, shows from lg breakpoint */}
-          <div className="hidden lg:flex flex-col gap-1.5">
-            {getColumnProjects(2).map((project) => {
-              const lastItems = getLastItemsInColumns();
-              const isObserverTarget = lastItems.includes(project);
-              
-              return (
-                <StaggerItem key={project.id}>
-                  <div
-                    ref={isObserverTarget ? lastElementRef : null}
-                  >
-                    <MasonryProjectCard project={project} />
-                  </div>
-                </StaggerItem>
-              );
-            })}
-          </div>
+      <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-3">
+        {/* Column 1 */}
+        <div className="flex flex-col gap-1.5">
+          {col1.map((project, index) => (
+            <div
+              key={project.id}
+              ref={shouldAttachObserver(project, index === col1.length - 1) ? lastElementRef : null}
+            >
+              <MasonryProjectCard project={project} />
+            </div>
+          ))}
         </div>
         
-        {/* Mobile: Show remaining projects in single column */}
-        <div className="sm:hidden flex flex-col gap-1.5 mt-1.5">
-          {getMobileRemainingProjects().map((project) => {
-            const lastItems = getLastItemsInColumns();
-            const isObserverTarget = lastItems.includes(project);
-            
-            return (
-              <StaggerItem key={project.id}>
-                <div
-                  ref={isObserverTarget ? lastElementRef : null}
-                >
-                  <MasonryProjectCard project={project} />
-                </div>
-              </StaggerItem>
-            );
-          })}
+        {/* Column 2 - Hidden on mobile */}
+        <div className="hidden sm:flex flex-col gap-1.5">
+          {col2.map((project, index) => (
+            <div
+              key={project.id}
+              ref={shouldAttachObserver(project, index === col2.length - 1) ? lastElementRef : null}
+            >
+              <MasonryProjectCard project={project} />
+            </div>
+          ))}
         </div>
-
-        {/* Loading Skeletons */}
-        {isLoading && (
-          <motion.div 
-            className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-3 mt-1.5"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.3 }}
+        
+        {/* Column 3 - Hidden on mobile and tablet */}
+        <div className="hidden lg:flex flex-col gap-1.5">
+          {col3.map((project, index) => (
+            <div
+              key={project.id}
+              ref={shouldAttachObserver(project, index === col3.length - 1) ? lastElementRef : null}
+            >
+              <MasonryProjectCard project={project} />
+            </div>
+          ))}
+        </div>
+      </div>
+      
+      {/* Mobile: Show remaining projects in single column */}
+      <div className="sm:hidden flex flex-col gap-1.5 mt-1.5">
+        {mobileRemaining.map((project, index) => (
+          <div
+            key={project.id}
+            ref={shouldAttachObserver(project, index === mobileRemaining.length - 1) ? lastElementRef : null}
           >
-            {Array.from({ length: 3 }).map((_, index) => (
-              <ProjectSkeleton key={`loading-${index}`} />
-            ))}
-          </motion.div>
-        )}
+            <MasonryProjectCard project={project} />
+          </div>
+        ))}
+      </div>
 
-        {/* Load More Trigger - Fallback invisible div */}
-        {hasMore && !isLoading && (
-          <div 
-            ref={lastElementRef}
-            className="h-10 w-full"
-            style={{ minHeight: '1px' }}
-          />
-        )}
+      {/* Loading Skeletons - Simplified animation */}
+      {isLoading && (
+        <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-3 mt-1.5">
+          {Array.from({ length: 3 }).map((_, index) => (
+            <ProjectSkeleton key={`loading-${index}`} />
+          ))}
+        </div>
+      )}
 
-        {/* End message */}
-        {!hasMore && displayedItems.length > 3 && (
-          <motion.div 
-            className="text-center py-8 text-neutral-500 dark:text-neutral-400"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <p className="text-sm">You&apos;ve seen all the projects! 🎉</p>
-            <p className="text-xs mt-1 opacity-70">
-              More coming soon...
-            </p>
-          </motion.div>
-        )}
-      </StaggerContainer>
+      {/* Invisible load trigger as fallback */}
+      {hasMore && !isLoading && displayedItems.length > 0 && (
+        <div 
+          ref={lastElementRef}
+          className="h-px w-full opacity-0 pointer-events-none"
+          aria-hidden="true"
+        />
+      )}
+
+      {/* End message */}
+      {!hasMore && displayedItems.length > 3 && (
+        <motion.div 
+          className="text-center py-8 text-neutral-500 dark:text-neutral-400"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <p className="text-sm">You&apos;ve seen all the projects! 🎉</p>
+          <p className="text-xs mt-1 opacity-70">
+            More coming soon...
+          </p>
+        </motion.div>
+      )}
     </div>
   );
 };

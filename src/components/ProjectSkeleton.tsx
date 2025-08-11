@@ -1,19 +1,12 @@
 'use client';
 
-import { motion } from 'framer-motion';
-
 interface ProjectSkeletonProps {
   className?: string;
 }
 
 export const ProjectSkeleton = ({ className = "" }: ProjectSkeletonProps) => {
   return (
-    <motion.div 
-      className={`rounded-lg border border-neutral-300 dark:border-[#2E2E2E] bg-white dark:bg-[#111111] p-1 shadow-sm dark:shadow-none animate-pulse ${className}`}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.3 }}
-    >
+    <div className={`rounded-lg border border-neutral-300 dark:border-[#2E2E2E] bg-white dark:bg-[#111111] p-1 shadow-sm dark:shadow-none animate-pulse ${className}`}>
       <div className="flex flex-col gap-1">
         {/* Image/Video Skeleton */}
         <div className="relative overflow-hidden rounded-lg">
@@ -35,7 +28,7 @@ export const ProjectSkeleton = ({ className = "" }: ProjectSkeletonProps) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
