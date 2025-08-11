@@ -35,7 +35,7 @@ export default function NewHeroSection() {
             name="Kartik Labhshetwar"
             age="21"
             title="engineer • developer • builder"
-            profileImage="/kartik.jpg"
+            profileImage="/pfp.jpg"
             socialLinks={{
               twitter: "https://x.com/code_kartik",
               github: "https://github.com/KartikLabhshetwar",
