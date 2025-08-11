@@ -39,7 +39,7 @@ export default function NewHeroSection() {
             socialLinks={{
               twitter: "https://x.com/code_kartik",
               github: "https://github.com/KartikLabhshetwar",
-              linkedin: "https://www.linkedin.com/in/kartik-labhshetwar/",
+              linkedin: "https://www.linkedin.com/in/kartikcode/",
               resume: "https://drive.google.com/file/d/1hIM6tNkN2UzIgRt3S5zk6UJoLCiYuQ1s/view?usp=sharing",
             }}
           />

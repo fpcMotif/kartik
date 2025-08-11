@@ -2,6 +2,7 @@
 import { FaLinkedin, FaXTwitter, FaGithub, FaPaperclip } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 import { AnimatedShinyText } from "./magicui/animated-shiny-text";
+import { useHapticFeedback } from '@/hooks/useHapticFeedback';
 
 interface ReachoutProps {
   title?: string
@@ -21,11 +22,19 @@ export default function Reachout({
   socialLinks = {
     twitter: "https://x.com/code_kartik",
     github: "https://github.com/KartikLabhshetwar",
-    linkedin: "https://www.linkedin.com/in/kartik-labhshetwar/",
+    linkedin: "https://www.linkedin.com/in/kartikcode/",
     resume: "https://drive.google.com/file/d/1hIM6tNkN2UzIgRt3S5zk6UJoLCiYuQ1s/view?usp=sharing",
     mail: "mailto:kartik.labhshetwar@gmail.com",
   }
 }: ReachoutProps) {
+  const { triggerHaptic, isMobile } = useHapticFeedback();
+
+  const handleLinkClick = () => {
+    if (isMobile()) {
+      triggerHaptic('light');
+    }
+  };
+
   return (
     <div className="sm:px-12 px-4 pb-8">
       <div className="text-left w-full">
@@ -45,6 +54,7 @@ export default function Reachout({
               href={socialLinks.github} 
               target="_blank" 
               rel="noopener noreferrer"
+              onClick={handleLinkClick}
             >
               <FaGithub size={20} className="sm:size-[18px] group-hover:scale-110 transition-transform duration-200 flex-shrink-0 text-gray-700 dark:text-gray-200 sm:text-gray-600 sm:dark:text-gray-300" />
               <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-[#006FEE] transition-colors duration-200">
@@ -59,6 +69,7 @@ export default function Reachout({
               href={socialLinks.twitter} 
               target="_blank" 
               rel="noopener noreferrer"
+              onClick={handleLinkClick}
             >
               <FaXTwitter size={20} className="sm:size-[18px] group-hover:scale-110 transition-transform duration-200 flex-shrink-0 text-gray-700 dark:text-gray-200 sm:text-gray-600 sm:dark:text-gray-300" />
               <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-[#006FEE] transition-colors duration-200">
@@ -73,6 +84,7 @@ export default function Reachout({
               href={socialLinks.linkedin} 
               target="_blank" 
               rel="noopener noreferrer"
+              onClick={handleLinkClick}
             >
               <FaLinkedin size={20} className="sm:size-[18px] group-hover:scale-110 transition-transform duration-200 flex-shrink-0 text-gray-700 dark:text-gray-200 sm:text-gray-600 sm:dark:text-gray-300" />
               <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-[#006FEE] transition-colors duration-200">
@@ -87,6 +99,7 @@ export default function Reachout({
               href={socialLinks.mail} 
               target="_blank" 
               rel="noopener noreferrer"
+              onClick={handleLinkClick}
             >
               <IoMdMail size={20} className="sm:size-[18px] group-hover:scale-110 transition-transform duration-200 flex-shrink-0 text-gray-700 dark:text-gray-200 sm:text-gray-600 sm:dark:text-gray-300" />
               <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-[#006FEE] transition-colors duration-200">
@@ -101,6 +114,7 @@ export default function Reachout({
               href={socialLinks.resume} 
               target="_blank" 
               rel="noopener noreferrer"
+              onClick={handleLinkClick}
             >
               <FaPaperclip size={20} className="sm:size-[18px] group-hover:scale-110 transition-transform duration-200 flex-shrink-0 text-gray-700 dark:text-gray-200 sm:text-gray-600 sm:dark:text-gray-300" />
               <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-[#006FEE] transition-colors duration-200">

@@ -1,6 +1,7 @@
 'use client'
 
 import Image from 'next/image'
+import { useHapticFeedback } from '@/hooks/useHapticFeedback';
 
 interface CallToActionProps {
   profileImage?: string
@@ -17,6 +18,14 @@ export default function CallToAction({
   linkUrl = "https://cal.com/kartik-labhshetwar/15min",
   preText = "If you've read this far, you might be interested in what I do."
 }: CallToActionProps) {
+  const { triggerHaptic, isMobile } = useHapticFeedback();
+
+  const handleButtonClick = () => {
+    if (isMobile()) {
+      triggerHaptic('medium'); // Slightly stronger feedback for CTA button
+    }
+  };
+
   return (
     <div className="sm:px-12 px-6 mt-6 pb-8 sm:flex sm:justify-between sm:items-center w-full flex-col">
       <p className="opacity-50 font-[family-name:var(--font-instrument-serif)] text-xl mb-4 sm:mb-3">{preText}</p>
@@ -27,6 +36,7 @@ export default function CallToAction({
           rel="noopener noreferrer" 
           className="gradient h-full bg-[#1C1C1C] rounded-lg text-white text-sm sm:text-md px-2 sm:px-3 py-2 sm:py-1.5 w-full flex items-center justify-center transition-all group relative overflow-hidden"
           style={{ '--x': '-90.45457%' } as React.CSSProperties}
+          onClick={handleButtonClick}
         >
           <div className="flex items-center gap-2 group-hover:gap-8 sm:group-hover:gap-12 transition-all duration-300 relative z-20">
             <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden flex-shrink-0">
