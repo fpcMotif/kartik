@@ -4,6 +4,7 @@ import { Project } from '@/types/project'
 import { MasonryProjectCard } from './MasonryProjectCard'
 import { ProjectSkeleton } from './ProjectSkeleton'
 import { useInfiniteScroll } from '@/hooks/useInfiniteScroll'
+import { AnimatedProjectCard } from './AnimatedProjectCard'
 import { motion } from 'framer-motion'
 import { useMemo } from 'react'
 
@@ -19,10 +20,10 @@ export const MasonryGrid = ({ projects, className = "" }: MasonryGridProps) => {
     isLoading,
     lastElementRef
   } = useInfiniteScroll(projects, {
-    initialItems: 3, // Start with 3 projects
-    itemsPerLoad: 3, // Load 3 more each time
+    initialItems: 6, // Increased from 3 to 6 for better initial load
+    itemsPerLoad: 6, // Increased from 3 to 6 for smoother loading
     threshold: 0.1,
-    rootMargin: '100px'
+    rootMargin: '200px' // Increased margin for earlier loading
   });
 
   // Memoize column distribution to avoid recalculating on every render
@@ -57,36 +58,51 @@ export const MasonryGrid = ({ projects, className = "" }: MasonryGridProps) => {
         {/* Column 1 */}
         <div className="flex flex-col gap-1.5">
           {col1.map((project, index) => (
-            <div
+            <AnimatedProjectCard
               key={project.id}
-              ref={shouldAttachObserver(project, index === col1.length - 1) ? lastElementRef : null}
+              projectId={project.id}
+              index={index}
             >
-              <MasonryProjectCard project={project} />
-            </div>
+              <div
+                ref={shouldAttachObserver(project, index === col1.length - 1) ? lastElementRef : null}
+              >
+                <MasonryProjectCard project={project} />
+              </div>
+            </AnimatedProjectCard>
           ))}
         </div>
         
         {/* Column 2 - Hidden on mobile */}
         <div className="hidden sm:flex flex-col gap-1.5">
           {col2.map((project, index) => (
-            <div
+            <AnimatedProjectCard
               key={project.id}
-              ref={shouldAttachObserver(project, index === col2.length - 1) ? lastElementRef : null}
+              projectId={project.id}
+              index={col1.length + index}
             >
-              <MasonryProjectCard project={project} />
-            </div>
+              <div
+                ref={shouldAttachObserver(project, index === col2.length - 1) ? lastElementRef : null}
+              >
+                <MasonryProjectCard project={project} />
+              </div>
+            </AnimatedProjectCard>
           ))}
         </div>
         
         {/* Column 3 - Hidden on mobile and tablet */}
         <div className="hidden lg:flex flex-col gap-1.5">
           {col3.map((project, index) => (
-            <div
+            <AnimatedProjectCard
               key={project.id}
-              ref={shouldAttachObserver(project, index === col3.length - 1) ? lastElementRef : null}
+              projectId={project.id}
+              index={col1.length + col2.length + index}
             >
-              <MasonryProjectCard project={project} />
-            </div>
+              <div
+                ref={shouldAttachObserver(project, index === col3.length - 1) ? lastElementRef : null}
+              >
+                <MasonryProjectCard project={project} />
+              </div>
+            </AnimatedProjectCard>
           ))}
         </div>
       </div>
@@ -94,22 +110,43 @@ export const MasonryGrid = ({ projects, className = "" }: MasonryGridProps) => {
       {/* Mobile: Show remaining projects in single column */}
       <div className="sm:hidden flex flex-col gap-1.5 mt-1.5">
         {mobileRemaining.map((project, index) => (
-          <div
+          <AnimatedProjectCard
             key={project.id}
-            ref={shouldAttachObserver(project, index === mobileRemaining.length - 1) ? lastElementRef : null}
+            projectId={project.id}
+            index={col1.length + index}
           >
-            <MasonryProjectCard project={project} />
-          </div>
+            <div
+              ref={shouldAttachObserver(project, index === mobileRemaining.length - 1) ? lastElementRef : null}
+            >
+              <MasonryProjectCard project={project} />
+            </div>
+          </AnimatedProjectCard>
         ))}
       </div>
 
-      {/* Loading Skeletons - Simplified animation */}
+      {/* Loading Skeletons - Optimized animation */}
       {isLoading && (
-        <div className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-3 mt-1.5">
-          {Array.from({ length: 3 }).map((_, index) => (
-            <ProjectSkeleton key={`loading-${index}`} />
+        <motion.div 
+          className="grid grid-cols-1 gap-1.5 sm:grid-cols-2 lg:grid-cols-3 mt-1.5"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.3 }}
+        >
+          {Array.from({ length: 6 }).map((_, index) => (
+            <motion.div
+              key={`loading-${index}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.4, 
+                delay: index * 0.05,
+                ease: "easeOut"
+              }}
+            >
+              <ProjectSkeleton />
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       )}
 
       {/* Invisible load trigger as fallback */}

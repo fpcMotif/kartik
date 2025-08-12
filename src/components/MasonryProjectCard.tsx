@@ -44,15 +44,15 @@ export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCa
       <motion.div 
         className={`rounded-lg border border-neutral-300 dark:border-[#2E2E2E] bg-white dark:bg-[#111111] p-1 shadow-sm dark:shadow-none cursor-pointer ${className}`}
         whileHover={{ 
-          scale: 1.01,
-          transition: { duration: 0.15, ease: "easeOut" }
+          scale: 1.005,
+          transition: { duration: 0.2, ease: "easeOut" }
         }}
-        whileTap={{ scale: 0.99 }}
+        whileTap={{ scale: 0.995 }}
         onClick={handleCardClick}
       >
         <div className="flex flex-col gap-1">
           {/* Media Section */}
-          <div className="relative overflow-hidden rounded-lg group">
+          <div className="relative overflow-hidden rounded-lg">
             <div className="relative w-full overflow-hidden rounded-lg">
               {videoSource ? (
                 <div className="relative h-full w-full">
@@ -73,11 +73,12 @@ export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCa
                   alt={project.title}
                   width={472}
                   height={267}
-                  className="w-full h-auto transition-transform duration-300 ease-in-out rounded-lg group-hover:scale-105"
+                  className="w-full h-auto rounded-lg"
                   style={{ color: 'transparent' }}
                   sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
-                  quality={85}
+                  quality={75}
                   loading="lazy"
+                  priority={false}
                 />
               ) : (
                 <div className="w-full h-48 bg-gradient-to-br from-cyan-400/20 via-blue-500/20 to-purple-600/20 rounded-lg" />
@@ -94,7 +95,7 @@ export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCa
           
           {/* Action Button */}
           <div className="px-0">
-            <div className="w-full rounded-lg bg-neutral-100 dark:bg-[#1C1C1C] border border-neutral-300 dark:border-[#2E2E2E] px-3 sm:px-4 py-2.5 sm:py-3 text-neutral-700 dark:text-[#a8a8a8] text-sm sm:text-base hover:bg-neutral-200 dark:hover:bg-[#2E2E2E] transition-colors duration-200 text-center">
+            <div className="w-full rounded-lg bg-neutral-100 dark:bg-[#1C1C1C] border border-neutral-300 dark:border-[#2E2E2E] px-3 sm:px-4 py-2.5 sm:py-3 text-neutral-700 dark:text-[#a8a8a8] text-sm sm:text-base transition-colors duration-150 text-center hover:bg-neutral-200 dark:hover:bg-[#2E2E2E]">
               {project.liveLink ? "View Code →" : project.githubLink ? "View Code →" : "Read Article →"}
             </div>
           </div>

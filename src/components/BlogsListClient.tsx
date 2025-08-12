@@ -5,7 +5,7 @@ import { BlogCard } from '@/components/BlogCard'
 import OnekoCat from '@/components/OnekoCat'
 import MinimalNavigation from '@/components/MinimalNavigation'
 import { BlogPost } from '@/types/blog'
-import { PageTransition, FadeInUp, StaggerContainer, StaggerItem } from '@/components/ui/PageTransitions'
+import { PageTransition, FadeInUp } from '@/components/ui/PageTransitions'
 
 interface BlogsListClientProps {
   blogs: BlogPost[]
@@ -35,13 +35,13 @@ export default function BlogsListClient({ blogs }: BlogsListClientProps) {
                 </div>
                 
                 {blogs.length > 0 ? (
-                  <StaggerContainer staggerDelay={0.2} className="grid grid-cols-1 gap-6 sm:gap-8">
-                    {blogs.map(blog => (
-                      <StaggerItem key={blog.id}>
+                  <div className="grid grid-cols-1 gap-6 sm:gap-8">
+                    {blogs.map((blog, index) => (
+                      <FadeInUp key={blog.id} delay={index * 0.05} duration={0.4}>
                         <BlogCard blog={blog} />
-                      </StaggerItem>
+                      </FadeInUp>
                     ))}
-                  </StaggerContainer>
+                  </div>
                 ) : (
                   <FadeInUp delay={0.6}>
                     <div className="text-center py-8 sm:py-12 px-4 sm:px-0">

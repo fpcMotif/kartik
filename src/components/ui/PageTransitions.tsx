@@ -12,25 +12,22 @@ export const PageTransition = ({ children, className = '' }: PageTransitionProps
   const pageVariants = {
     initial: {
       opacity: 0,
-      y: 20,
-      scale: 0.98
+      y: 10
     },
     in: {
       opacity: 1,
-      y: 0,
-      scale: 1
+      y: 0
     },
     out: {
       opacity: 0,
-      y: -20,
-      scale: 1.02
+      y: -10
     }
   }
 
   const pageTransition = {
     type: 'tween',
-    ease: 'anticipate',
-    duration: 0.6
+    ease: 'easeOut',
+    duration: 0.4
   }
 
   return (
@@ -51,22 +48,25 @@ export const FadeInUp = ({
   children, 
   delay = 0, 
   duration = 0.6,
-  className = ''
+  className = '',
+  once = true
 }: {
   children: ReactNode
   delay?: number
   duration?: number
   className?: string
+  once?: boolean
 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
+      whileInView={{ opacity: 1, y: 0 }}
       transition={{ 
         duration, 
         delay,
         ease: [0.25, 0.25, 0, 1]
       }}
+      viewport={{ once, amount: 0.4 }}
       className={className}
     >
       {children}
@@ -78,22 +78,25 @@ export const FadeInScale = ({
   children, 
   delay = 0, 
   duration = 0.5,
-  className = ''
+  className = '',
+  once = true
 }: {
   children: ReactNode
   delay?: number
   duration?: number
   className?: string
+  once?: boolean
 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
+      whileInView={{ opacity: 1, scale: 1 }}
       transition={{ 
         duration, 
         delay,
         ease: "easeOut"
       }}
+      viewport={{ once, amount: 0.4 }}
       className={className}
     >
       {children}
@@ -104,21 +107,24 @@ export const FadeInScale = ({
 export const SlideInFromLeft = ({ 
   children, 
   delay = 0,
-  className = ''
+  className = '',
+  once = true
 }: {
   children: ReactNode
   delay?: number
   className?: string
+  once?: boolean
 }) => {
   return (
     <motion.div
       initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
+      whileInView={{ opacity: 1, x: 0 }}
       transition={{ 
         duration: 0.6, 
         delay,
         ease: [0.25, 0.25, 0, 1]
       }}
+      viewport={{ once, amount: 0.4 }}
       className={className}
     >
       {children}
@@ -126,9 +132,10 @@ export const SlideInFromLeft = ({
   )
 }
 
+// Optimized stagger container - use sparingly and only for small lists
 export const StaggerContainer = ({ 
   children,
-  staggerDelay = 0.1,
+  staggerDelay = 0.05, // Reduced from 0.1 for faster execution
   className = ''
 }: {
   children: ReactNode
@@ -138,12 +145,14 @@ export const StaggerContainer = ({
   return (
     <motion.div
       initial="hidden"
-      animate="visible"
+      whileInView="visible" // Changed to whileInView for better performance
+      viewport={{ once: true, amount: 0.3 }} // Only animate once when in view
       variants={{
         hidden: {},
         visible: {
           transition: {
-            staggerChildren: staggerDelay
+            staggerChildren: staggerDelay,
+            delayChildren: 0 // Remove initial delay
           }
         }
       }}
@@ -154,6 +163,7 @@ export const StaggerContainer = ({
   )
 }
 
+// Optimized stagger item - simplified for better performance
 export const StaggerItem = ({ 
   children,
   className = ''
@@ -164,13 +174,13 @@ export const StaggerItem = ({
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 15 }, // Reduced movement for performance
         visible: { 
           opacity: 1, 
           y: 0,
           transition: {
-            duration: 0.5,
-            ease: [0.25, 0.25, 0, 1]
+            duration: 0.3, // Reduced from 0.5 for snappier feel
+            ease: "easeOut" // Simplified easing
           }
         }
       }}
