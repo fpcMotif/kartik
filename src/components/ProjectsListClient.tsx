@@ -4,7 +4,6 @@ import OnekoCat from '@/components/OnekoCat'
 import MinimalNavigation from '@/components/MinimalNavigation'
 import { MasonryGrid } from '@/components/MasonryGrid'
 import { Project } from '@/types/project'
-import { PageTransition } from '@/components/ui/PageTransitions'
 import { motion } from 'framer-motion'
 
 interface ProjectsListClientProps {
@@ -14,10 +13,9 @@ interface ProjectsListClientProps {
 export default function ProjectsListClient({ projects }: ProjectsListClientProps) {
 
   return (
-      <PageTransition>
-        <div className="min-h-screen w-full bg-white dark:bg-black">
-          <MinimalNavigation />
-          <OnekoCat />
+      <div className="min-h-screen w-full bg-white dark:bg-black">
+        <MinimalNavigation />
+        <OnekoCat />
           
           {/* Page Header */}
           <div className="w-full relative bg-neutral-50/30 dark:bg-neutral-900/30 border-b border-neutral-200 dark:border-neutral-700 pt-16 sm:pt-16">
@@ -48,6 +46,5 @@ export default function ProjectsListClient({ projects }: ProjectsListClientProps
             <MasonryGrid projects={projects} />
           </div>
         </div>
-      </PageTransition>
   )
 }

@@ -3,51 +3,10 @@
 import { motion } from 'framer-motion'
 import { ReactNode } from 'react'
 
-interface PageTransitionProps {
-  children: ReactNode
-  className?: string
-}
-
-export const PageTransition = ({ children, className = '' }: PageTransitionProps) => {
-  const pageVariants = {
-    initial: {
-      opacity: 0,
-      y: 10
-    },
-    in: {
-      opacity: 1,
-      y: 0
-    },
-    out: {
-      opacity: 0,
-      y: -10
-    }
-  }
-
-  const pageTransition = {
-    type: 'tween',
-    ease: 'easeOut',
-    duration: 0.4
-  }
-
-  return (
-    <motion.div
-      initial="initial"
-      animate="in"
-      exit="out"
-      variants={pageVariants}
-      transition={pageTransition}
-      className={className}
-    >
-      {children}
-    </motion.div>
-  )
-}
-
 export const FadeInUp = ({ 
   children, 
   delay = 0, 
-  duration = 0.6,
+  duration = 0.4, // Faster animation
   className = '',
   once = true
 }: {
@@ -59,14 +18,14 @@ export const FadeInUp = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 20 }} // Reduced movement
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ 
         duration, 
         delay,
-        ease: [0.25, 0.25, 0, 1]
+        ease: "easeOut" // Simplified easing
       }}
-      viewport={{ once, amount: 0.4 }}
+      viewport={{ once, amount: 0.2 }} // Lower threshold for faster trigger
       className={className}
     >
       {children}
@@ -77,7 +36,7 @@ export const FadeInUp = ({
 export const FadeInScale = ({ 
   children, 
   delay = 0, 
-  duration = 0.5,
+  duration = 0.3, // Faster animation
   className = '',
   once = true
 }: {
@@ -89,14 +48,14 @@ export const FadeInScale = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
+      initial={{ opacity: 0, scale: 0.95 }} // Less dramatic scale
       whileInView={{ opacity: 1, scale: 1 }}
       transition={{ 
         duration, 
         delay,
         ease: "easeOut"
       }}
-      viewport={{ once, amount: 0.4 }}
+      viewport={{ once, amount: 0.2 }} // Lower threshold
       className={className}
     >
       {children}
@@ -117,14 +76,14 @@ export const SlideInFromLeft = ({
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, x: -50 }}
+      initial={{ opacity: 0, x: -30 }} // Reduced movement
       whileInView={{ opacity: 1, x: 0 }}
       transition={{ 
-        duration: 0.6, 
+        duration: 0.4, // Faster
         delay,
-        ease: [0.25, 0.25, 0, 1]
+        ease: "easeOut" // Simplified easing
       }}
-      viewport={{ once, amount: 0.4 }}
+      viewport={{ once, amount: 0.2 }} // Lower threshold
       className={className}
     >
       {children}
@@ -135,7 +94,7 @@ export const SlideInFromLeft = ({
 // Optimized stagger container - use sparingly and only for small lists
 export const StaggerContainer = ({ 
   children,
-  staggerDelay = 0.05, // Reduced from 0.1 for faster execution
+  staggerDelay = 0.03, // Even faster stagger
   className = ''
 }: {
   children: ReactNode
@@ -145,14 +104,14 @@ export const StaggerContainer = ({
   return (
     <motion.div
       initial="hidden"
-      whileInView="visible" // Changed to whileInView for better performance
-      viewport={{ once: true, amount: 0.3 }} // Only animate once when in view
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }} // Lower threshold for faster trigger
       variants={{
         hidden: {},
         visible: {
           transition: {
             staggerChildren: staggerDelay,
-            delayChildren: 0 // Remove initial delay
+            delayChildren: 0 // No initial delay
           }
         }
       }}
@@ -174,13 +133,13 @@ export const StaggerItem = ({
   return (
     <motion.div
       variants={{
-        hidden: { opacity: 0, y: 15 }, // Reduced movement for performance
+        hidden: { opacity: 0, y: 10 }, // Even less movement
         visible: { 
           opacity: 1, 
           y: 0,
           transition: {
-            duration: 0.3, // Reduced from 0.5 for snappier feel
-            ease: "easeOut" // Simplified easing
+            duration: 0.25, // Faster animation
+            ease: "easeOut"
           }
         }
       }}

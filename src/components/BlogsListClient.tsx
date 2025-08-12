@@ -5,7 +5,7 @@ import { BlogCard } from '@/components/BlogCard'
 import OnekoCat from '@/components/OnekoCat'
 import MinimalNavigation from '@/components/MinimalNavigation'
 import { BlogPost } from '@/types/blog'
-import { PageTransition, FadeInUp } from '@/components/ui/PageTransitions'
+import { FadeInUp } from '@/components/ui/PageTransitions'
 
 interface BlogsListClientProps {
   blogs: BlogPost[]
@@ -14,10 +14,9 @@ interface BlogsListClientProps {
 export default function BlogsListClient({ blogs }: BlogsListClientProps) {
 
   return (
-      <PageTransition>
-        <div className="min-h-screen w-full bg-white dark:bg-black">
-          <MinimalNavigation />
-          <OnekoCat />
+      <div className="min-h-screen w-full bg-white dark:bg-black">
+        <MinimalNavigation />
+        <OnekoCat />
           
           {/* Page Content */}
           <div className="w-full relative pt-16 sm:pt-16">
@@ -55,6 +54,5 @@ export default function BlogsListClient({ blogs }: BlogsListClientProps) {
             </div>
           </div>
         </div>
-      </PageTransition>
   )
 }

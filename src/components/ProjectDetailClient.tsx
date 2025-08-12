@@ -5,7 +5,7 @@ import { ProjectCard } from '@/components/ProjectCard'
 import OnekoCat from '@/components/OnekoCat'
 import MinimalNavigation from '@/components/MinimalNavigation'
 import Link from 'next/link'
-import { PageTransition, FadeInUp, SlideInFromLeft } from '@/components/ui/PageTransitions'
+import { FadeInUp, SlideInFromLeft } from '@/components/ui/PageTransitions'
 import { Project } from '@/types/project'
 
 interface ProjectDetailClientProps {
@@ -15,10 +15,9 @@ interface ProjectDetailClientProps {
 export default function ProjectDetailClient({ project }: ProjectDetailClientProps) {
 
   return (
-    <PageTransition>
-      <div className="min-h-screen w-full bg-white dark:bg-black">
-          <MinimalNavigation />
-          <OnekoCat />
+    <div className="min-h-screen w-full bg-white dark:bg-black">
+        <MinimalNavigation />
+        <OnekoCat />
 
           {/* Project Detail Section - Full Width with Borders */}
           <section className="w-full border-b border-neutral-200 dark:border-neutral-700 relative bg-neutral-50/30 dark:bg-neutral-900/30 pt-16 sm:pt-16">
@@ -43,6 +42,5 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
             </div>
           </section>
         </div>
-      </PageTransition>
   )
 }
