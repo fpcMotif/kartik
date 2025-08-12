@@ -32,13 +32,13 @@ export const useInfiniteScroll = <T>(
     setHasMore(items.length > initialItems);
   }, [items, initialItems]);
 
-  // Load more items with improved performance
+  // Load more items with faster performance
   const loadMore = useCallback(() => {
     if (isLoading || !hasMore) return;
 
     setIsLoading(true);
     
-    // Reduced timeout for faster loading
+    // Reduced timeout for much faster loading
     setTimeout(() => {
       setDisplayedItems(current => {
         const currentLength = current.length;
@@ -50,7 +50,7 @@ export const useInfiniteScroll = <T>(
         
         return newItems;
       });
-    }, 300); // Reduced from 100ms to 300ms for better perceived performance
+    }, 50); // Much faster - reduced from 300ms to 50ms
   }, [items, itemsPerLoad, isLoading, hasMore]);
 
   // Set up intersection observer
