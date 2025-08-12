@@ -1,12 +1,11 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+
 import { BlogContent } from '@/components/BlogContent'
 import Link from 'next/link'
 import OnekoCat from '@/components/OnekoCat'
 import MinimalNavigation from '@/components/MinimalNavigation'
 import { BlogPost } from '@/types/blog'
-import { PageLoader } from '@/components/PageLoader'
 import { PageTransition, FadeInUp, SlideInFromLeft } from '@/components/ui/PageTransitions'
 
 interface BlogPostClientProps {
@@ -14,18 +13,8 @@ interface BlogPostClientProps {
 }
 
 export default function BlogPostClient({ blog }: BlogPostClientProps) {
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 800)
-
-    return () => clearTimeout(timer)
-  }, [])
 
   return (
-    <PageLoader isLoading={isLoading} text="Loading Blog">
       <PageTransition>
         <div className="min-h-screen w-full bg-white dark:bg-black">
           <MinimalNavigation />
@@ -52,6 +41,5 @@ export default function BlogPostClient({ blog }: BlogPostClientProps) {
           </div>
         </div>
       </PageTransition>
-    </PageLoader>
   )
 }

@@ -1,11 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
 import OnekoCat from '@/components/OnekoCat'
 import MinimalNavigation from '@/components/MinimalNavigation'
 import { MasonryGrid } from '@/components/MasonryGrid'
 import { Project } from '@/types/project'
-import { PageLoader } from '@/components/PageLoader'
 import { PageTransition, FadeInUp } from '@/components/ui/PageTransitions'
 
 interface ProjectsListClientProps {
@@ -13,18 +11,8 @@ interface ProjectsListClientProps {
 }
 
 export default function ProjectsListClient({ projects }: ProjectsListClientProps) {
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1200)
-
-    return () => clearTimeout(timer)
-  }, [])
 
   return (
-    <PageLoader isLoading={isLoading} text="Loading Projects">
       <PageTransition>
         <div className="min-h-screen w-full bg-white dark:bg-black">
           <MinimalNavigation />
@@ -52,6 +40,5 @@ export default function ProjectsListClient({ projects }: ProjectsListClientProps
           </div>
         </div>
       </PageTransition>
-    </PageLoader>
   )
 }

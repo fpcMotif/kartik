@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import {Inter_Tight, Instrument_Serif} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
-import { LoadingProvider } from "@/components/providers/LoadingProvider"
 import { ScrollToTop } from "@/components/ui/ScrollAnimations"
 
 const inter = Inter_Tight({
@@ -52,12 +51,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <LoadingProvider>
             <div className="relative z-10">
               {children}
             </div>
             <ScrollToTop />
-          </LoadingProvider>
         </ThemeProvider>
         <script
           src="https://script.refix.ai/script.min.js"

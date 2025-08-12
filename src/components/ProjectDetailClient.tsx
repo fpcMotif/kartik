@@ -1,11 +1,10 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+
 import { ProjectCard } from '@/components/ProjectCard'
 import OnekoCat from '@/components/OnekoCat'
 import MinimalNavigation from '@/components/MinimalNavigation'
 import Link from 'next/link'
-import { PageLoader } from '@/components/PageLoader'
 import { PageTransition, FadeInUp, SlideInFromLeft } from '@/components/ui/PageTransitions'
 import { Project } from '@/types/project'
 
@@ -14,20 +13,10 @@ interface ProjectDetailClientProps {
 }
 
 export default function ProjectDetailClient({ project }: ProjectDetailClientProps) {
-  const [isLoading, setIsLoading] = useState(true)
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false)
-    }, 1000)
-
-    return () => clearTimeout(timer)
-  }, [])
 
   return (
-    <PageLoader isLoading={isLoading} text="Loading Project">
-      <PageTransition>
-        <div className="min-h-screen w-full bg-white dark:bg-black">
+    <PageTransition>
+      <div className="min-h-screen w-full bg-white dark:bg-black">
           <MinimalNavigation />
           <OnekoCat />
 
@@ -55,6 +44,5 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
           </section>
         </div>
       </PageTransition>
-    </PageLoader>
   )
 }
