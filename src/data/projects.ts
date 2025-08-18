@@ -41,6 +41,45 @@ export const projects: Project[] = [
       "Supabase"
     ],
   },
+   {
+    id: 'fleethq',
+    title: "FleetHQ",
+    description: "Enables interactive mission planning with map-based flight path creation and waypoint optimization\n\nProvides real-time fleet monitoring including live drone tracking, battery status, and mission progress\n\nFeatures an enterprise-grade analytics dashboard with flight statistics and multi-facility support\n\nImplements secure role-based access control with JWT authentication and encrypted data management",
+    longDescription: "Enables interactive mission planning with map-based flight path creation and waypoint optimization\n\nProvides real-time fleet monitoring including live drone tracking, battery status, and mission progress\n\nFeatures an enterprise-grade analytics dashboard with flight statistics and multi-facility support\n\nImplements secure role-based access control with JWT authentication and encrypted data management",
+    liveLink: "https://fleet-hq.vercel.app/",
+    githubLink: "https://github.com/KartikLabhshetwar/FleetHQ",
+    video: "fleethq",
+    image: '',
+    tweetUrl: "",
+    tags: [
+      "React.js",
+      "Tailwind CSS",
+      "JavaScript",
+      "Node.js",
+      "Express",
+      "mapbox-gl",
+      "JWT authentication"
+    ],
+  },
+    {
+    id: 'rebatr',
+    title: "Rebatr",
+    description: "Built with Next.js 15, React 19, TypeScript, Tailwind, and shadcn/ui for a modern, scalable architecture\n\nEnables live AI debates between 100+ models, including GPT-4, Claude, and Llama\n\nFeatures an intelligent scoring engine that evaluates debates in real time on logic, evidence, and persuasiveness\n\nIntegrated with the OpenRouter API for dynamic model selection and secure key management",
+    longDescription: "Built with Next.js 15, React 19, TypeScript, Tailwind, and shadcn/ui for a modern, scalable architecture\n\nEnables live AI debates between 100+ models, including GPT-4, Claude, and Llama\n\nFeatures an intelligent scoring engine that evaluates debates in real time on logic, evidence, and persuasiveness\n\nIntegrated with the OpenRouter API for dynamic model selection and secure key management",
+    liveLink: "https://rebatr.vercel.app/",
+    githubLink: "https://github.com/KartikLabhshetwar/rebatr",
+    video: "rebatr-short",
+    image: '',
+    tweetUrl: "",
+    tags: [
+      "Next.js",
+      "Tailwind CSS",
+      "TypeScript",
+      "Shadcn UI",
+      "OpenRouter API",
+      "AI"
+    ],
+  },
   {
     id: 'donezo',
     title: "Donezo",

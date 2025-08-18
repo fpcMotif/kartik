@@ -10,6 +10,8 @@ import { useHapticFeedback } from '@/hooks/useHapticFeedback';
 import donezovideo from '/videos/donezo.mp4';
 import mindMentorVideo from '/videos/mind-mentor.mp4';
 import satyaCheckVideo from '/videos/satya-check.mp4';
+import fleethq from '/videos/fleethq.mp4';
+import rebatr from '/videos/rebatr-short.mp4';
 
 
 interface ProjectCardProps {
@@ -26,6 +28,10 @@ const getVideoSource = (videoId: string) => {
       return mindMentorVideo;
     case 'satya-check':
       return satyaCheckVideo;
+    case 'fleethq':
+      return fleethq;
+    case 'rebatr-short':
+      return rebatr;
     default:
       return null;
   }
