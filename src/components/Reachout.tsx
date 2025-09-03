@@ -1,7 +1,6 @@
 'use client'
 import { FaLinkedin, FaXTwitter, FaGithub, FaPaperclip } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
-import { AnimatedShinyText } from "./magicui/animated-shiny-text";
 import { useHapticFeedback } from '@/hooks/useHapticFeedback';
 
 interface ReachoutProps {
@@ -40,7 +39,7 @@ export default function Reachout({
       <div className="text-left w-full">
         <div className="mb-4 sm:mb-6">
           <h2 className="font-[family-name:var(--font-instrument-serif)] text-md mb-2 opacity-30 mt-4 sm:mt-6">
-            <AnimatedShinyText>{title}</AnimatedShinyText>
+            {title}
           </h2>
           <p className="opacity-40 text-[13px] sm:text-[14px] mb-3 sm:mb-4">
            {subtitle}

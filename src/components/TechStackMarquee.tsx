@@ -2,7 +2,6 @@
 
 import { Marquee } from "@/components/magicui/marquee";
 import Image from "next/image";
-import { AnimatedShinyText } from "./magicui/animated-shiny-text";
 
 
 // Tech Stack Data
@@ -90,7 +89,7 @@ export default function TechStackMarquee({ className = "" }: TechStackMarqueePro
       {/* Title - matching other component styles */}
       <div className="mb-4">
         <h2 className="text-sm sm:text-md opacity-30 leading-relaxed -tracking-[0.01em] mb-2">
-          <AnimatedShinyText>Stack I use</AnimatedShinyText>
+          Stack I use
         </h2>
         <p className="text-sm dark:text-white/70 text-black/70 leading-relaxed">
           Technologies I work with to build products that solve real problems

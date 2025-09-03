@@ -11,8 +11,8 @@ import ExperienceContent from './ExperienceContent'
 import Reachout from './Reachout'
 import CallToAction from './CallToAction'
 import ContributionsDisplay from './ContributionsDisplay'
+import OpenSourceContributionsCard from './OpenSourceContributionsCard'
 import TechStackMarquee from './TechStackMarquee'
-import { AnimatedShinyText } from './magicui/animated-shiny-text'
 import { Reveal } from './Reveal'
 
 export default function NewHeroSection() {
@@ -56,7 +56,7 @@ export default function NewHeroSection() {
               <Reveal delay={0.1} duration={0.6} amount={0.4}>
                 <ContentSection
                   subtitle="AI Engineer | Full-stack Developer"
-                  title='Building <a class="text-[#006FEE] hover:underline" href="/projects">products</a> and AI agents that solve real problems <span class="opacity-70 font-light">— Crafting digital experiences with clean code and exceptional UX.</span>'
+                  title=''
                   className="mt-6"
                 >
                   <div></div>
@@ -86,7 +86,7 @@ export default function NewHeroSection() {
                {/* Experience Section */}
               <Reveal delay={0.1} duration={0.6} amount={0.3}>
                 <div className="sm:px-12 px-6">
-                  <h2 className="text-md mb-2 opacity-30 mt-6"><AnimatedShinyText>Professional Experience</AnimatedShinyText></h2>
+                  <h2 className="text-md mb-2 opacity-30 mt-6">Professional Experience</h2>
                   <ExperienceContent />
                 </div>
               </Reveal>
@@ -98,7 +98,7 @@ export default function NewHeroSection() {
                  {/* Technical Contributions */}
               <Reveal delay={0.1} duration={0.6} amount={0.2}>
                 <div className="sm:px-12 px-6">
-                  <h2 className="text-md mb-2 opacity-20 mt-6"><AnimatedShinyText>Technical Contributions</AnimatedShinyText></h2>
+                  <h2 className="text-md mb-2 opacity-20 mt-6">Technical Contributions</h2>
                   <div className="space-y-4 dark:text-white/70 text-black/70 pb-6">
                     <ContentParagraph>
                       <span className="font-medium dark:text-white text-black">At Turbo ML,</span> I spent 3 months building some pretty cool stuff. Think Redis Sorted Sets handling time-based tasks under 24-hour constraints, WhatsApp Business API integrations with custom commands, and secure MCP protocols using hash-based user identification. The kind of work that keeps you up at night because it&apos;s actually interesting.
@@ -129,7 +129,7 @@ export default function NewHeroSection() {
               <Reveal delay={0.1} duration={0.6} amount={0.2}>
                 <div className="sm:px-12 px-6 mt-4">
                   <h2 className="text-sm sm:text-md opacity-30 leading-relaxed -tracking-[0.01em] mb-4">
-                    <AnimatedShinyText>GitHub Contributions</AnimatedShinyText> <span className="opacity-30">●</span> @KartikLabhshetwar
+                    GitHub Contributions <span className="opacity-30">●</span> @KartikLabhshetwar
                   </h2>
                   <div className="mb-6">
                     <ContributionsDisplay
@@ -156,36 +156,18 @@ export default function NewHeroSection() {
                 <SectionBorder className="mt-0 pt-0" />
               </Reveal>
               
-              {/* Contributions Section */}
+              {/* Open Source Contributions Section */}
               <Reveal delay={0.1} duration={0.6} amount={0.2}>
                 <div className="sm:px-12 px-6 mt-4">
-                  <h2 className="text-sm sm:text-md opacity-30 leading-relaxed -tracking-[0.01em] mb-2">
-                    <AnimatedShinyText>Recent Contributions till <span className="opacity-30">●</span> {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}</AnimatedShinyText>
+                  <h2 className="text-sm sm:text-md opacity-30 leading-relaxed -tracking-[0.01em] mb-4">
+                    Open Source Contributions <span className="opacity-30">●</span> {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </h2>
-                  <div className="space-y-4 dark:text-white/70 text-black/70 pb-6">
-                    <ContentParagraph>
-                      <span className="font-medium dark:text-white text-black">Do I use AI to build?</span> Absolutely. My first open source contribution was adding a mem0 MCP integration to the Klavis AI ecosystem contributing to tools that other developers actually use.
-                    </ContentParagraph>
-                    <ContentParagraph>
-                      <span className="font-medium dark:text-white text-black">Built </span>
-                      <Link href="/projects/mind-mentor" className="text-[#006FEE] hover:underline">Mind Mentor AI</Link>
-                      <span> : An AI-powered educational assistant using Groq AI for lightning-fast responses and Next.js for seamless user experience. </span>
-                      <Link href="/projects/satya-check" className="text-[#006FEE] hover:underline">@SatyaCheck</Link>
-                      <span> helps combat misinformation with real-time fact-checking because truth matters in the digital age.</span>
-                    </ContentParagraph>
-                    <ContentParagraph>
-                      <span className="font-medium dark:text-white text-black">Shipped products across </span>
-                      <Link href="/projects" className="text-[#006FEE] hover:underline">Web</Link>
-                      <span> and </span>
-                      <Link href="/projects" className="text-[#006FEE] hover:underline">AI applications</Link>
-                      <span> that people actually use. From educational tools to fact-checking systems, I build solutions that solve real problems in the real world.</span>
-                    </ContentParagraph>
-                  </div>
+                  <OpenSourceContributionsCard />
                 </div>
               </Reveal>
               
               <Reveal delay={0.05} duration={0.4} y={15} amount={0.8}>
-                <SectionBorder className="mt-0 pt-0" />
+                <SectionBorder className="mt-4 pt-0" />
               </Reveal>
 
               {/* call to action*/}
