@@ -75,13 +75,13 @@ export default function OpenSourceContributionsCard() {
             <div className="flex items-start justify-between gap-4">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-3 mb-2">
-                  <h4 className="font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-[#006FEE] transition-colors duration-200">
+                  <h4 className="text-md text-neutral-800 dark:text-neutral-200 group-hover:text-[#006FEE] transition-colors duration-200">
                     {contribution.title}
                   </h4>
                   <span className="text-xs text-neutral-500 dark:text-neutral-400">{contribution.date}</span>
                 </div>
                 
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
                   {contribution.description}
                 </p>
               </div>
