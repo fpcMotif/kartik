@@ -22,6 +22,26 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: 'lazycommit',
+    title: "Lazy Commit",
+    description: "A CLI that writes your git commit messages for you with AI using Groq. Never write a commit message again.",
+    longDescription: "A CLI that writes your git commit messages for you with AI using Groq. Never write a commit message again.",
+    liveLink: "https://lazycommit.vercel.app/",
+    githubLink: "https://github.com/KartikLabhshetwar/lazycommit",
+    video: 'lazycommit-video',
+    image: '/images/lazycommit.png',
+    tweetUrl: "https://x.com/code_kartik/status/1968387201760444798",
+    tags: [
+      "CLI",
+      "Groq",
+      "Node.js",
+      "inquirer",
+      "cleye",
+      "Typescript",
+      "Llama 3.1 instant 8.1b"
+    ],
+  },
+  {
     id: 'satya-check',
     title: "SatyaCheck",
     description: "An innovative fact-checking platform that combines cutting-edge AI technology with browser integration to combat misinformation.",
@@ -49,7 +69,7 @@ export const projects: Project[] = [
     liveLink: "https://fleet-hq.vercel.app/",
     githubLink: "https://github.com/KartikLabhshetwar/FleetHQ",
     video: "fleethq",
-    image: '',
+    image: '/images/fleet-hq.png',
     tweetUrl: "",
     tags: [
       "React.js",
@@ -69,7 +89,7 @@ export const projects: Project[] = [
     liveLink: "https://rebatr.vercel.app/",
     githubLink: "https://github.com/KartikLabhshetwar/rebatr",
     video: "rebatr-short",
-    image: '',
+    image: '/images/rebatr.png',
     tweetUrl: "",
     tags: [
       "Next.js",
@@ -100,6 +120,34 @@ export const projects: Project[] = [
       "Resend",
       "Node Cron"
     ],
+  },
+  {
+    id: 'overwhelm',
+    title: "Overwhelm Breaker",
+    description: "A smart productivity app that uses AI to break down overwhelming projects into manageable tasks, helps you schedule focused work sessions, and tracks your progress. It's designed to eliminate the paralysis of large projects by providing a structured approach to productivity.",
+    longDescription: "A smart productivity app that uses AI to break down overwhelming projects into manageable tasks, helps you schedule focused work sessions, and tracks your progress. It's designed to eliminate the paralysis of large projects by providing a structured approach to productivity.",
+    liveLink: "https://overwhelm-breaker.vercel.app/",
+    githubLink: "https://github.com/KartikLabhshetwar/overwhelm-breaker",
+    video: '',
+    image: '/images/overwhelm.png',
+    tweetUrl: "",
+    tags: [
+      "Next.js 14",
+      "React 18",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Radix UI",
+      "Lucide React",
+      "Next Themes",
+      "PostgreSQL",
+      "Drizzle ORM",
+      "Neon",
+      "NextAuth.js",
+      "Google OAuth",
+      "Groq API",
+      "LangChain"
+    ]    
   },
   {
     id: 'learnx',
