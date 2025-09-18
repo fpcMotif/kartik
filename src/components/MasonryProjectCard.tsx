@@ -11,7 +11,7 @@ import mindMentorVideo from '/videos/mind-mentor.mp4';
 import satyaCheckVideo from '/videos/satya-check.mp4';
 import fleethq from '/videos/fleethq.mp4';
 import rebatr from '/videos/rebatr-short.mp4';
-
+import lazycommitVideo from '/videos/lazycommit-video.mp4';
 interface MasonryProjectCardProps {
   project: Project;
   className?: string;
@@ -30,6 +30,8 @@ const getVideoSource = (videoId: string) => {
       return fleethq;
     case 'rebatr-short':
       return rebatr;
+    case 'lazycommit-video':
+      return lazycommitVideo;
     default:
       return null;
   }

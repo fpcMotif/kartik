@@ -1,9 +1,9 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, ChevronDown, ChevronUp } from 'lucide-react'
 
 interface Contribution {
   title: string
@@ -19,6 +19,13 @@ const contributions: Contribution[] = [
     description: "Added mem0 MCP integration to the Klavis AI ecosystem, contributing to tools that other developers actually use.",
     repository: "Klavis-AI",
     link: "https://github.com/Klavis-AI/klavis/pull/251",
+    date: "2025",
+  },
+  {
+    title: "feat: add express.js support to CLI",
+    description: "Added express.js support to the billingsdk CLI, contributing to tools that other developers actually use.",
+    repository: "dodopayments/billingsdk",
+    link: "https://github.com/dodopayments/billingsdk/pull/103",
     date: "2025",
   },
   {
@@ -55,6 +62,9 @@ const contributions: Contribution[] = [
 
 
 export default function OpenSourceContributionsCard() {
+  const [showAll, setShowAll] = useState(false)
+  const displayedContributions = showAll ? contributions : contributions.slice(0, 3)
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -64,7 +74,7 @@ export default function OpenSourceContributionsCard() {
     >
 
       <div className="space-y-4">
-        {contributions.map((contribution, index) => (
+        {displayedContributions.map((contribution, index) => (
           <motion.div
             key={contribution.title}
             initial={{ opacity: 0, x: -20 }}
@@ -96,12 +106,29 @@ export default function OpenSourceContributionsCard() {
               </Link>
             </div>
             
-            {index < contributions.length - 1 && (
+            {index < displayedContributions.length - 1 && (
               <div className="mt-4 border-b border-neutral-300 dark:border-[#2E2E2E]" />
             )}
           </motion.div>
         ))}
       </div>
+
+      {/* Show More/Less Toggle */}
+      {contributions.length > 3 && (
+        <div className="mt-4 pt-4 border-t border-neutral-300 dark:border-[#2E2E2E]">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="inline-flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors duration-200 group"
+          >
+            <span>{showAll ? 'Show less' : `Show all ${contributions.length} contributions`}</span>
+            {showAll ? (
+              <ChevronUp className="w-4 h-4 group-hover:-translate-y-0.5 transition-transform duration-200" />
+            ) : (
+              <ChevronDown className="w-4 h-4 group-hover:translate-y-0.5 transition-transform duration-200" />
+            )}
+          </button>
+        </div>
+      )}
     </motion.div>
   )
 }
