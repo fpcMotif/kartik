@@ -24,7 +24,7 @@ export default function ProfileHeader({
     twitter: "https://x.com/code_kartik",
     github: "https://github.com/KartikLabhshetwar",
     linkedin: "https://www.linkedin.com/in/kartikcode/",
-    resume: "https://drive.google.com/file/d/1hIM6tNkN2UzIgRt3S5zk6UJoLCiYuQ1s/view?usp=sharing",
+    resume: "https://drive.google.com/file/d/1iePpSqo5l0cztVSghCf2PfKH7mFTCTzs/view?usp=sharing",
   }
 }: ProfileHeaderProps) {
   const { triggerHaptic, isMobile } = useHapticFeedback();

@@ -38,7 +38,6 @@ export const projects: Project[] = [
       "inquirer",
       "cleye",
       "Typescript",
-      "Llama 3.1 instant 8.1b"
     ],
   },
   {
