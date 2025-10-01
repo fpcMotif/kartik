@@ -131,13 +131,6 @@ export default function Reachout({
                 © {new Date().getFullYear()} Kartik Labhshetwar.
               </div>
             </div>
-            <div className="text-xs dark:text-white/40 text-black/40 order-1 sm:order-2">
-              Last updated: {new Date().toLocaleDateString('en-US', { 
-                day: 'numeric', 
-                month: 'short', 
-                year: 'numeric' 
-              })}
-            </div>
           </div>
         </div>
       </div>
