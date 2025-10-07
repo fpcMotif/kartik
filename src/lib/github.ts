@@ -82,17 +82,23 @@ export async function fetchUserPullRequests(username: string, limit: number = 50
   }
 
   try {
-    // Try the merged search first
-    const { data } = await octokit.rest.search.issuesAndPullRequests({
-      q: `is:pr author:${username} is:merged sort:created-desc`,
+    // Try the merged search first using advanced search
+    const { data } = await octokit.request('GET /search/issues', {
+      q: `is:pr author:${username} is:merged`,
+      sort: 'updated',
+      order: 'desc',
       per_page: limit,
+      advanced_search: 'true',
     })
     
     // If no merged PRs found, try finding closed PRs that might be merged
     if (data.total_count === 0) {
-      const { data: closedData } = await octokit.rest.search.issuesAndPullRequests({
-        q: `is:pr author:${username} is:closed sort:created-desc`,
+      const { data: closedData } = await octokit.request('GET /search/issues', {
+        q: `is:pr author:${username} is:closed`,
+        sort: 'updated',
+        order: 'desc',
         per_page: limit,
+        advanced_search: 'true',
       })
       
       // Filter for actually merged PRs from the closed results
