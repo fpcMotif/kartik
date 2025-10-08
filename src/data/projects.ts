@@ -121,6 +121,24 @@ export const projects: Project[] = [
     ],
   },
   {
+    id: 'gocache',
+    title: "Gocache",
+    description: "A fast educational redis-like cache in go",
+    longDescription: "gocache is a small, educational Redis-like in-memory cache server implemented in Go. It implements a subset of the Redis protocol (RESP) and supports a few basic commands (PING, SET, GET, HSET, HGET, HGETALL). The project also includes an append-only file (AOF) persistence helper and a RESP parser/writer.",
+    liveLink: "https://github.com/KartikLabhshetwar/Gocache",
+    githubLink: "https://github.com/KartikLabhshetwar/Gocache",
+    video: "gocache",
+    image: '/images/gocache.png',
+    tweetUrl: "",
+    tags: [
+      "Go",
+      "Redis Protocol",
+      "In-Memory Cache",
+      "AOF Persistence",
+      "RESP Parser"
+    ],
+  },
+  {
     id: 'overwhelm',
     title: "Overwhelm Breaker",
     description: "A smart productivity app that uses AI to break down overwhelming projects into manageable tasks, helps you schedule focused work sessions, and tracks your progress. It's designed to eliminate the paralysis of large projects by providing a structured approach to productivity.",
