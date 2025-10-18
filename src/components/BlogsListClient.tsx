@@ -24,10 +24,10 @@ export default function BlogsListClient({ blogs }: BlogsListClientProps) {
               <div className="max-w-3xl mx-auto">
                 <div className="mb-8 sm:mb-10">
                   <FadeInUp delay={0.2}>
-                    <h1 className="text-2xl sm:text-3xl md:text-4xl font-[family-name:var(--font-instrument-serif)] font-medium mb-3 sm:mb-4 text-center">blogs</h1>
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-instrument-serif)] font-medium mb-6 sm:mb-8 text-center leading-tight">blogs</h1>
                   </FadeInUp>
                   <FadeInUp delay={0.4}>
-                    <p className="text-neutral-600 dark:text-neutral-400 text-base sm:text-lg text-center px-4 sm:px-0">
+                    <p className="text-neutral-600 dark:text-neutral-400 text-lg sm:text-xl md:text-2xl text-center max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
                       Technical writings and thoughts on web development, AI, and more.
                     </p>
                   </FadeInUp>
