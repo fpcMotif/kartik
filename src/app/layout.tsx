@@ -3,6 +3,7 @@ import {Inter_Tight, Instrument_Serif} from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { ScrollToTop } from "@/components/ui/ScrollAnimations"
+import BackgroundMusic from "@/components/BackgroundMusicWrapper"
 
 const inter = Inter_Tight({
   weight: '400',
@@ -18,6 +19,7 @@ const instrumentSerif = Instrument_Serif({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://kartik017.vercel.app'),
   title: 'Kartik Labhshetwar',
   description: 'I build products that solve real problems. Available for new opportunities.',
   openGraph: {
@@ -44,7 +46,7 @@ export default function RootLayout({
       <head>
         <meta name="google-site-verification" content="tMCNs2fgM6voEHBd3JsySffMFSiUCQDEFEF1iYI3-ZQ" />
       </head>
-      <body className={`${inter.className} ${instrumentSerif.variable}`}>
+      <body className={`${inter.className} ${instrumentSerif.variable}`} suppressHydrationWarning={true}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
@@ -55,6 +57,7 @@ export default function RootLayout({
               {children}
             </div>
             <ScrollToTop />
+            <BackgroundMusic />
         </ThemeProvider>
         <script
           src="https://script.refix.ai/script.min.js"
