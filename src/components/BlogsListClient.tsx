@@ -1,6 +1,5 @@
 'use client'
 
-
 import { BlogCard } from '@/components/BlogCard'
 import OnekoCat from '@/components/OnekoCat'
 import MinimalNavigation from '@/components/MinimalNavigation'
@@ -18,34 +17,39 @@ export default function BlogsListClient({ blogs }: BlogsListClientProps) {
         <MinimalNavigation />
         <OnekoCat />
           
-          {/* Page Content */}
+          {/* Page Content - Swiss Design Layout */}
           <div className="w-full relative pt-16 sm:pt-16">
-            <div className="px-4 sm:px-8 md:px-16 py-8 sm:py-10 md:py-12">
-              <div className="max-w-3xl mx-auto">
-                <div className="mb-8 sm:mb-10">
+            <div className="px-6 sm:px-8 md:px-12 lg:px-16 py-12 sm:py-16 md:py-20">
+              <div className="max-w-4xl mx-auto">
+                
+                {/* Header - Minimal Typography */}
+                <div className="mb-16 sm:mb-20">
                   <FadeInUp delay={0.2}>
-                    <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-[family-name:var(--font-instrument-serif)] font-medium mb-6 sm:mb-8 text-center leading-tight">blogs</h1>
+                    <h1 className="text-2xl sm:text-3xl font-medium mb-4 text-neutral-900 dark:text-neutral-100 tracking-tight">
+                      Blogs
+                    </h1>
                   </FadeInUp>
                   <FadeInUp delay={0.4}>
-                    <p className="text-neutral-600 dark:text-neutral-400 text-lg sm:text-xl md:text-2xl text-center max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
-                      Technical writings and thoughts on web development, AI, and more.
+                    <p className="text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+                      Technical writings and thoughts
                     </p>
                   </FadeInUp>
                 </div>
                 
+                {/* Blog List - Clean Grid */}
                 {blogs.length > 0 ? (
-                  <div className="grid grid-cols-1 gap-6 sm:gap-8">
+                  <div className="space-y-0">
                     {blogs.map((blog, index) => (
-                      <FadeInUp key={blog.id} delay={index * 0.05} duration={0.4}>
+                      <FadeInUp key={blog.id} delay={index * 0.1} duration={0.6}>
                         <BlogCard blog={blog} />
                       </FadeInUp>
                     ))}
                   </div>
                 ) : (
                   <FadeInUp delay={0.6}>
-                    <div className="text-center py-8 sm:py-12 px-4 sm:px-0">
-                      <p className="text-lg sm:text-xl text-neutral-600 dark:text-neutral-400">
-                        Blog posts coming soon...
+                    <div className="text-center py-16 sm:py-20">
+                      <p className="text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+                        Coming soon
                       </p>
                     </div>
                   </FadeInUp>
