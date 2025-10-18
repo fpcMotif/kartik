@@ -27,7 +27,7 @@ export default function MinimalNavigation() {
           >
             <Link 
               href="/"
-              className="text-lg sm:text-xl font-[family-name:var(--font-instrument-serif)] font-medium hover:opacity-80 hover:underline transition-opacity duration-200"
+              className="text-xl sm:text-xl font-[family-name:var(--font-instrument-serif)] font-medium hover:opacity-80 hover:underline transition-opacity duration-200 ml-2"
             >
               Kartik
             </Link>
@@ -40,7 +40,7 @@ export default function MinimalNavigation() {
             >
               <Link 
                 href="/projects" 
-                className={`text-sm sm:text-base font-[family-name:var(--font-instrument-serif)] hover:opacity-80 hover:underline transition-opacity duration-200 ${
+                className={`text-md sm:text-lg font-[family-name:var(--font-instrument-serif)] hover:opacity-80 hover:underline transition-opacity duration-200 ${
                   isActive('/projects') ? 'opacity-100' : 'opacity-60'
                 }`}
               >
@@ -54,7 +54,7 @@ export default function MinimalNavigation() {
             >
               <Link 
                 href="/blogs" 
-                className={`text-sm sm:text-base hover:opacity-80 hover:underline transition-opacity duration-200 ${
+                className={`text-md sm:text-lg hover:opacity-80 hover:underline transition-opacity duration-200 ${
                   isActive('/blogs') ? 'opacity-100' : 'opacity-60'
                 }`}
               >

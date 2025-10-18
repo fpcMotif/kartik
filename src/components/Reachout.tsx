@@ -38,10 +38,10 @@ export default function Reachout({
     <div className="sm:px-12 px-4 pb-8">
       <div className="text-left w-full">
         <div className="mb-4 sm:mb-6">
-          <h2 className="font-[family-name:var(--font-instrument-serif)] text-md mb-2 opacity-30 mt-4 sm:mt-6">
+          <h2 className="font-[family-name:var(--font-instrument-serif)] text-lg sm:text-xl mb-2 opacity-20 mt-4 sm:mt-6">
             {title}
           </h2>
-          <p className="opacity-40 text-[13px] sm:text-[14px] mb-3 sm:mb-4">
+          <p className="opacity-20 text-md sm:text-lg mb-3 sm:mb-4">
            {subtitle}
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function Reachout({
         <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200 dark:border-gray-800">
           <div className="flex flex-col space-y-2 sm:space-y-3 lg:flex-row lg:justify-between lg:items-center lg:space-y-0 text-center sm:text-left">
             <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 space-y-1 sm:space-y-0 order-2 sm:order-1">
-              <div className="text-xs dark:text-white/40 text-black/40">
+              <div className="text-md dark:text-white/40 text-black/40">
                 © {new Date().getFullYear()} Kartik Labhshetwar.
               </div>
             </div>

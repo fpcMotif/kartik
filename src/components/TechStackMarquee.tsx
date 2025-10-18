@@ -88,10 +88,10 @@ export default function TechStackMarquee({ className = "" }: TechStackMarqueePro
     <div className={`w-full ${className}`}>
       {/* Title - matching other component styles */}
       <div className="mb-4">
-        <h2 className="text-sm sm:text-md opacity-30 leading-relaxed -tracking-[0.01em] mb-2">
+        <h2 className="text-lg sm:text-lg opacity-20 leading-relaxed -tracking-[0.01em] mb-2">
           Stack I use
         </h2>
-        <p className="text-sm dark:text-white/70 text-black/70 leading-relaxed">
+        <p className="text-md dark:text-white/70 text-black/70 leading-relaxed">
           Technologies I work with to build products that solve real problems
         </p>
       </div>

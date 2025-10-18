@@ -86,7 +86,7 @@ export default function NewHeroSection() {
                {/* Experience Section */}
               <Reveal delay={0.1} duration={0.6} amount={0.3}>
                 <div className="sm:px-12 px-6 py-4">
-                  <h2 className="text-lg sm:text-xl mb-4 opacity-30 mt-8">Professional Experience</h2>
+                  <h2 className="text-lg sm:text-xl mb-4 opacity-20 mt-8">Professional Experience</h2>
                   <ExperienceContent />
                 </div>
               </Reveal>
@@ -128,8 +128,8 @@ export default function NewHeroSection() {
               {/* GitHub Contributions */}
               <Reveal delay={0.1} duration={0.6} amount={0.2}>
                 <div className="sm:px-12 px-6 mt-4">
-                  <h2 className="text-sm sm:text-md opacity-30 leading-relaxed -tracking-[0.01em] mb-4">
-                    GitHub Contributions <span className="opacity-30">●</span> @KartikLabhshetwar
+                  <h2 className="text-lg sm:text-xl opacity-20 leading-relaxed -tracking-[0.01em] mb-4">
+                    GitHub Contributions <span className="opacity-20">●</span> @KartikLabhshetwar
                   </h2>
                   <div className="mb-6">
                     <ContributionsDisplay
@@ -159,8 +159,8 @@ export default function NewHeroSection() {
               {/* Open Source Contributions Section */}
               <Reveal delay={0.1} duration={0.6} amount={0.2}>
                 <div className="sm:px-12 px-6 mt-4">
-                  <h2 className="text-sm sm:text-md opacity-30 leading-relaxed -tracking-[0.01em] mb-4">
-                    Open Source Contributions <span className="opacity-30">●</span> {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
+                  <h2 className="text-lg sm:text-xl opacity-20 mt-8 ml-5 leading-relaxed -tracking-[0.01em] mb-4">
+                    Open Source Contributions <span className="opacity-20">●</span> {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </h2>
                   <OpenSourceContributionsCard />
                 </div>

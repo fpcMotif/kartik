@@ -47,7 +47,7 @@ const GitHubContributions: React.FC<GitHubContributionsProps> = ({
           <GitHubCalendar
             username={username}
             colorScheme={resolvedTheme as "light" | "dark"}
-            fontSize={compact ? 10 : 12}
+            fontSize={compact ? 14 : 16}
             blockSize={compact ? 10 : 12}
             blockMargin={compact ? 2 : 4}
             showWeekdayLabels={!compact}
