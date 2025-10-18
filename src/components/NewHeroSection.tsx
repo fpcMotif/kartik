@@ -64,42 +64,42 @@ export default function NewHeroSection() {
               </Reveal>
               
               <Reveal delay={0.05} duration={0.4} y={20} amount={0.8}>
-                <SectionBorder className="mt-2" />
+                <SectionBorder className="mt-6" />
               </Reveal>
               
               {/* About Section */}
               <Reveal delay={0.1} duration={0.6} amount={0.3}>
-                <ContentSection background className="pb-4 pt-1">
-                  <ContentParagraph className="mt-4">
+                <ContentSection background className="pb-8 pt-6">
+                  <ContentParagraph className="mt-6 mb-6">
                     <span className="font-medium dark:text-white text-black">I&apos;m not your average developer.</span> I&apos;d rather be crafting elegant code with a coffee in hand than debugging someone else&apos;s spaghetti code at 3 AM. These days, you&apos;ll find me deep in AI model integrations, building intelligent features that actually make sense.
                   </ContentParagraph>
-                  <ContentParagraph>
+                  <ContentParagraph className="mb-2">
                     <span className="font-medium dark:text-white text-black">I build from zero.</span> Whether it&apos;s frontend, backend, full-stack applications, or AI-powered experiences, I work across the entire development lifecycle. From UI/UX to deployment to user feedback, I care less about technology debates and more about delivering results that people love using.
                   </ContentParagraph>
                 </ContentSection>
               </Reveal>
 
               <Reveal delay={0.05} duration={0.4} y={15} amount={0.8}>
-                <SectionBorder className="mt-0 pt-0" />
+                <SectionBorder className="mt-6" />
               </Reveal>
 
                {/* Experience Section */}
               <Reveal delay={0.1} duration={0.6} amount={0.3}>
-                <div className="sm:px-12 px-6">
-                  <h2 className="text-md mb-2 opacity-30 mt-6">Professional Experience</h2>
+                <div className="sm:px-12 px-6 py-4">
+                  <h2 className="text-lg sm:text-xl mb-4 opacity-30 mt-8">Professional Experience</h2>
                   <ExperienceContent />
                 </div>
               </Reveal>
 
                 <Reveal delay={0.05} duration={0.4} y={15} amount={0.8}>
-                  <SectionBorder className="mt-0 pt-0" />
+                  <SectionBorder className="mt-6" />
                 </Reveal>
               
                  {/* Technical Contributions */}
               <Reveal delay={0.1} duration={0.6} amount={0.2}>
-                <div className="sm:px-12 px-6">
-                  <h2 className="text-md mb-2 opacity-20 mt-6">Technical Contributions</h2>
-                  <div className="space-y-4 dark:text-white/70 text-black/70 pb-6">
+                <div className="sm:px-12 px-6 py-4">
+                  <h2 className="text-lg sm:text-xl mb-4 opacity-20 mt-8">Technical Contributions</h2>
+                  <div className="space-y-6 dark:text-white/70 text-black/70 pb-8">
                     <ContentParagraph>
                       <span className="font-medium dark:text-white text-black">At Turbo ML,</span> I spent 3 months building some pretty cool stuff. Think Redis Sorted Sets handling time-based tasks under 24-hour constraints, WhatsApp Business API integrations with custom commands, and secure MCP protocols using hash-based user identification. The kind of work that keeps you up at night because it&apos;s actually interesting.
                     </ContentParagraph>
