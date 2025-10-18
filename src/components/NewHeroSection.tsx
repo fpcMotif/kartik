@@ -69,7 +69,7 @@ export default function NewHeroSection() {
               
               {/* About Section */}
               <Reveal delay={0.1} duration={0.6} amount={0.3}>
-                <ContentSection background className="pb-8 pt-6">
+                <ContentSection className="pb-8 pt-6">
                   <ContentParagraph className="mt-6 mb-6">
                     <span className="font-medium dark:text-white text-black">I&apos;m not your average developer.</span> I&apos;d rather be crafting elegant code with a coffee in hand than debugging someone else&apos;s spaghetti code at 3 AM. These days, you&apos;ll find me deep in AI model integrations, building intelligent features that actually make sense.
                   </ContentParagraph>
