@@ -14,6 +14,7 @@ import fleethq from '/videos/fleethq.mp4';
 import rebatr from '/videos/rebatr-short.mp4';
 import lazycommitVideo from '/videos/lazycommit-video.mp4';
 import gocache from '/videos/gocache.mp4';
+import quotick from '/videos/quotick.mp4';
 
 
 interface ProjectCardProps {
@@ -38,6 +39,8 @@ const getVideoSource = (videoId: string) => {
       return lazycommitVideo;
     case 'gocache':
       return gocache;
+    case 'quotick':
+      return quotick
     default:
       return null;
   }
@@ -63,10 +66,10 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
   }
 
   return (
-    <article className="prose prose-neutral dark:prose-invert prose-headings:font-medium max-w-none px-2 sm:px-0">
-      <header className="not-prose mb-6 sm:mb-8">
+    <article className="w-full max-w-none px-2 sm:px-0">
+      <header className="mb-6 sm:mb-8">
         <div className="flex items-start justify-between mb-4 sm:mb-6 gap-3">
-          <h1 className="text-xl sm:text-2xl md:text-4xl font-medium flex-1 min-w-0">{project.title}</h1>
+          <h1 className="text-xl sm:text-2xl md:text-4xl font-medium flex-1 min-w-0 break-words">{project.title}</h1>
           <div className="flex items-center gap-2 flex-shrink-0">
             {project.liveLink && (
               <Link 
@@ -99,60 +102,78 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
         </div>
       </header>
 
-      {project.video && getVideoSource(project.video) ? (
-        <div className="mt-6 sm:mt-8 mb-6 sm:mb-8 aspect-video w-full">
-          <Video
-            src={getVideoSource(project.video)!}
-            poster={project.image}
-            className="w-full h-full rounded-lg object-cover"
-            controls
-            playsInline
-            autoPlay
-            muted
-            loop
-          />
-        </div>
-      ) : project.image && (
-        <div className="mt-6 sm:mt-8 mb-6 sm:mb-8 w-full aspect-video relative"> {/* Changed height to aspect-video */}
-          <Image 
-            src={project.image}
-            alt={project.title}
-            fill
-            className="rounded-lg object-contain" // Changed to object-contain
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, (max-width: 1200px) 70vw, 60vw"
-            quality={95}
-            priority
-          />
-        </div>
-      )}
+      {/* Media Section - Fixed Container */}
+      <div className="mb-6 sm:mb-8">
+        {project.video && getVideoSource(project.video) ? (
+          <div className="w-full aspect-video rounded-lg overflow-hidden">
+            <Video
+              src={getVideoSource(project.video)!}
+              poster={project.image}
+              className="w-full h-full object-cover"
+              controls
+              playsInline
+              autoPlay
+              muted
+              loop
+            />
+          </div>
+        ) : project.image && (
+          <div className="w-full aspect-video relative rounded-lg overflow-hidden">
+            <Image 
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 640px) 100vw, (max-width: 768px) 80vw, (max-width: 1200px) 70vw, 60vw"
+              quality={95}
+              priority
+            />
+          </div>
+        )}
+      </div>
 
-      <div className="mb-6 sm:mb-8 space-y-3 sm:space-y-4">
-        <div className="prose-list">
-          <ul className="list-disc list-inside space-y-2 sm:space-y-3 text-sm sm:text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-relaxed">
-            <li className="text-neutral-600 dark:text-neutral-400">
-              {project.description}
-              {project.tweetUrl && (
-                <>
-                  {' '}
-                  <Link 
-                    href={project.tweetUrl} 
-                    target="_blank" 
-                    className="text-cyan-500 dark:text-cyan-600 hover:underline"
-                    onClick={handleLinkClick}
-                  >
-                    you can view the tweet here
-                  </Link>
-                </>
-              )}
-            </li>
-            {project.longDescription && 
+      {/* Content Section - Fixed Container */}
+      <div className="mb-6 sm:mb-8">
+        <div className="space-y-3 sm:space-y-4">
+          <div className="text-sm sm:text-base md:text-lg text-neutral-800 dark:text-neutral-200 leading-relaxed">
+            {project.longDescription ? (
               project.longDescription.split('\n\n').map((paragraph, index) => (
-                <li key={index} className="text-neutral-600 dark:text-neutral-400">
+                <p key={index} className="text-neutral-600 dark:text-neutral-400 mb-4 last:mb-0">
                   {paragraph}
-                </li>
+                  {index === 0 && project.tweetUrl && (
+                    <>
+                      {' '}
+                      <Link 
+                        href={project.tweetUrl} 
+                        target="_blank" 
+                        className="text-cyan-500 dark:text-cyan-600 hover:underline"
+                        onClick={handleLinkClick}
+                      >
+                        you can view the tweet here
+                      </Link>
+                    </>
+                  )}
+                </p>
               ))
-            }
-          </ul>
+            ) : (
+              <p className="text-neutral-600 dark:text-neutral-400 mb-4">
+                {project.description}
+                {project.tweetUrl && (
+                  <>
+                    {' '}
+                    <Link 
+                      href={project.tweetUrl} 
+                      target="_blank" 
+                      className="text-cyan-500 dark:text-cyan-600 hover:underline"
+                      onClick={handleLinkClick}
+                    >
+                      you can view the tweet here
+                    </Link>
+                  </>
+                )}
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </article>

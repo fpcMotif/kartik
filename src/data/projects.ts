@@ -25,7 +25,7 @@ export const projects: Project[] = [
     id: 'lazycommit',
     title: "Lazy Commit",
     description: "A CLI that writes your git commit messages for you with AI using Groq. Never write a commit message again.",
-    longDescription: "A CLI that writes your git commit messages for you with AI using Groq. Never write a commit message again.",
+    longDescription: "Streamlines git workflow by automatically generating meaningful commit messages using AI\n\nIntegrates seamlessly with existing git repositories and development workflows\n\nSupports multiple commit message styles and customization options\n\nBuilt with modern CLI tools for optimal developer experience and reliability",
     liveLink: "https://lazycommit.vercel.app/",
     githubLink: "https://github.com/KartikLabhshetwar/lazycommit",
     video: 'lazycommit-video',
@@ -38,6 +38,22 @@ export const projects: Project[] = [
       "inquirer",
       "cleye",
       "Typescript",
+    ],
+  },
+  {
+    id: 'quotick',
+    title: "Quotick",
+    description: "A VS Code extension that automatically converts quotes to backticks when typing template literals",
+    longDescription: "Streamlines JavaScript/TypeScript development by automatically converting quotes to backticks for template literals\n\nEnhances developer productivity by eliminating manual quote-to-backtick conversions\n\nSeamlessly integrates with VS Code's editing experience for smooth workflow\n\nSupports multiple file types and provides intelligent context-aware conversions",
+    liveLink: "https://marketplace.visualstudio.com/items?itemName=kartiklabhshetwar.quotick",
+    githubLink: "https://github.com/KartikLabhshetwar/quotick",
+    video: 'quotick',
+    image: '/images/quotick.png',
+    tweetUrl: "",
+    tags: [
+      "Vscode Extension",
+      "Typescript",
+      "Template Literal"
     ],
   },
   {
