@@ -45,7 +45,7 @@ export const projects: Project[] = [
     title: "Quotick",
     description: "A VS Code extension that automatically converts quotes to backticks when typing template literals",
     longDescription: "Streamlines JavaScript/TypeScript development by automatically converting quotes to backticks for template literals\n\nEnhances developer productivity by eliminating manual quote-to-backtick conversions\n\nSeamlessly integrates with VS Code's editing experience for smooth workflow\n\nSupports multiple file types and provides intelligent context-aware conversions",
-    liveLink: "https://marketplace.visualstudio.com/items?itemName=kartiklabhshetwar.quotick",
+    liveLink: "https://quotick.vercel.app/",
     githubLink: "https://github.com/KartikLabhshetwar/quotick",
     video: 'quotick',
     image: '/images/quotick.png',
