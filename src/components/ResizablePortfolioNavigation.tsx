@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { ModeToggle } from '@/components/theme-toggle';
 import {
   Navbar,
@@ -56,11 +55,9 @@ export default function ResizablePortfolioNavigation() {
         >
           <div className="flex flex-col gap-5 w-full">
             {mobileNavItems.map((item, idx) => (
-              <motion.div
+              <div
                 key={`mobile-nav-${idx}`}
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-                transition={{ duration: 0.15, ease: "easeOut" }}
+                className="transform transition-transform duration-400 hover:scale-105 active:scale-95"
               >
                 <Link 
                   href={item.link}
@@ -69,7 +66,7 @@ export default function ResizablePortfolioNavigation() {
                 >
                   {item.name}
                 </Link>
-              </motion.div>
+              </div>
             ))}
             <div className="pt-4 mt-2 border-t border-neutral-200 dark:border-neutral-700">
               <ModeToggle />
