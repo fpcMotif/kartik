@@ -3,7 +3,7 @@
 
 import { ProjectCard } from '@/components/ProjectCard'
 import OnekoCat from '@/components/OnekoCat'
-import MinimalNavigation from '@/components/MinimalNavigation'
+import ResizablePortfolioNavigation from '@/components/ResizablePortfolioNavigation'
 import Link from 'next/link'
 import { FadeInUp, SlideInFromLeft } from '@/components/ui/PageTransitions'
 import { Project } from '@/types/project'
@@ -16,7 +16,7 @@ export default function ProjectDetailClient({ project }: ProjectDetailClientProp
 
   return (
     <div className="min-h-screen w-full bg-white dark:bg-black">
-        <MinimalNavigation />
+        <ResizablePortfolioNavigation />
         <OnekoCat />
 
           {/* Project Detail Section - Full Width with Borders */}

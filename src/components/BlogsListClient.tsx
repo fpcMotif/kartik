@@ -2,7 +2,7 @@
 
 import { BlogCard } from '@/components/BlogCard'
 import OnekoCat from '@/components/OnekoCat'
-import MinimalNavigation from '@/components/MinimalNavigation'
+import ResizablePortfolioNavigation from '@/components/ResizablePortfolioNavigation'
 import { BlogPost } from '@/types/blog'
 import { FadeInUp } from '@/components/ui/PageTransitions'
 
@@ -14,7 +14,7 @@ export default function BlogsListClient({ blogs }: BlogsListClientProps) {
 
   return (
       <div className="min-h-screen w-full bg-white dark:bg-black">
-        <MinimalNavigation />
+        <ResizablePortfolioNavigation />
         <OnekoCat />
           
           {/* Page Content - Swiss Design Layout */}

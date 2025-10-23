@@ -1,13 +1,13 @@
 'use client'
 
 import OnekoCat from "@/components/OnekoCat"
-import MinimalNavigation from "@/components/MinimalNavigation"
+import ResizablePortfolioNavigation from "@/components/ResizablePortfolioNavigation"
 import NewHeroSection from "@/components/NewHeroSection"
 
 export default function Home() {
   return (
       <div>
-        <MinimalNavigation />
+        <ResizablePortfolioNavigation />
         <OnekoCat />
         <div className="pt-16 sm:pt-16">
           <NewHeroSection />

@@ -1,7 +1,7 @@
 'use client'
 
 import OnekoCat from '@/components/OnekoCat'
-import MinimalNavigation from '@/components/MinimalNavigation'
+import ResizablePortfolioNavigation from '@/components/ResizablePortfolioNavigation'
 import { MasonryGrid } from '@/components/MasonryGrid'
 import { Project } from '@/types/project'
 import { motion } from 'framer-motion'
@@ -14,7 +14,7 @@ export default function ProjectsListClient({ projects }: ProjectsListClientProps
 
   return (
       <div className="min-h-screen w-full bg-white dark:bg-black">
-        <MinimalNavigation />
+        <ResizablePortfolioNavigation />
         <OnekoCat />
           
           {/* Page Header */}

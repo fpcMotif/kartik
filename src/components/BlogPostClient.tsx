@@ -4,7 +4,7 @@
 import { BlogContent } from '@/components/BlogContent'
 import Link from 'next/link'
 import OnekoCat from '@/components/OnekoCat'
-import MinimalNavigation from '@/components/MinimalNavigation'
+import ResizablePortfolioNavigation from '@/components/ResizablePortfolioNavigation'
 import { BlogPost } from '@/types/blog'
 import { FadeInUp, SlideInFromLeft } from '@/components/ui/PageTransitions'
 
@@ -16,7 +16,7 @@ export default function BlogPostClient({ blog }: BlogPostClientProps) {
 
   return (
       <div className="min-h-screen w-full bg-white dark:bg-black">
-        <MinimalNavigation />
+        <ResizablePortfolioNavigation />
         <OnekoCat />
           
           {/* Blog Content */}
