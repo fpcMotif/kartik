@@ -54,7 +54,7 @@ export default function ResizablePortfolioNavigation() {
           isOpen={isMobileMenuOpen}
           onClose={() => setIsMobileMenuOpen(false)}
         >
-          <div className="flex flex-col gap-4 w-full">
+          <div className="flex flex-col gap-5 w-full">
             {mobileNavItems.map((item, idx) => (
               <motion.div
                 key={`mobile-nav-${idx}`}
@@ -65,13 +65,13 @@ export default function ResizablePortfolioNavigation() {
                 <Link 
                   href={item.link}
                   onClick={handleItemClick}
-                  className="text-lg font-[family-name:var(--font-instrument-serif)] hover:opacity-80 hover:underline transition-opacity duration-200"
+                  className="text-lg font-[family-name:var(--font-instrument-serif)] hover:opacity-80 hover:underline transition-opacity duration-200 py-1"
                 >
                   {item.name}
                 </Link>
               </motion.div>
             ))}
-            <div className="pt-4 border-t border-neutral-200 dark:border-neutral-700">
+            <div className="pt-4 mt-2 border-t border-neutral-200 dark:border-neutral-700">
               <ModeToggle />
             </div>
           </div>
