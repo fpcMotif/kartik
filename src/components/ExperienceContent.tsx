@@ -22,14 +22,6 @@ export default function ExperienceContent() {
       href: "https://turboml.com/",
       logoUrl: "/turboml.jpg",
     },
-    {
-      company: "Lamarr",
-      position: "Full stack developer Intern",
-      duration: "Nov 2024 – Dec 2024", 
-      description: "Built robust web applications and API integrations. Worked with modern frameworks and cloud technologies to deliver scalable solutions. Collaborated with cross-functional teams to implement user-centric features.",
-      href: "https://www.lamarr.tech/",
-      logoUrl: "/lamarr.png",
-    },
   ];
 
   return (
