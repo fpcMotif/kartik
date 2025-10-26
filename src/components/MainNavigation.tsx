@@ -57,7 +57,7 @@ export default function ResizablePortfolioNavigation() {
             {mobileNavItems.map((item, idx) => (
               <div
                 key={`mobile-nav-${idx}`}
-                className="transform transition-transform duration-400 hover:scale-105 active:scale-95"
+                className="transform transition-transform duration-400"
               >
                 <Link 
                   href={item.link}

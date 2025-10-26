@@ -6,7 +6,6 @@ import { FiArrowUpRight } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
 import Video from "next-video";
-import { useHapticFeedback } from '@/hooks/useHapticFeedback';
 import donezovideo from '/videos/donezo.mp4';
 import mindMentorVideo from '/videos/mind-mentor.mp4';
 import satyaCheckVideo from '/videos/satya-check.mp4';
@@ -47,17 +46,19 @@ const getVideoSource = (videoId: string) => {
 };
 
 export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) => {
-  const { triggerHaptic, isMobile } = useHapticFeedback();
-
-  const handleLinkClick = () => {
-    if (isMobile()) {
-      triggerHaptic('light');
-    }
-  };
 
   if (!isDetailed) {
     return (
-      <Link href={`/projects/${project.id}`} onClick={handleLinkClick}>
+      <Link 
+        href={`/projects/${project.id}`}
+        className="block touch-manipulation active:opacity-75"
+        style={{ 
+          WebkitTapHighlightColor: 'transparent',
+          WebkitTouchCallout: 'none',
+          WebkitUserSelect: 'none',
+          userSelect: 'none'
+        }}
+      >
         <div className="hover:underline py-2 text-base sm:text-lg md:text-xl pb-4 sm:pb-5 border-b border-neutral-600 dark:border-neutral-500">
           {project.title}
         </div>
@@ -75,8 +76,13 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
               <Link 
                 href={project.liveLink} 
                 target="_blank" 
-                className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-1.5 rounded-full hover:opacity-70"
-                onClick={handleLinkClick}
+                className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-1.5 rounded-full hover:opacity-70 touch-manipulation active:opacity-75"
+                style={{ 
+                  WebkitTapHighlightColor: 'transparent',
+                  WebkitTouchCallout: 'none',
+                  WebkitUserSelect: 'none',
+                  userSelect: 'none'
+                }}
               >
                 <FiArrowUpRight className="size-4" />
               </Link>
@@ -85,8 +91,13 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
               <Link 
                 href={project.githubLink} 
                 target="_blank" 
-                className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-1.5 rounded-full hover:opacity-70"
-                onClick={handleLinkClick}
+                className="bg-neutral-200 border-2 border-black dark:bg-neutral-800 dark:border-neutral-500 p-1.5 rounded-full hover:opacity-70 touch-manipulation active:opacity-75"
+                style={{ 
+                  WebkitTapHighlightColor: 'transparent',
+                  WebkitTouchCallout: 'none',
+                  WebkitUserSelect: 'none',
+                  userSelect: 'none'
+                }}
               >
                 <FaGithub className="size-4" />
               </Link>
@@ -146,8 +157,13 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
                       <Link 
                         href={project.tweetUrl} 
                         target="_blank" 
-                        className="text-cyan-500 dark:text-cyan-600 hover:underline"
-                        onClick={handleLinkClick}
+                        className="text-cyan-500 dark:text-cyan-600 hover:underline touch-manipulation active:opacity-75"
+                        style={{ 
+                          WebkitTapHighlightColor: 'transparent',
+                          WebkitTouchCallout: 'none',
+                          WebkitUserSelect: 'none',
+                          userSelect: 'none'
+                        }}
                       >
                         you can view the tweet here
                       </Link>
@@ -164,8 +180,13 @@ export const ProjectCard = ({ project, isDetailed = false }: ProjectCardProps) =
                     <Link 
                       href={project.tweetUrl} 
                       target="_blank" 
-                      className="text-cyan-500 dark:text-cyan-600 hover:underline"
-                      onClick={handleLinkClick}
+                      className="text-cyan-500 dark:text-cyan-600 hover:underline touch-manipulation active:opacity-75"
+                      style={{ 
+                        WebkitTapHighlightColor: 'transparent',
+                        WebkitTouchCallout: 'none',
+                        WebkitUserSelect: 'none',
+                        userSelect: 'none'
+                      }}
                     >
                       you can view the tweet here
                     </Link>

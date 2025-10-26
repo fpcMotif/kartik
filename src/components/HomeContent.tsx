@@ -70,7 +70,7 @@ export default function NewHeroSection() {
               {/* About Section */}
               <Reveal delay={0.1} duration={0.6} amount={0.3}>
                 <ContentSection className="pb-6 sm:pb-8 pt-4 sm:pt-6 px-2 sm:px-0">
-                  <ContentParagraph className="mb-2 text-sm sm:text-base">
+                  <ContentParagraph className="mb-2 text-base sm:text-lg">
                     <span className="font-medium dark:text-white text-black">I build from zero.</span> Whether it&apos;s frontend, backend, full-stack applications, or AI-powered experiences, I work across the entire development lifecycle. From UI/UX to deployment to user feedback, I care less about technology debates and more about delivering results that people love using.
                   </ContentParagraph>
                 </ContentSection>

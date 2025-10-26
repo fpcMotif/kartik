@@ -1,6 +1,5 @@
 'use client';
 import { FaLinkedin, FaXTwitter, FaGithub, FaPaperclip } from "react-icons/fa6";
-import { useHapticFeedback } from '@/hooks/useHapticFeedback';
 
 interface ProfileHeaderProps {
   name?: string
@@ -27,13 +26,6 @@ export default function ProfileHeader({
     resume: "https://drive.google.com/file/d/1iePpSqo5l0cztVSghCf2PfKH7mFTCTzs/view?usp=sharing",
   }
 }: ProfileHeaderProps) {
-  const { triggerHaptic, isMobile } = useHapticFeedback();
-
-  const handleLinkClick = () => {
-    if (isMobile()) {
-      triggerHaptic('light');
-    }
-  };
 
   return (
     <div className="flex-col -mt-10">
@@ -55,33 +47,48 @@ export default function ProfileHeader({
         <div className="flex justify-start space-x-4 mt-3 sm:mt-0 px-4">
         {socialLinks.github && (
             <a 
-              className="hover:opacity-80" 
+              className="hover:opacity-80 touch-manipulation active:opacity-75" 
               href={socialLinks.github} 
               target="_blank" 
               rel="noopener noreferrer"
-              onClick={handleLinkClick}
+              style={{ 
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none'
+              }}
             >
               <FaGithub size={18} />
             </a>
           )}
           {socialLinks.twitter && (
             <a 
-              className="hover:opacity-80" 
+              className="hover:opacity-80 touch-manipulation active:opacity-75" 
               href={socialLinks.twitter} 
               target="_blank" 
               rel="noopener noreferrer"
-              onClick={handleLinkClick}
+              style={{ 
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none'
+              }}
             >
               <FaXTwitter size={18} />
             </a>
           )}
           {socialLinks.resume && (
             <a 
-              className="hover:opacity-80" 
+              className="hover:opacity-80 touch-manipulation active:opacity-75" 
               href={socialLinks.resume} 
               target="_blank" 
               rel="noopener noreferrer"
-              onClick={handleLinkClick}
+              style={{ 
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none'
+              }}
             >
               <FaPaperclip size={18} />
             </a>
@@ -89,11 +96,16 @@ export default function ProfileHeader({
          
           {socialLinks.linkedin && (
             <a 
-              className="hover:opacity-80" 
+              className="hover:opacity-80 touch-manipulation active:opacity-75" 
               href={socialLinks.linkedin} 
               target="_blank" 
               rel="noopener noreferrer"
-              onClick={handleLinkClick}
+              style={{ 
+                WebkitTapHighlightColor: 'transparent',
+                WebkitTouchCallout: 'none',
+                WebkitUserSelect: 'none',
+                userSelect: 'none'
+              }}
             >
               <FaLinkedin size={18} />
             </a>
