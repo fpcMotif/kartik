@@ -4,8 +4,6 @@ import { Project } from '@/types/project'
 import Link from "next/link";
 import Image from "next/image";
 import Video from "next-video";
-import { motion } from 'framer-motion';
-import { useHapticFeedback } from '@/hooks/useHapticFeedback';
 import donezovideo from '/videos/donezo.mp4';
 import mindMentorVideo from '/videos/mind-mentor.mp4';
 import satyaCheckVideo from '/videos/satya-check.mp4';
@@ -45,24 +43,36 @@ const getVideoSource = (videoId: string) => {
 
 export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCardProps) => {
   const videoSource = project.video ? getVideoSource(project.video) : null;
-  const { triggerHaptic, isMobile } = useHapticFeedback();
 
-  const handleCardClick = () => {
-    if (isMobile()) {
-      triggerHaptic('light');
-    }
+  const playTapSound = () => {
+    // Create a simple tap/click sound using Web Audio API
+    const AudioContextClass = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    const audioContext = new AudioContextClass();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    oscillator.frequency.value = 800; // Higher pitch for a crisp click
+    oscillator.type = 'sine';
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.1);
   };
 
   return (
-    <Link href={`/projects/${project.id}`} className="block h-full">
-      <motion.div 
+    <Link href={`/projects/${project.id}`} className="block h-full touch-manipulation active:opacity-75" style={{ 
+      WebkitTapHighlightColor: 'transparent',
+      WebkitTouchCallout: 'none',
+      WebkitUserSelect: 'none',
+      userSelect: 'none'
+    }} onClick={playTapSound}>
+      <div 
         className={`rounded-xl border border-neutral-300 dark:border-[#2E2E2E] bg-white dark:bg-[#111111] p-2 shadow-sm dark:shadow-none cursor-pointer h-full flex flex-col ${className}`}
-        whileHover={{ 
-          scale: 1.005,
-          transition: { duration: 0.2, ease: "easeOut" }
-        }}
-        whileTap={{ scale: 0.995 }}
-        onClick={handleCardClick}
       >
         {/* Media Section - Fixed Height */}
         <div className="relative overflow-hidden rounded-lg h-48 sm:h-56 flex-shrink-0">
@@ -112,7 +122,7 @@ export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCa
             {project.liveLink ? "More Info →" : project.githubLink ? "More Info →" : "Read Article →"}
           </div>
         </div>
-      </motion.div>
+      </div>
     </Link>
   );
 };
