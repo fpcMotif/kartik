@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import {Inter_Tight, Instrument_Serif} from "next/font/google";
+import { Instrument_Serif, Geist as GeistSans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { ScrollToTop } from "@/components/ui/ScrollAnimations"
 import BackgroundMusic from "@/components/BackgroundMusicWrapper"
 
-const inter = Inter_Tight({
+// const inter = Inter_Tight({
+//   weight: '400',
+//   style: 'normal',
+//   subsets: ['latin']
+// })
+
+const geistSans = GeistSans({
   weight: '400',
   style: 'normal',
-  subsets: ['latin']
+  subsets: ['latin'],
+  variable: '--font-geist-sans'
 })
+
 
 const instrumentSerif = Instrument_Serif({
   weight: ['400'],
@@ -46,7 +54,7 @@ export default function RootLayout({
       <head>
         <meta name="google-site-verification" content="tMCNs2fgM6voEHBd3JsySffMFSiUCQDEFEF1iYI3-ZQ" />
       </head>
-      <body className={`${inter.className} ${instrumentSerif.variable}`} suppressHydrationWarning={true}>
+      <body className={`${geistSans.className} ${instrumentSerif.variable}`} suppressHydrationWarning={true}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
