@@ -43,9 +43,9 @@ interface TechIconProps {
 
 function TechIcon({ tech, className = "" }: TechIconProps) {
   return (
-    <div className={`flex flex-col items-center justify-center p-3 transition-all duration-300 hover:scale-105 min-w-[90px] group ${className}`}>
+    <div className={`flex flex-col items-center justify-center p-2 sm:p-3 transition-all duration-300 hover:scale-105 min-w-[80px] sm:min-w-[90px] group ${className}`}>
       {/* Icon Container */}
-      <div className="relative w-10 h-10 mb-2 flex items-center justify-center">
+      <div className="relative w-8 h-8 sm:w-10 sm:h-10 mb-1.5 sm:mb-2 flex items-center justify-center">
         {/* Try to load actual SVG, fallback to grey placeholder */}
         <div className="w-full h-full relative">
           <Image
@@ -72,7 +72,7 @@ function TechIcon({ tech, className = "" }: TechIconProps) {
       </div>
       
       {/* Tech Name */}
-      <span className="text-xs text-center font-medium text-gray-700 dark:text-gray-300 leading-tight group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
+      <span className="text-[10px] sm:text-xs text-center font-medium text-gray-700 dark:text-gray-300 leading-tight group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
         {tech.name}
       </span>
     </div>
@@ -88,10 +88,10 @@ export default function TechStackMarquee({ className = "" }: TechStackMarqueePro
     <div className={`w-full ${className}`}>
       {/* Title - matching other component styles */}
       <div className="mb-4">
-        <h2 className="text-lg sm:text-lg opacity-20 leading-relaxed -tracking-[0.01em] mb-2">
+        <h2 className="text-base sm:text-lg opacity-20 leading-relaxed -tracking-[0.01em] mb-2">
           Stack I use
         </h2>
-        <p className="text-md dark:text-white/70 text-black/70 leading-relaxed">
+        <p className="text-sm sm:text-base dark:text-white/70 text-black/70 leading-relaxed">
           Technologies I work with to build products that solve real problems
         </p>
       </div>

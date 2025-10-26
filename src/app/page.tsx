@@ -9,7 +9,7 @@ export default function Home() {
       <div>
         <ResizablePortfolioNavigation />
         <OnekoCat />
-        <div className="pt-16 sm:pt-16">
+        <div className="pt-12 sm:pt-16">
           <NewHeroSection />
         </div>
       </div>

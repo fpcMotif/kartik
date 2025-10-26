@@ -51,7 +51,7 @@ export default function OpenSourceContributionsCard() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="rounded-lg bg-white dark:bg-[hsl(0,3%,6.5%)] p-4 sm:p-6"
+      className="rounded-lg bg-white dark:bg-[hsl(0,3%,6.5%)] p-3 sm:p-6"
     >
       {loading ? (
         <div className="space-y-4">

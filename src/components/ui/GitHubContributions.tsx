@@ -18,9 +18,19 @@ const GitHubContributions: React.FC<GitHubContributionsProps> = ({
 }) => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
+  const [isMobile, setIsMobile] = React.useState(false);
 
   React.useEffect(() => {
     setMounted(true);
+    
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   const theme = {
@@ -34,23 +44,30 @@ const GitHubContributions: React.FC<GitHubContributionsProps> = ({
     );
   }
 
+  // Responsive sizing - larger on desktop, smaller on mobile
+  const fontSize = isMobile ? 8 : (compact ? 13 : 15);
+  const blockSize = isMobile ? 8 : (compact ? 11 : 13);
+  const blockMargin = isMobile ? 2 : (compact ? 2 : 4);
+
   return (
-    <div className={`relative overflow-hidden rounded-xl ${className}`}>
+    <div className={`relative overflow-x-auto rounded-xl ${className}`}>
       <motion.div
-        className="w-full overflow-hidden rounded-xl bg-transparent backdrop-blur-none border-0 hover:shadow-sm transition-shadow duration-300"
+        className="w-full overflow-visible rounded-xl bg-transparent backdrop-blur-none border-0 hover:shadow-sm transition-shadow duration-300 min-w-max"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className={`${compact ? 'p-2' : 'p-3'} hover:scale-[1.005] transition-transform duration-300`}>
-          
+        <div 
+          className={`${compact ? 'p-2' : 'p-3'} hover:scale-[1.005] transition-transform duration-300`}
+          style={{ fontSize: `${fontSize}px` }}
+        >
           <GitHubCalendar
             username={username}
             colorScheme={resolvedTheme as "light" | "dark"}
-            fontSize={compact ? 14 : 12}
-            blockSize={compact ? 10 : 12}
-            blockMargin={compact ? 2 : 4}
-            showWeekdayLabels={!compact}
+            fontSize={fontSize}
+            blockSize={blockSize}
+            blockMargin={blockMargin}
+            showWeekdayLabels={!compact && !isMobile}
             theme={theme}
           />
         </div>

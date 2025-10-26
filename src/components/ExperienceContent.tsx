@@ -49,7 +49,7 @@ export default function ExperienceContent() {
             
             {/* Company Info */}
             <div className="flex-1 min-w-0">
-              <h3 className="font-medium dark:text-white text-black text-base sm:text-lg">
+              <h3 className="font-medium dark:text-white text-black text-sm sm:text-lg">
                 {exp.href ? (
                   <Link 
                     href={exp.href} 
@@ -62,7 +62,7 @@ export default function ExperienceContent() {
                   exp.company
                 )}
               </h3>
-              <p className="text-xs sm:text-sm opacity-70">
+              <p className="text-[10px] sm:text-sm opacity-70">
                 {exp.position}
               </p>
             </div>
@@ -70,7 +70,7 @@ export default function ExperienceContent() {
           
           {/* Right side - Duration */}
           <div className="pl-13 sm:pl-0 sm:text-right flex-shrink-0">
-            <p className="text-xs sm:text-sm opacity-50">
+            <p className="text-[10px] sm:text-sm opacity-50">
               {exp.duration}
             </p>
           </div>

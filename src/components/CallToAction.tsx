@@ -27,18 +27,18 @@ export default function CallToAction({
   };
 
   return (
-    <div className="sm:px-12 px-6 mt-6 pb-8 sm:flex sm:justify-between sm:items-center w-full flex-col">
-      <p className="opacity-50 font-[family-name:var(--font-instrument-serif)] text-xl mb-4 sm:mb-3">{preText}</p>
-      <div className="gradient bg-gradient-to-b from-[#252525] to-[#3B3B3B] rounded-lg p-[1px] relative overflow-hidden w-full sm:w-auto mt-4 sm:mt-0">
+    <div className="mt-4 sm:mt-6 pb-6 sm:pb-8 sm:flex sm:justify-between sm:items-center w-full flex-col">
+      <p className="opacity-50 font-[family-name:var(--font-instrument-serif)] text-base sm:text-xl mb-3 sm:mb-3">{preText}</p>
+      <div className="gradient bg-gradient-to-b from-[#252525] to-[#3B3B3B] rounded-lg p-[1px] relative overflow-hidden w-full sm:w-auto mt-3 sm:mt-0">
         <a 
           href={linkUrl} 
           target="_blank" 
           rel="noopener noreferrer" 
-          className="gradient h-full bg-[#1C1C1C] rounded-lg text-white text-sm sm:text-md px-2 sm:px-3 py-2 sm:py-1.5 w-full flex items-center justify-center transition-all group relative overflow-hidden"
+          className="gradient h-full bg-[#1C1C1C] rounded-lg text-white text-sm sm:text-md px-4 sm:px-6 py-2.5 sm:py-2 w-full flex items-center justify-center transition-all group relative overflow-hidden"
           style={{ '--x': '-90.45457%' } as React.CSSProperties}
           onClick={handleButtonClick}
         >
-          <div className="flex items-center gap-2 group-hover:gap-8 sm:group-hover:gap-12 transition-all duration-300 relative z-20">
+          <div className="flex items-center gap-2 group-hover:gap-6 sm:group-hover:gap-12 transition-all duration-300 relative z-20">
             <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden flex-shrink-0">
               <Image 
                 alt={profileAlt} 

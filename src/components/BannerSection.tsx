@@ -28,8 +28,8 @@ export default function BannerSection({
         <BannerOverlay position="bottom" />
         <BannerOverlay position="left" />
         <BannerOverlay position="right" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <p className="text-white text-xl italic font-[family-name:var(--font-instrument-serif)]">{quote}</p>
+        <div className="absolute inset-0 flex items-center justify-center px-4">
+          <p className="text-white text-base sm:text-xl italic font-[family-name:var(--font-instrument-serif)] text-center">{quote}</p>
         </div>
       </div>
     </div>
