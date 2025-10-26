@@ -2,7 +2,7 @@
 
 import { BlogCard } from '@/components/BlogCard'
 import OnekoCat from '@/components/OnekoCat'
-import ResizablePortfolioNavigation from '@/components/ResizablePortfolioNavigation'
+import ResizablePortfolioNavigation from '@/components/MainNavigation'
 import { BlogPost } from '@/types/blog'
 
 interface BlogsListClientProps {

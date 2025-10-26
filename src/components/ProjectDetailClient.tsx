@@ -3,7 +3,7 @@
 
 import { ProjectCard } from '@/components/ProjectCard'
 import OnekoCat from '@/components/OnekoCat'
-import ResizablePortfolioNavigation from '@/components/ResizablePortfolioNavigation'
+import ResizablePortfolioNavigation from '@/components/MainNavigation'
 import Link from 'next/link'
 import { FadeInUp, SlideInFromLeft } from '@/components/ui/PageTransitions'
 import { Project } from '@/types/project'

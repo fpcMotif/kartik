@@ -4,7 +4,7 @@
 import { BlogContent } from '@/components/BlogContent'
 import Link from 'next/link'
 import OnekoCat from '@/components/OnekoCat'
-import ResizablePortfolioNavigation from '@/components/ResizablePortfolioNavigation'
+import ResizablePortfolioNavigation from '@/components/MainNavigation'
 import { BlogPost } from '@/types/blog'
 import { FadeInUp, SlideInFromLeft } from '@/components/ui/PageTransitions'
 

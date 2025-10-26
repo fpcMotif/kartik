@@ -11,7 +11,7 @@ import ExperienceContent from './ExperienceContent'
 import Reachout from './Reachout'
 import CallToAction from './CallToAction'
 import ContributionsDisplay from './ContributionsDisplay'
-import OpenSourceContributionsCard from './OpenSourceContributionsCard'
+import OpenSourceContributionsCard from './ContributionCard'
 import TechStackMarquee from './TechStackMarquee'
 import { Reveal } from './Reveal'
 

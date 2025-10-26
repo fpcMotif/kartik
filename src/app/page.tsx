@@ -1,8 +1,8 @@
 'use client'
 
 import OnekoCat from "@/components/OnekoCat"
-import ResizablePortfolioNavigation from "@/components/ResizablePortfolioNavigation"
-import NewHeroSection from "@/components/NewHeroSection"
+import ResizablePortfolioNavigation from "@/components/MainNavigation"
+import NewHeroSection from "@/components/HomeContent"
 
 export default function Home() {
   return (

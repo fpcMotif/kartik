@@ -1,7 +1,7 @@
 'use client'
 
 import OnekoCat from '@/components/OnekoCat'
-import ResizablePortfolioNavigation from '@/components/ResizablePortfolioNavigation'
+import ResizablePortfolioNavigation from '@/components/MainNavigation'
 import { MasonryGrid } from '@/components/MasonryGrid'
 import { Project } from '@/types/project'
 
