@@ -4,6 +4,7 @@ import { Project } from '@/types/project'
 import Link from "next/link";
 import Image from "next/image";
 import Video from "next-video";
+import { useState } from 'react';
 import donezovideo from '/videos/donezo.mp4';
 import mindMentorVideo from '/videos/mind-mentor.mp4';
 import satyaCheckVideo from '/videos/satya-check.mp4';
@@ -42,6 +43,7 @@ const getVideoSource = (videoId: string) => {
 };
 
 export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
   const videoSource = project.video ? getVideoSource(project.video) : null;
 
   const playTapSound = () => {
@@ -65,21 +67,29 @@ export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCa
   };
 
   return (
-    <Link href={`/projects/${project.id}`} className="block h-full touch-manipulation active:opacity-75" style={{ 
-      WebkitTapHighlightColor: 'transparent',
-      WebkitTouchCallout: 'none',
-      WebkitUserSelect: 'none',
-      userSelect: 'none'
-    }} onClick={playTapSound}>
+    <Link 
+      href={`/projects/${project.id}`} 
+      className="block h-full touch-manipulation active:opacity-75" 
+      style={{ 
+        WebkitTapHighlightColor: 'transparent',
+        WebkitTouchCallout: 'none',
+        WebkitUserSelect: 'none',
+        userSelect: 'none'
+      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onClick={playTapSound}
+    >
       <div 
         className={`rounded-xl border border-neutral-300 dark:border-[#2E2E2E] bg-white dark:bg-[#111111] p-2 shadow-sm dark:shadow-none cursor-pointer h-full flex flex-col ${className}`}
       >
         {/* Media Section - Fixed Height */}
         <div className="relative overflow-hidden rounded-lg h-48 sm:h-56 flex-shrink-0">
           <div className="relative w-full h-full overflow-hidden rounded-lg">
-            {videoSource ? (
+            {videoSource && isHovered ? (
               <div className="relative h-full w-full">
                 <Video
+                  key={project.id}
                   src={videoSource}
                   poster={project.image}
                   className="w-full h-full rounded-sm object-cover"
@@ -100,8 +110,7 @@ export const MasonryProjectCard = ({ project, className = "" }: MasonryProjectCa
                 style={{ color: 'transparent' }}
                 sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                 quality={75}
-                loading="lazy"
-                priority={false}
+                priority={true}
               />
             ) : (
               <div className="w-full h-full bg-gradient-to-br from-cyan-400/20 via-blue-500/20 to-purple-600/20 rounded-lg" />
