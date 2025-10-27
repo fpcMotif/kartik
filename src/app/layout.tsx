@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { ScrollToTop } from "@/components/ui/ScrollAnimations"
 import BackgroundMusic from "@/components/BackgroundMusicWrapper"
+import { MusicProvider } from "@/components/MusicContext"
 
 // const inter = Inter_Tight({
 //   weight: '400',
@@ -61,11 +62,13 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <MusicProvider>
             <div className="relative z-10">
               {children}
             </div>
             <ScrollToTop />
             <BackgroundMusic />
+          </MusicProvider>
         </ThemeProvider>
         <script
           src="https://script.refix.ai/script.min.js"

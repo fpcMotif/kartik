@@ -2,16 +2,18 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { Howl } from 'howler'
+import { useMusic } from './MusicContext'
 
 // Singleton pattern to ensure only one audio instance
 let isInitialized = false
 
 export default function BackgroundMusic() {
-  const [isPlaying, setIsPlaying] = useState(false)
+  const { isPlaying, setIsPlaying, setSoundInstance } = useMusic()
   const [hasStarted, setHasStarted] = useState(false)
   const [isClient, setIsClient] = useState(false)
   const retryCountRef = useRef(0)
   const maxRetries = 3
+  const soundRef = useRef<Howl | null>(null)
 
   // Ensure we're on the client side
   useEffect(() => {
@@ -43,6 +45,13 @@ export default function BackgroundMusic() {
         // Apply smooth fade-in for cleaner audio experience
         sound.fade(0, 0.05, 2000)
       },
+      onpause: () => {
+        setIsPlaying(false)
+        console.log('⏸ Background music paused')
+      },
+      onstop: () => {
+        setIsPlaying(false)
+      },
       onplayerror: (id: number, error: unknown) => {
         console.log('Play error:', error)
         retryCountRef.current++
@@ -70,6 +79,8 @@ export default function BackgroundMusic() {
     })
 
     // Store reference to prevent garbage collection
+    soundRef.current = sound
+    setSoundInstance(sound)
 
     // Function to start music with smooth fade-in
     const startMusic = () => {
