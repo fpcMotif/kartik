@@ -3,6 +3,7 @@
 import { BlogCard } from '@/components/BlogCard'
 import OnekoCat from '@/components/OnekoCat'
 import ResizablePortfolioNavigation from '@/components/MainNavigation'
+import FadeIn from '@/components/FadeIn'
 import { BlogPost } from '@/types/blog'
 
 interface BlogsListClientProps {
@@ -23,12 +24,16 @@ export default function BlogsListClient({ blogs }: BlogsListClientProps) {
                 
                 {/* Header - Minimal Typography */}
                 <div className="mb-16 sm:mb-20">
-                  <h1 className="text-2xl sm:text-3xl font-[family-name:var(--font-instrument-serif)] font-medium mb-4 text-neutral-900 dark:text-neutral-100 tracking-tight">
-                    Blogs
-                  </h1>
-                  <p className="text-lg text-neutral-500 dark:text-neutral-400 tracking-wide">
-                    Technical writings and thoughts
-                  </p>
+                  <FadeIn delay={0.1} duration={0.5}>
+                    <h1 className="text-2xl sm:text-3xl font-[family-name:var(--font-instrument-serif)] font-medium mb-4 text-neutral-900 dark:text-neutral-100 tracking-tight">
+                      Blogs
+                    </h1>
+                  </FadeIn>
+                  <FadeIn delay={0.2} duration={0.5}>
+                    <p className="text-lg text-neutral-500 dark:text-neutral-400 tracking-wide">
+                      Technical writings and thoughts
+                    </p>
+                  </FadeIn>
                 </div>
                 
                 {/* Blog List - Clean Grid */}
@@ -39,11 +44,13 @@ export default function BlogsListClient({ blogs }: BlogsListClientProps) {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-16 sm:py-20">
-                    <p className="text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
-                      Coming soon
-                    </p>
-                  </div>
+                  <FadeIn delay={0.3} duration={0.5}>
+                    <div className="text-center py-16 sm:py-20">
+                      <p className="text-sm text-neutral-500 dark:text-neutral-400 uppercase tracking-wide">
+                        Coming soon
+                      </p>
+                    </div>
+                  </FadeIn>
                 )}
               </div>
             </div>
