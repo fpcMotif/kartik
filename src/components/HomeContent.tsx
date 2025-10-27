@@ -24,7 +24,7 @@ export default function NewHeroSection() {
         <DiagonalPattern side="right" />
         
         {/* Main Content */}
-        <div className="mx-auto sm:w-[calc(100%-120px)] w-full max-w-4xl px-4 sm:px-0">
+        <div className="mx-auto sm:w-[calc(100%-120px)] w-full max-w-4xl sm:px-0">
           {/* Banner Section */}
           <Reveal delay={0.1}>
             <BannerSection 
@@ -82,9 +82,11 @@ export default function NewHeroSection() {
 
                {/* Experience Section */}
               <Reveal delay={0.1}>
-                <div className="sm:px-12 px-4 py-2">
-                  <h2 className="text-base sm:text-xl mb-3 opacity-20 mt-4 sm:mt-6">Professional Experience</h2>
-                  <ExperienceContent />
+                <div className="sm:px-12 py-2">
+                  <h2 className="text-base sm:text-xl mb-3 opacity-20 mt-4 sm:mt-6 px-4">Professional Experience</h2>
+                  <div className="px-4">
+                    <ExperienceContent />
+                  </div>
                 </div>
               </Reveal>
 
@@ -94,9 +96,9 @@ export default function NewHeroSection() {
               
                  {/* Technical Contributions */}
               <Reveal delay={0.1}>
-                <div className="sm:px-12 px-4 py-2">
-                  <h2 className="text-base sm:text-xl mb-3 opacity-20 mt-4 sm:mt-6">Technical Contributions</h2>
-                  <div className="space-y-3 sm:space-y-4 dark:text-white/70 text-black/70 pb-4 sm:pb-6">
+                <div className="sm:px-12 py-2">
+                  <h2 className="text-base sm:text-xl mb-3 opacity-20 mt-4 sm:mt-6 px-4">Technical Contributions</h2>
+                  <div className="px-4 space-y-3 sm:space-y-4 dark:text-white/70 text-black/70 pb-4 sm:pb-6">
                     <ContentParagraph className="text-sm sm:text-base">
                       <span className="font-medium dark:text-white text-black">At Turbo ML,</span> I spent 3 months building some pretty cool stuff. Think Redis Sorted Sets handling time-based tasks under 24-hour constraints, WhatsApp Business API integrations with custom commands, and secure MCP protocols using hash-based user identification. The kind of work that keeps you up at night because it&apos;s actually interesting.
                     </ContentParagraph>
@@ -141,8 +143,10 @@ export default function NewHeroSection() {
               
               {/* Tech Stack Section */}
               <Reveal delay={0.1}>
-                <div className="sm:px-12 px-4 mt-4 sm:mt-6 mb-4 sm:mb-6">
-                  <TechStackMarquee className="w-full" />
+                <div className="sm:px-12 mt-4 sm:mt-6 mb-4 sm:mb-6">
+                  <div className="px-4">
+                    <TechStackMarquee className="w-full" />
+                  </div>
                 </div>
               </Reveal>
               
@@ -152,11 +156,13 @@ export default function NewHeroSection() {
               
               {/* Open Source Contributions Section */}
               <Reveal delay={0.1}>
-                <div className="sm:px-12 px-4 mt-4">
-                  <h2 className="text-base sm:text-xl opacity-20 mt-4 sm:mt-8 sm:ml-5 leading-relaxed -tracking-[0.01em] mb-4">
+                <div className="sm:px-12 mt-4">
+                  <h2 className="text-base sm:text-xl opacity-20 mt-4 sm:mt-8 sm:ml-5 leading-relaxed -tracking-[0.01em] mb-4 px-4">
                     Open Source Contributions <span className="opacity-20">●</span> {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
                   </h2>
-                  <OpenSourceContributionsCard />
+                  <div className="px-4">
+                    <OpenSourceContributionsCard />
+                  </div>
                 </div>
               </Reveal>
               
