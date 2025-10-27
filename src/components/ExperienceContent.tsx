@@ -25,7 +25,7 @@ export default function ExperienceContent() {
   ];
 
   return (
-    <div className="space-y-6 dark:text-white/70 text-black/70 pb-6">
+    <div className="space-y-4 dark:text-white/70 text-black/70 pb-4">
       {experiences.map((exp) => (
         <div key={exp.company} className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
           {/* Left side - Logo, Company & Position */}

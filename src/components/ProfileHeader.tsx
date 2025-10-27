@@ -35,8 +35,8 @@ export default function ProfileHeader({
         aria-label={name}
         style={{ backgroundImage: `url("${profileImage}")` }}
       />
-      <div className="text-left sm:flex sm:justify-between sm:items-center w-full sm:px-8 px-0 flex-col sm:flex-row">
-        <div className="px-4">
+      <div className="text-left sm:flex sm:justify-between sm:items-center w-full sm:px-8 px-4 flex-col sm:flex-row">
+        <div className="px-0">
           <h1 className="font-[family-name:var(--font-instrument-serif)] text-2xl sm:text-4xl tracking-[0.01em] font-medium mb-0">
             {name}
           </h1>
@@ -44,7 +44,7 @@ export default function ProfileHeader({
             {age} • {title}
           </p>
         </div>
-        <div className="flex justify-start space-x-4 mt-3 sm:mt-0 px-4">
+        <div className="flex justify-start space-x-4 mt-3 sm:mt-0 px-0">
         {socialLinks.github && (
             <a 
               className="hover:opacity-80 touch-manipulation active:opacity-75" 

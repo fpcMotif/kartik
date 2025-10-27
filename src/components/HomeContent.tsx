@@ -82,21 +82,21 @@ export default function NewHeroSection() {
 
                {/* Experience Section */}
               <Reveal delay={0.1} duration={0.6} amount={0.3}>
-                <div className="sm:px-12 px-4 py-4">
-                  <h2 className="text-base sm:text-xl mb-4 opacity-20 mt-6 sm:mt-8">Professional Experience</h2>
+                <div className="sm:px-12 px-4 py-2">
+                  <h2 className="text-base sm:text-xl mb-3 opacity-20 mt-4 sm:mt-6">Professional Experience</h2>
                   <ExperienceContent />
                 </div>
               </Reveal>
 
                 <Reveal delay={0.05} duration={0.4} y={15} amount={0.8}>
-                  <SectionBorder className="mt-6" />
+                  <SectionBorder className="mt-4" />
                 </Reveal>
               
                  {/* Technical Contributions */}
               <Reveal delay={0.1} duration={0.6} amount={0.2}>
-                <div className="sm:px-12 px-4 py-4">
-                  <h2 className="text-base sm:text-xl mb-4 opacity-20 mt-6 sm:mt-8">Technical Contributions</h2>
-                  <div className="space-y-4 sm:space-y-6 dark:text-white/70 text-black/70 pb-6 sm:pb-8">
+                <div className="sm:px-12 px-4 py-2">
+                  <h2 className="text-base sm:text-xl mb-3 opacity-20 mt-4 sm:mt-6">Technical Contributions</h2>
+                  <div className="space-y-3 sm:space-y-4 dark:text-white/70 text-black/70 pb-4 sm:pb-6">
                     <ContentParagraph className="text-sm sm:text-base">
                       <span className="font-medium dark:text-white text-black">At Turbo ML,</span> I spent 3 months building some pretty cool stuff. Think Redis Sorted Sets handling time-based tasks under 24-hour constraints, WhatsApp Business API integrations with custom commands, and secure MCP protocols using hash-based user identification. The kind of work that keeps you up at night because it&apos;s actually interesting.
                     </ContentParagraph>
