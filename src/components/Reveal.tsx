@@ -1,40 +1,53 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
 interface RevealProps {
   children: ReactNode;
-  delay?: number;
-  duration?: number;
   className?: string;
-  y?: number;
-  once?: boolean;
-  amount?: number;
+  delay?: number;
 }
 
 export const Reveal = ({ 
   children, 
-  delay = 0, 
-  duration = 0.6,
   className = '',
-  y = 30,
-  once = true,
-  amount = 0.3
+  delay = 0
 }: RevealProps) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          if (delay > 0) {
+            setTimeout(() => {
+              setIsVisible(true);
+            }, delay * 1000);
+          } else {
+            setIsVisible(true);
+          }
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, [delay]);
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once, amount }}
-      transition={{ 
-        duration, 
-        delay,
-        ease: [0.25, 0.25, 0, 1]
-      }}
-      className={className}
+    <div 
+      ref={ref}
+      className={`${className} transition-all duration-500 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-5'
+      }`}
     >
       {children}
-    </motion.div>
+    </div>
   );
 };

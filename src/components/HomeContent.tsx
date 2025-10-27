@@ -26,7 +26,7 @@ export default function NewHeroSection() {
         {/* Main Content */}
         <div className="mx-auto sm:w-[calc(100%-120px)] w-full max-w-4xl px-4 sm:px-0">
           {/* Banner Section */}
-          <Reveal delay={0.1} duration={0.8} amount={0.2}>
+          <Reveal delay={0.1}>
             <BannerSection 
               bannerImage="/mountain.jpg"
               quote="Build • Ship • Learn • Repeat"
@@ -34,7 +34,7 @@ export default function NewHeroSection() {
           </Reveal>
           
           {/* Profile Header */}
-          <Reveal delay={0.2} duration={0.7} amount={0.3}>
+          <Reveal delay={0.2}>
             <ProfileHeader 
               name="Kartik Labhshetwar"
               age="21"
@@ -53,7 +53,7 @@ export default function NewHeroSection() {
           <div className="prose dark:prose-invert max-w-none">
             <div className="text-base">
               {/* Current Role Section */}
-              <Reveal delay={0.1} duration={0.6} amount={0.4}>
+              <Reveal delay={0.1}>
                 <ContentSection
                   subtitle="AI Engineer | Full-stack Developer"
                   title=''
@@ -63,12 +63,12 @@ export default function NewHeroSection() {
                 </ContentSection>
               </Reveal>
               
-              <Reveal delay={0.05} duration={0.4} y={20} amount={0.8}>
+              <Reveal delay={0.05}>
                 <SectionBorder className="mt-6" />
               </Reveal>
               
               {/* About Section */}
-              <Reveal delay={0.1} duration={0.6} amount={0.3}>
+              <Reveal delay={0.1}>
                 <ContentSection className="pb-6 sm:pb-8 pt-4 sm:pt-6 px-2 sm:px-0">
                   <ContentParagraph className="mb-2 text-base sm:text-lg">
                     <span className="font-medium dark:text-white text-black">I build from zero.</span> Whether it&apos;s frontend, backend, full-stack applications, or AI-powered experiences, I work across the entire development lifecycle. From UI/UX to deployment to user feedback, I care less about technology debates and more about delivering results that people love using.
@@ -76,24 +76,24 @@ export default function NewHeroSection() {
                 </ContentSection>
               </Reveal>
 
-              <Reveal delay={0.05} duration={0.4} y={15} amount={0.8}>
+              <Reveal delay={0.05}>
                 <SectionBorder className="mt-6" />
               </Reveal>
 
                {/* Experience Section */}
-              <Reveal delay={0.1} duration={0.6} amount={0.3}>
+              <Reveal delay={0.1}>
                 <div className="sm:px-12 px-4 py-2">
                   <h2 className="text-base sm:text-xl mb-3 opacity-20 mt-4 sm:mt-6">Professional Experience</h2>
                   <ExperienceContent />
                 </div>
               </Reveal>
 
-                <Reveal delay={0.05} duration={0.4} y={15} amount={0.8}>
+                <Reveal delay={0.05}>
                   <SectionBorder className="mt-4" />
                 </Reveal>
               
                  {/* Technical Contributions */}
-              <Reveal delay={0.1} duration={0.6} amount={0.2}>
+              <Reveal delay={0.1}>
                 <div className="sm:px-12 px-4 py-2">
                   <h2 className="text-base sm:text-xl mb-3 opacity-20 mt-4 sm:mt-6">Technical Contributions</h2>
                   <div className="space-y-3 sm:space-y-4 dark:text-white/70 text-black/70 pb-4 sm:pb-6">
@@ -115,12 +115,12 @@ export default function NewHeroSection() {
 
 
               
-              <Reveal delay={0.05} duration={0.4} y={15} amount={0.8}>
+              <Reveal delay={0.05}>
                 <SectionBorder className="mt-0 pt-0" />
               </Reveal>
               
               {/* GitHub Contributions */}
-              <Reveal delay={0.1} duration={0.6} amount={0.2}>
+              <Reveal delay={0.1}>
                 <div className="sm:px-12 px-0 mt-4">
                   <h2 className="text-base sm:text-xl opacity-20 leading-relaxed -tracking-[0.01em] mb-4 px-4">
                     GitHub Contributions <span className="opacity-20">●</span> @KartikLabhshetwar
@@ -135,23 +135,23 @@ export default function NewHeroSection() {
                 </div>
               </Reveal>
               
-              <Reveal delay={0.05} duration={0.4} y={15} amount={0.8}>
+              <Reveal delay={0.05}>
                 <SectionBorder className="mt-0 pt-0" />
               </Reveal>
               
               {/* Tech Stack Section */}
-              <Reveal delay={0.1} duration={0.6} amount={0.3}>
+              <Reveal delay={0.1}>
                 <div className="sm:px-12 px-4 mt-4 sm:mt-6 mb-4 sm:mb-6">
                   <TechStackMarquee className="w-full" />
                 </div>
               </Reveal>
               
-              <Reveal delay={0.05} duration={0.4} y={15} amount={0.8}>
+              <Reveal delay={0.05}>
                 <SectionBorder className="mt-0 pt-0" />
               </Reveal>
               
               {/* Open Source Contributions Section */}
-              <Reveal delay={0.1} duration={0.6} amount={0.2}>
+              <Reveal delay={0.1}>
                 <div className="sm:px-12 px-4 mt-4">
                   <h2 className="text-base sm:text-xl opacity-20 mt-4 sm:mt-8 sm:ml-5 leading-relaxed -tracking-[0.01em] mb-4">
                     Open Source Contributions <span className="opacity-20">●</span> {new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}
@@ -160,23 +160,23 @@ export default function NewHeroSection() {
                 </div>
               </Reveal>
               
-              <Reveal delay={0.05} duration={0.4} y={15} amount={0.8}>
+              <Reveal delay={0.05}>
                 <SectionBorder className="mt-4 pt-0" />
               </Reveal>
 
               {/* call to action*/}
-              <Reveal delay={0.1} duration={0.6} amount={0.4}>
+              <Reveal delay={0.1}>
                 <div className="px-4 sm:px-0">
                   <CallToAction/>
                 </div>
               </Reveal>
               
-              <Reveal delay={0.05} duration={0.4} y={15} amount={0.8}>
+              <Reveal delay={0.05}>
                 <SectionBorder className="mt-0 pt-0" />
               </Reveal>
               
               {/* Reachout Section */}
-              <Reveal delay={0.1} duration={0.6} amount={0.3}>
+              <Reveal delay={0.1}>
                 <div className="mt-4 sm:mt-6">
                   <Reachout 
                     title="Let's connect"

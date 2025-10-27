@@ -39,8 +39,10 @@ export default function BlogsListClient({ blogs }: BlogsListClientProps) {
                 {/* Blog List - Clean Grid */}
                 {blogs.length > 0 ? (
                   <div className="space-y-0">
-                    {blogs.map((blog) => (
-                      <BlogCard key={blog.id} blog={blog} />
+                    {blogs.map((blog, index) => (
+                      <FadeIn key={blog.id} delay={0.3 + index * 0.05}>
+                        <BlogCard blog={blog} />
+                      </FadeIn>
                     ))}
                   </div>
                 ) : (
