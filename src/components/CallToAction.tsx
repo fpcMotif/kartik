@@ -29,12 +29,27 @@ export default function CallToAction({
           className="gradient h-full bg-[#1C1C1C] rounded-lg text-white text-sm sm:text-md px-4 sm:px-6 py-2.5 sm:py-2 w-full flex items-center justify-center transition-all group relative overflow-hidden touch-manipulation active:opacity-75"
           style={{ 
             '--x': '-90.45457%',
+            '--spread': '90deg',
+            '--shimmer-color': '#ffffff',
+            '--radius': '8px',
+            '--speed': '3s',
+            '--cut': '0.05em',
             WebkitTapHighlightColor: 'transparent',
             WebkitTouchCallout: 'none',
             WebkitUserSelect: 'none',
             userSelect: 'none'
           } as React.CSSProperties}
         >
+          {/* Shimmer Effect Layer */}
+          <div 
+            className="absolute inset-0 opacity-30 group-hover:opacity-50 transition-opacity duration-500"
+            style={{
+              background: 'linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%)',
+              backgroundSize: '200% 100%',
+              animation: 'shimmer 3s ease-in-out infinite',
+            }}
+          />
+
           <div className="flex items-center gap-2 group-hover:gap-6 sm:group-hover:gap-12 transition-all duration-300 relative z-20">
             <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full overflow-hidden flex-shrink-0">
               <Image 
