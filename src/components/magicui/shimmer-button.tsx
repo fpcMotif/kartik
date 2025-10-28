@@ -1,4 +1,7 @@
-import React, { CSSProperties, ComponentPropsWithoutRef } from "react";
+import React, {
+  type ComponentPropsWithoutRef,
+  type CSSProperties,
+} from "react";
 
 import { cn } from "@/lib/utils";
 

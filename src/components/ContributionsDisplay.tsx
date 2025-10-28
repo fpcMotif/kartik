@@ -1,20 +1,20 @@
-'use client'
+"use client";
 
-import React from 'react';
-import GitHubContributions from './ui/GitHubContributions';
+import type React from "react";
+import GitHubContributions from "./ui/GitHubContributions";
 
 interface ContributionsDisplayProps {
   username: string;
-  variant?: 'full' | 'compact' | 'minimal';
+  variant?: "full" | "compact" | "minimal";
   className?: string;
 }
 
 const ContributionsDisplay: React.FC<ContributionsDisplayProps> = ({
   username,
-  variant = 'full',
-  className = ''
+  variant = "full",
+  className = "",
 }) => {
-  const isCompact = variant === 'compact' || variant === 'minimal';
+  const isCompact = variant === "compact" || variant === "minimal";
 
   return (
     <GitHubContributions

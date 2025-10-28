@@ -1,17 +1,17 @@
-'use client'
+"use client";
 
-import OnekoCat from "@/components/OnekoCat"
-import ResizablePortfolioNavigation from "@/components/MainNavigation"
-import NewHeroSection from "@/components/HomeContent"
+import NewHeroSection from "@/components/NewHeroSection";
+import OnekoCat from "@/components/OnekoCat";
+import ResizablePortfolioNavigation from "@/components/ResizablePortfolioNavigation";
 
 export default function Home() {
   return (
-      <div>
-        <ResizablePortfolioNavigation />
-        <OnekoCat />
-        <div className="pt-12 sm:pt-16">
-          <NewHeroSection />
-        </div>
+    <div>
+      <ResizablePortfolioNavigation />
+      <OnekoCat />
+      <div className="pt-16 sm:pt-16">
+        <NewHeroSection />
       </div>
+    </div>
   );
 }

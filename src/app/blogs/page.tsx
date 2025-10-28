@@ -1,6 +1,6 @@
-import { blogs } from '@/data/blogs'
-import BlogsListClient from '@/components/BlogsListClient'
+import BlogsListClient from "@/components/BlogsListClient";
+import { blogs } from "@/data/blogs";
 
 export default function BlogsPage() {
-  return <BlogsListClient blogs={blogs} />
+  return <BlogsListClient blogs={blogs} />;
 }

@@ -1,11 +1,11 @@
-import { projects } from '@/data/projects'
-import ProjectsListClient from '@/components/ProjectsListClient'
+import ProjectsListClient from "@/components/ProjectsListClient";
+import { projects } from "@/data/projects";
 
 export const metadata = {
-  title: 'Projects | Kartik Labhshetwar',
-  description: 'Showcase of my projects and work',
-}
+  title: "Projects | Kartik Labhshetwar",
+  description: "Showcase of my projects and work",
+};
 
 export default function ProjectsPage() {
-  return <ProjectsListClient projects={projects} />
+  return <ProjectsListClient projects={projects} />;
 }

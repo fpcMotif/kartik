@@ -1,16 +1,11 @@
 "use client";
-import { cn } from "@/lib/utils";
 import { IconMenu2, IconX } from "@tabler/icons-react";
-import {
-  useScroll,
-  useMotionValueEvent,
-} from "motion/react";
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
-import { ModeToggle } from '@/components/theme-toggle';
-
+import { useMotionValueEvent, useScroll } from "motion/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useRef, useState } from "react";
-
+import { ModeToggle } from "@/components/theme-toggle";
+import { cn } from "@/lib/utils";
 
 interface NavbarProps {
   children: React.ReactNode;
@@ -88,7 +83,8 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
     <div
       className={cn(
         "relative z-[60] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-transparent px-4 py-2 lg:flex dark:bg-transparent transition-all duration-400 ease-out",
-        visible && "bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md shadow-lg transform translate-y-5 w-[min(40%,800px)]",
+        visible &&
+          "bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md shadow-lg transform translate-y-5 w-[min(40%,800px)]",
         className,
       )}
     >
@@ -99,27 +95,27 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
 
 export const NavItems = ({ items, className, onItemClick }: NavItemsProps) => {
   const pathname = usePathname();
-  
+
   // Helper function to determine if a link is active
   const isActive = (path: string) => {
-    if (path === '/') {
-      return pathname === '/'
+    if (path === "/") {
+      return pathname === "/";
     }
-    return pathname.startsWith(path)
-  }
+    return pathname.startsWith(path);
+  };
 
   return (
     <div className={cn("flex items-center gap-3 sm:gap-4 lg:gap-6", className)}>
-      {items.map((item, idx) => (
+      {items.map((item) => (
         <div
-          key={`nav-${idx}`}
+          key={`nav-${item.name}`}
           className="transform transition-transform duration-500 hover:scale-105 active:scale-95"
         >
-          <Link 
+          <Link
             href={item.link}
             onClick={onItemClick}
             className={`text-sm sm:text-md lg:text-lg font-[family-name:var(--font-instrument-serif)] hover:opacity-80 hover:underline transition-opacity duration-200 ${
-              isActive(item.link) ? 'opacity-100' : 'opacity-60'
+              isActive(item.link) ? "opacity-100" : "opacity-60"
             }`}
           >
             {item.name}
@@ -138,7 +134,8 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
     <div
       className={cn(
         "relative z-50 mx-auto flex w-full flex-col items-center justify-between bg-transparent px-4 py-3 lg:hidden transition-all duration-400 ease-out",
-        visible && "bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md shadow-lg transform translate-y-5 w-[calc(100%-2rem)] mx-4 rounded-2xl",
+        visible &&
+          "bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md shadow-lg transform translate-y-5 w-[calc(100%-2rem)] mx-4 rounded-2xl",
         className,
       )}
     >
@@ -193,6 +190,7 @@ export const MobileNavToggle = ({
 }) => {
   return (
     <button
+      type="button"
       onClick={onClick}
       className="p-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all duration-400 hover:scale-105 active:scale-95"
     >
@@ -208,7 +206,7 @@ export const MobileNavToggle = ({
 export const NavbarLogo = () => {
   return (
     <div className="transform transition-transform duration-400 hover:scale-105 active:scale-95">
-      <Link 
+      <Link
         href="/"
         className="text-lg sm:text-xl font-[family-name:var(--font-instrument-serif)] font-medium hover:opacity-80 hover:underline transition-opacity duration-200"
       >

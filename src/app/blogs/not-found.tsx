@@ -1,5 +1,5 @@
-import BlogNotFoundClient from '@/components/BlogNotFoundClient'
+import BlogNotFoundClient from "@/components/BlogNotFoundClient";
 
 export default function NotFound() {
-  return <BlogNotFoundClient />
-} 
+  return <BlogNotFoundClient />;
+}

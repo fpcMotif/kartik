@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { Project } from '@/types/project'
-import { MasonryProjectCard } from './MasonryProjectCard'
-import { useMemo } from 'react'
+import { useMemo } from "react";
+import type { Project } from "@/types/project";
+import { MasonryProjectCard } from "./MasonryProjectCard";
 
 interface MasonryGridProps {
   projects: Project[];
@@ -28,14 +28,16 @@ export const MasonryGrid = ({ projects, className = "" }: MasonryGridProps) => {
 
     // For mobile, combine col2 and col3 into remaining items
     const mobileRemaining = [...col2, ...col3];
-    
+
     return { col1, col2, col3, mobileRemaining };
   }, [displayedItems]);
 
   const { col1, col2, col3, mobileRemaining } = columnData;
 
   return (
-    <div className={`min-h-screen w-full bg-neutral-100 dark:bg-[#161616] p-3 sm:p-6 lg:p-8 xl:p-12 ${className}`}>
+    <div
+      className={`min-h-screen w-full bg-neutral-100 dark:bg-[#161616] p-3 sm:p-6 lg:p-8 xl:p-12 ${className}`}
+    >
       <div className="grid grid-cols-1 gap-4 sm:gap-3 sm:grid-cols-2 lg:grid-cols-3">
         {/* Column 1 */}
         <div className="flex flex-col gap-4 sm:gap-3">
@@ -45,7 +47,7 @@ export const MasonryGrid = ({ projects, className = "" }: MasonryGridProps) => {
             </div>
           ))}
         </div>
-        
+
         {/* Column 2 - Hidden on mobile */}
         <div className="hidden sm:flex flex-col gap-3">
           {col2.map((project) => (
@@ -54,7 +56,7 @@ export const MasonryGrid = ({ projects, className = "" }: MasonryGridProps) => {
             </div>
           ))}
         </div>
-        
+
         {/* Column 3 - Hidden on mobile and tablet */}
         <div className="hidden lg:flex flex-col gap-3">
           {col3.map((project) => (
@@ -64,7 +66,7 @@ export const MasonryGrid = ({ projects, className = "" }: MasonryGridProps) => {
           ))}
         </div>
       </div>
-      
+
       {/* Mobile: Show remaining projects in single column */}
       <div className="sm:hidden flex flex-col gap-4 mt-4">
         {mobileRemaining.map((project) => (

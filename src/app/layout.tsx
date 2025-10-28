@@ -1,47 +1,44 @@
 import type { Metadata } from "next";
-import { Instrument_Serif, Geist as GeistSans } from "next/font/google";
+import { Instrument_Serif, Inter_Tight } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider"
-import { ScrollToTop } from "@/components/ui/ScrollAnimations"
-import BackgroundMusic from "@/components/BackgroundMusicWrapper"
-import { MusicProvider } from "@/components/MusicContext"
+import BackgroundMusic from "@/components/BackgroundMusicWrapper";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ScrollToTop } from "@/components/ui/ScrollAnimations";
 
-// const inter = Inter_Tight({
-//   weight: '400',
-//   style: 'normal',
-//   subsets: ['latin']
-// })
-
-const geistSans = GeistSans({
-  weight: '400',
-  style: 'normal',
-  subsets: ['latin'],
-  variable: '--font-geist-sans'
-})
-
+const inter = Inter_Tight({
+  weight: "400",
+  style: "normal",
+  subsets: ["latin"],
+});
 
 const instrumentSerif = Instrument_Serif({
-  weight: ['400'],
-  style: 'normal',
-  subsets: ['latin'],
-  variable: '--font-instrument-serif'
-})
+  weight: ["400"],
+  style: "normal",
+  subsets: ["latin"],
+  variable: "--font-instrument-serif",
+});
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://kartik017.vercel.app'),
-  title: 'Kartik Labhshetwar',
-  description: 'I build products that solve real problems. Available for new opportunities.',
+  metadataBase: new URL("https://kartik017.vercel.app"),
+  title: "Kartik Labhshetwar",
+  description:
+    "I build products that solve real problems. Available for new opportunities.",
+  verification: {
+    google: "tMCNs2fgM6voEHBd3JsySffMFSiUCQDEFEF1iYI3-ZQ",
+  },
   openGraph: {
-    url: 'https://kartik017.vercel.app/',
-    siteName: 'Kartik Labhshetwar Portfolio',
-    locale: 'en_US',
-    type: 'website',
-    images: [{
-      url: '/open-graph.png',
-      width: 1200,
-      height: 630,
-      alt: 'Kartik Labhshetwar - Portfolio'
-    }],
+    url: "https://kartik017.vercel.app/",
+    siteName: "Kartik Labhshetwar Portfolio",
+    locale: "en_US",
+    type: "website",
+    images: [
+      {
+        url: "/open-graph.png",
+        width: 1200,
+        height: 630,
+        alt: "Kartik Labhshetwar - Portfolio",
+      },
+    ],
   },
 };
 
@@ -52,23 +49,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        <meta name="google-site-verification" content="tMCNs2fgM6voEHBd3JsySffMFSiUCQDEFEF1iYI3-ZQ" />
-      </head>
-      <body className={`${geistSans.className} ${instrumentSerif.variable}`} suppressHydrationWarning={true}>
+      <body
+        className={`${inter.className} ${instrumentSerif.variable}`}
+        suppressHydrationWarning={true}
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
         >
-          <MusicProvider>
-            <div className="relative z-10">
-              {children}
-            </div>
-            <ScrollToTop />
-            <BackgroundMusic />
-          </MusicProvider>
+          <div className="relative z-10">{children}</div>
+          <ScrollToTop />
+          <BackgroundMusic />
         </ThemeProvider>
         <script
           src="https://script.refix.ai/script.min.js"

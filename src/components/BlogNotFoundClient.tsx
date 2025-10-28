@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
-import Link from "next/link"
-import OnekoCat from "@/components/OnekoCat"
-import { ModeToggle } from '@/components/theme-toggle'
+import Link from "next/link";
+import OnekoCat from "@/components/OnekoCat";
+import { ModeToggle } from "@/components/theme-toggle";
 
 export default function BlogNotFoundClient() {
   return (
@@ -12,11 +12,14 @@ export default function BlogNotFoundClient() {
         <ModeToggle />
       </div>
       <div className="text-center w-full max-w-md mx-auto">
-        <h2 className="text-2xl sm:text-3xl font-medium mb-3 sm:mb-4">Blog Post Not Found</h2>
+        <h2 className="text-2xl sm:text-3xl font-medium mb-3 sm:mb-4">
+          Blog Post Not Found
+        </h2>
         <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400 mb-6 sm:mb-8">
-          The blog post you&apos;re looking for doesn&apos;t exist or has been removed.
+          The blog post you&apos;re looking for doesn&apos;t exist or has been
+          removed.
         </p>
-        <Link 
+        <Link
           href="/blogs"
           className="inline-block px-4 py-2 text-sm sm:text-base bg-neutral-100 dark:bg-neutral-800 
                     text-neutral-800 dark:text-neutral-200 rounded-md border border-neutral-300 
@@ -27,5 +30,5 @@ export default function BlogNotFoundClient() {
         </Link>
       </div>
     </div>
-  )
-} 
+  );
+}

@@ -1,9 +1,9 @@
-'use client'
+"use client";
 
-import React from 'react';
-import GitHubCalendar from 'react-github-calendar';
-import { useTheme } from 'next-themes';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
+import { useTheme } from "next-themes";
+import React from "react";
+import GitHubCalendar from "react-github-calendar";
 
 interface GitHubContributionsProps {
   username: string;
@@ -11,10 +11,10 @@ interface GitHubContributionsProps {
   className?: string;
 }
 
-const GitHubContributions: React.FC<GitHubContributionsProps> = ({ 
+const GitHubContributions: React.FC<GitHubContributionsProps> = ({
   username,
   compact = false,
-  className = ""
+  className = "",
 }) => {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
@@ -30,7 +30,9 @@ const GitHubContributions: React.FC<GitHubContributionsProps> = ({
 
   if (!mounted) {
     return (
-      <div className={`w-full ${compact ? 'h-[120px]' : 'h-[160px]'} rounded-xl bg-muted animate-pulse ${className}`} />
+      <div
+        className={`w-full ${compact ? "h-[120px]" : "h-[160px]"} rounded-xl bg-muted animate-pulse ${className}`}
+      />
     );
   }
 
@@ -42,8 +44,9 @@ const GitHubContributions: React.FC<GitHubContributionsProps> = ({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className={`${compact ? 'p-2' : 'p-3'} hover:scale-[1.005] transition-transform duration-300`}>
-          
+        <div
+          className={`${compact ? "p-2" : "p-3"} hover:scale-[1.005] transition-transform duration-300`}
+        >
           <GitHubCalendar
             username={username}
             colorScheme={resolvedTheme as "light" | "dark"}
