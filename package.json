@@ -11,13 +11,15 @@
     "dev:webpack": "next dev --no-turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint .",
-    "lint:ox": "bunx oxlint .",
+    "lint": "bunx oxlint .",
+    "lint:fix": "bunx oxlint --fix .",
+    "lint:next": "next lint .",
+    "lint:check": "bunx oxlint .",
     "format": "bunx ultracite fix",
     "check": "bunx ultracite check",
-    "uc:fix": "bunx ultracite fix",
-    "uc:check": "bunx ultracite check",
+    "format:biome": "bunx @biomejs/biome format --write .",
     "typecheck": "tsc -p tsconfig.json --noEmit",
+    "check:all": "bun run format && bun run lint && bun run typecheck && bun run check",
     "prepare": "husky"
   },
   "dependencies": {
@@ -53,7 +55,6 @@
     "@types/node": "^20",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "eslint-config-next": "^16.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.6",
     "oxlint": "^1.24.0",
@@ -62,7 +63,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,cts,mts,json,jsonc,css,scss,md,mdx}": [
-      "bunx ultracite fix --"
+      "bunx ultracite fix --",
+      "bunx oxlint --fix --"
     ]
   }
 }

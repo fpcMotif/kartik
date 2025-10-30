@@ -5,11 +5,11 @@ import { useTheme } from "next-themes";
 import React from "react";
 import GitHubCalendar from "react-github-calendar";
 
-interface GitHubContributionsProps {
+type GitHubContributionsProps = {
   username: string;
   compact?: boolean;
   className?: string;
-}
+};
 
 const GitHubContributions: React.FC<GitHubContributionsProps> = ({
   username,

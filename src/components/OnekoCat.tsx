@@ -2,15 +2,42 @@
 
 import { useEffect, useRef, useState } from "react";
 
-interface Position {
+type Position = {
   x: number;
   y: number;
-}
+};
 
-interface SpriteSet {
+type SpriteSet = {
   [key: string]: [number, number][];
-}
+};
 
+// ============================================================================
+// Constants
+// ============================================================================
+
+// Sprite and Animation Constants
+const SPRITE_SIZE = 32;
+const SPRITE_HALF = 16;
+const NEKO_SPEED = 10;
+const IDLE_DISTANCE_THRESHOLD = 48;
+const FRAME_INTERVAL_MS = 100;
+const MAX_Z_INDEX = 999;
+
+// Animation Thresholds
+const IDLE_TRIGGER_TIME = 10;
+const IDLE_ANIMATION_CHANCE = 200;
+const SLEEPING_PRE_FRAMES = 8;
+const SLEEPING_FRAME_DIVISOR = 4;
+const SLEEPING_MAX_FRAMES = 192;
+const SCRATCH_MAX_FRAMES = 9;
+
+// Direction Calculation
+const DIRECTION_THRESHOLD = 0.5;
+
+// Initial Position
+const INITIAL_POSITION: Position = { x: 32, y: 32 };
+
+// Sprite Definitions
 const SPRITE_SETS: SpriteSet = {
   idle: [[-3, -3]],
   alert: [[-7, -3]],
@@ -74,119 +101,266 @@ const SPRITE_SETS: SpriteSet = {
   ],
 };
 
-const NEKO_SPEED = 10;
+// ============================================================================
+// Helper Functions
+// ============================================================================
+
+const calculateDistance = (pos1: Position, pos2: Position): number => {
+  const diffX = pos1.x - pos2.x;
+  const diffY = pos1.y - pos2.y;
+  return Math.sqrt(diffX ** 2 + diffY ** 2);
+};
+
+const clampPosition = (
+  pos: Position,
+  minBound: number,
+  maxWidth: number,
+  maxHeight: number,
+): Position => {
+  const clampedX = Math.min(Math.max(minBound, pos.x), maxWidth - minBound);
+  const clampedY = Math.min(Math.max(minBound, pos.y), maxHeight - minBound);
+  return { x: clampedX, y: clampedY };
+};
+
+const computeDirection = (
+  diffX: number,
+  diffY: number,
+  distance: number,
+): string => {
+  const normalizedDiffX = diffX / distance;
+  const normalizedDiffY = diffY / distance;
+
+  let direction = "";
+  if (Number.isFinite(normalizedDiffY)) {
+    direction += normalizedDiffY > DIRECTION_THRESHOLD ? "N" : "";
+    direction += normalizedDiffY < -DIRECTION_THRESHOLD ? "S" : "";
+  }
+  if (Number.isFinite(normalizedDiffX)) {
+    direction += normalizedDiffX > DIRECTION_THRESHOLD ? "W" : "";
+    direction += normalizedDiffX < -DIRECTION_THRESHOLD ? "E" : "";
+  }
+  return direction || "idle";
+};
+
+const isValidSprite = (spriteSet: [number, number][] | undefined): boolean => {
+  return Boolean(spriteSet && spriteSet.length > 0);
+};
+
+// ============================================================================
+// Component
+// ============================================================================
 
 export default function OnekoCat() {
+  // ============================================================================
+  // State and Refs
+  // ============================================================================
+
   const nekoRef = useRef<HTMLDivElement>(null);
-  const [nekoPos, setNekoPos] = useState<Position>({ x: 32, y: 32 });
-  const [mousePos, setMousePos] = useState<Position>({ x: 0, y: 0 });
-  const [frameCount, setFrameCount] = useState(0);
-  const [idleTime, setIdleTime] = useState(0);
-  const [idleAnimation, setIdleAnimation] = useState<string | null>(null);
-  const [idleAnimationFrame, setIdleAnimationFrame] = useState(0);
+  const [nekoPos, setNekoPos] = useState<Position>(INITIAL_POSITION);
+  const [_mousePos, setMousePos] = useState<Position>({ x: 0, y: 0 });
+  const [_frameCount, setFrameCount] = useState(0);
+  const [_idleTime, setIdleTime] = useState(0);
+  const [_idleAnimation, setIdleAnimation] = useState<string | null>(null);
+  const [_idleAnimationFrame, setIdleAnimationFrame] = useState(0);
+
+  // Refs to access current values in RAF loop
+  const nekoPosRef = useRef<Position>(INITIAL_POSITION);
+  const mousePosRef = useRef<Position>({ x: 0, y: 0 });
+  const frameCountRef = useRef(0);
+  const idleTimeRef = useRef(0);
+  const idleAnimationRef = useRef<string | null>(null);
+  const idleAnimationFrameRef = useRef(0);
+
   const lastFrameTimestamp = useRef<number | null>(null);
   const animationFrameId = useRef<number | null>(null);
 
+  // ============================================================================
+  // Sprite Management
+  // ============================================================================
+
   const setSprite = (name: string, frame: number) => {
     if (!nekoRef.current) return;
-    const sprite = SPRITE_SETS[name][frame % SPRITE_SETS[name].length];
-    nekoRef.current.style.backgroundPosition = `${sprite[0] * 32}px ${sprite[1] * 32}px`;
+    const spriteSet = SPRITE_SETS[name];
+    if (!isValidSprite(spriteSet)) {
+      // Fallback to idle if sprite set doesn't exist
+      const idleSprite = SPRITE_SETS.idle[0];
+      if (idleSprite) {
+        nekoRef.current.style.backgroundPosition = `${
+          idleSprite[0] * SPRITE_SIZE
+        }px ${idleSprite[1] * SPRITE_SIZE}px`;
+      }
+      return;
+    }
+    const sprite = spriteSet[frame % spriteSet.length];
+    if (sprite && Array.isArray(sprite) && sprite.length >= 2) {
+      nekoRef.current.style.backgroundPosition = `${
+        sprite[0] * SPRITE_SIZE
+      }px ${sprite[1] * SPRITE_SIZE}px`;
+    }
   };
 
+  // ============================================================================
+  // Idle Animation Logic
+  // ============================================================================
+
   const resetIdleAnimation = () => {
+    idleAnimationRef.current = null;
+    idleAnimationFrameRef.current = 0;
     setIdleAnimation(null);
     setIdleAnimationFrame(0);
   };
 
   const handleIdle = () => {
-    setIdleTime((prev) => prev + 1);
+    const currentIdleTime = idleTimeRef.current + 1;
+    idleTimeRef.current = currentIdleTime;
 
     if (
-      idleTime > 10 &&
-      Math.floor(Math.random() * 200) === 0 &&
-      !idleAnimation
+      currentIdleTime > IDLE_TRIGGER_TIME &&
+      Math.floor(Math.random() * IDLE_ANIMATION_CHANCE) === 0 &&
+      !idleAnimationRef.current
     ) {
       const availableIdleAnimations = ["sleeping", "scratchSelf"];
-      if (nekoPos.x < 32) availableIdleAnimations.push("scratchWallW");
-      if (nekoPos.y < 32) availableIdleAnimations.push("scratchWallN");
-      if (nekoPos.x > window.innerWidth - 32)
+      const currentPos = nekoPosRef.current;
+      if (currentPos.x < SPRITE_SIZE)
+        availableIdleAnimations.push("scratchWallW");
+      if (currentPos.y < SPRITE_SIZE)
+        availableIdleAnimations.push("scratchWallN");
+      if (currentPos.x > window.innerWidth - SPRITE_SIZE)
         availableIdleAnimations.push("scratchWallE");
-      if (nekoPos.y > window.innerHeight - 32)
+      if (currentPos.y > window.innerHeight - SPRITE_SIZE)
         availableIdleAnimations.push("scratchWallS");
 
-      setIdleAnimation(
+      const selectedAnimation =
         availableIdleAnimations[
           Math.floor(Math.random() * availableIdleAnimations.length)
-        ],
-      );
+        ];
+      idleAnimationRef.current = selectedAnimation;
+      setIdleAnimation(selectedAnimation);
     }
 
-    switch (idleAnimation) {
+    const currentIdleAnimation = idleAnimationRef.current;
+    const currentIdleAnimationFrame = idleAnimationFrameRef.current;
+
+    switch (currentIdleAnimation) {
       case "sleeping":
-        if (idleAnimationFrame < 8) {
+        if (currentIdleAnimationFrame < SLEEPING_PRE_FRAMES) {
           setSprite("tired", 0);
           break;
         }
-        setSprite("sleeping", Math.floor(idleAnimationFrame / 4));
-        if (idleAnimationFrame > 192) resetIdleAnimation();
+        setSprite(
+          "sleeping",
+          Math.floor(currentIdleAnimationFrame / SLEEPING_FRAME_DIVISOR),
+        );
+        if (currentIdleAnimationFrame > SLEEPING_MAX_FRAMES)
+          resetIdleAnimation();
         break;
       case "scratchWallN":
       case "scratchWallS":
       case "scratchWallE":
       case "scratchWallW":
       case "scratchSelf":
-        setSprite(idleAnimation, idleAnimationFrame);
-        if (idleAnimationFrame > 9) resetIdleAnimation();
+        setSprite(currentIdleAnimation, currentIdleAnimationFrame);
+        if (currentIdleAnimationFrame > SCRATCH_MAX_FRAMES)
+          resetIdleAnimation();
         break;
       default:
         setSprite("idle", 0);
+        setIdleTime(currentIdleTime);
         return;
     }
-    setIdleAnimationFrame((prev) => prev + 1);
+    const newFrame = currentIdleAnimationFrame + 1;
+    idleAnimationFrameRef.current = newFrame;
+    setIdleAnimationFrame(newFrame);
+    setIdleTime(currentIdleTime);
   };
+
+  // ============================================================================
+  // Animation Frame Handler
+  // ============================================================================
 
   const handleFrame = () => {
     if (!nekoRef.current) return;
 
-    setFrameCount((prev) => prev + 1);
-    const diffX = nekoPos.x - mousePos.x;
-    const diffY = nekoPos.y - mousePos.y;
-    const distance = Math.sqrt(diffX ** 2 + diffY ** 2);
+    const currentFrameCount = frameCountRef.current + 1;
+    frameCountRef.current = currentFrameCount;
+    setFrameCount(currentFrameCount);
 
-    if (distance < NEKO_SPEED || distance < 48) {
+    const currentNekoPos = nekoPosRef.current;
+    const currentMousePos = mousePosRef.current;
+    const distance = calculateDistance(currentNekoPos, currentMousePos);
+
+    if (!Number.isFinite(distance) || distance <= 0) {
+      // Guard against NaN, zero, or invalid distance
       handleIdle();
       return;
     }
 
-    setIdleAnimation(null);
-    setIdleAnimationFrame(0);
-
-    if (idleTime > 1) {
-      setSprite("alert", 0);
-      setIdleTime((prev) => Math.max(prev - 1, 0));
+    if (distance < NEKO_SPEED || distance < IDLE_DISTANCE_THRESHOLD) {
+      handleIdle();
       return;
     }
 
-    let direction = "";
-    direction += diffY / distance > 0.5 ? "N" : "";
-    direction += diffY / distance < -0.5 ? "S" : "";
-    direction += diffX / distance > 0.5 ? "W" : "";
-    direction += diffX / distance < -0.5 ? "E" : "";
-    setSprite(direction, frameCount);
+    idleAnimationRef.current = null;
+    idleAnimationFrameRef.current = 0;
+    setIdleAnimation(null);
+    setIdleAnimationFrame(0);
 
-    const newX = nekoPos.x - (diffX / distance) * NEKO_SPEED;
-    const newY = nekoPos.y - (diffY / distance) * NEKO_SPEED;
+    const currentIdleTime = idleTimeRef.current;
+    if (currentIdleTime > 1) {
+      setSprite("alert", 0);
+      const newIdleTime = Math.max(currentIdleTime - 1, 0);
+      idleTimeRef.current = newIdleTime;
+      setIdleTime(newIdleTime);
+      return;
+    }
 
-    setNekoPos({
-      x: Math.min(Math.max(16, newX), window.innerWidth - 16),
-      y: Math.min(Math.max(16, newY), window.innerHeight - 16),
-    });
+    // Compute direction with safe division
+    const diffX = currentNekoPos.x - currentMousePos.x;
+    const diffY = currentNekoPos.y - currentMousePos.y;
+    const spriteDirection = computeDirection(diffX, diffY, distance);
+
+    if (spriteDirection in SPRITE_SETS) {
+      // Fallback to "idle" if direction is invalid
+      setSprite(spriteDirection, currentFrameCount);
+    } else {
+      setSprite("idle", 0);
+    }
+
+    // Safe movement calculation
+    const normalizedDiffX = diffX / distance;
+    const normalizedDiffY = diffY / distance;
+    const newPos = {
+      x: currentNekoPos.x - normalizedDiffX * NEKO_SPEED,
+      y: currentNekoPos.y - normalizedDiffY * NEKO_SPEED,
+    };
+
+    const clampedPos = clampPosition(
+      newPos,
+      SPRITE_HALF,
+      window.innerWidth,
+      window.innerHeight,
+    );
+
+    if (!Number.isFinite(clampedPos.x) || !Number.isFinite(clampedPos.y)) {
+      // Guard against NaN in final position
+      handleIdle();
+      return;
+    }
+
+    nekoPosRef.current = clampedPos;
+    setNekoPos(clampedPos);
   };
+
+  // ============================================================================
+  // Animation Setup
+  // ============================================================================
 
   /* biome-ignore lint/correctness/useExhaustiveDependencies: Animation loop intentionally not tied to state dependencies */
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      setMousePos({ x: event.clientX, y: event.clientY });
+      const newMousePos = { x: event.clientX, y: event.clientY };
+      mousePosRef.current = newMousePos;
+      setMousePos(newMousePos);
     };
 
     const animate = (timestamp: number) => {
@@ -194,7 +368,7 @@ export default function OnekoCat() {
         lastFrameTimestamp.current = timestamp;
       }
 
-      if (timestamp - lastFrameTimestamp.current > 100) {
+      if (timestamp - lastFrameTimestamp.current > FRAME_INTERVAL_MS) {
         lastFrameTimestamp.current = timestamp;
         handleFrame();
       }
@@ -219,19 +393,23 @@ export default function OnekoCat() {
     };
   }, []);
 
+  // ============================================================================
+  // Render
+  // ============================================================================
+
   return (
     <div
       ref={nekoRef}
       aria-hidden="true"
       style={{
-        width: "32px",
-        height: "32px",
+        width: `${SPRITE_SIZE}px`,
+        height: `${SPRITE_SIZE}px`,
         position: "fixed",
         pointerEvents: "none",
         imageRendering: "pixelated",
-        left: `${nekoPos.x - 16}px`,
-        top: `${nekoPos.y - 16}px`,
-        zIndex: 2147483647,
+        left: `${nekoPos.x - SPRITE_HALF}px`,
+        top: `${nekoPos.y - SPRITE_HALF}px`,
+        zIndex: MAX_Z_INDEX,
         backgroundImage: "url(/oneko.gif)",
       }}
     />

@@ -3,7 +3,7 @@ import { FaGithub, FaLinkedin, FaPaperclip, FaXTwitter } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 import { useHapticFeedback } from "@/hooks/useHapticFeedback";
 
-interface ReachoutProps {
+type ReachoutProps = {
   title?: string;
   subtitle?: string;
   socialLinks?: {
@@ -13,7 +13,7 @@ interface ReachoutProps {
     linkedin?: string;
     mail?: string;
   };
-}
+};
 
 export default function Reachout({
   title = "Let's connect",

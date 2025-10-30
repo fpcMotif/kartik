@@ -1,8 +1,8 @@
 "use client";
 
-interface SectionBorderProps {
+type SectionBorderProps = {
   className?: string;
-}
+};
 
 export default function SectionBorder({ className = "" }: SectionBorderProps) {
   return (

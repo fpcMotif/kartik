@@ -3,10 +3,10 @@
 import Image from "next/image";
 import BannerOverlay from "./BannerOverlay";
 
-interface BannerSectionProps {
+type BannerSectionProps = {
   quote?: string;
   bannerImage?: string;
-}
+};
 
 export default function BannerSection({
   quote = "Build • Ship • Learn • Repeat",

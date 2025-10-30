@@ -4,10 +4,10 @@ import { useMemo } from "react";
 import type { Project } from "@/types/project";
 import { MasonryProjectCard } from "./MasonryProjectCard";
 
-interface MasonryGridProps {
+type MasonryGridProps = {
   projects: Project[];
   className?: string;
-}
+};
 
 export const MasonryGrid = ({ projects, className = "" }: MasonryGridProps) => {
   // Show all projects at once

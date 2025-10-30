@@ -2,11 +2,11 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 
-interface FloatingLoaderProps {
+type FloatingLoaderProps = {
   isVisible: boolean;
   text?: string;
   position?: "top" | "bottom" | "center";
-}
+};
 
 export const FloatingLoader = ({
   isVisible,

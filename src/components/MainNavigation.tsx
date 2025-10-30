@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import Link from 'next/link';
-import { ModeToggle } from '@/components/theme-toggle';
-import MusicControl from '@/components/MusicControl';
+import Link from "next/link";
+import { useState } from "react";
+import MusicControl from "@/components/MusicControl";
+import { ModeToggle } from "@/components/theme-toggle";
 import {
-  Navbar,
-  NavBody,
-  NavItems,
   MobileNav,
   MobileNavHeader,
   MobileNavMenu,
   MobileNavToggle,
+  NavBody,
+  Navbar,
   NavbarLogo,
-} from './ui/resizable-navbar';
+  NavItems,
+} from "./ui/resizable-navbar";
 
 export default function ResizablePortfolioNavigation() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -23,14 +23,14 @@ export default function ResizablePortfolioNavigation() {
   };
 
   const navItems = [
-    { name: 'proof-of-work', link: '/projects' },
-    { name: 'blogs', link: '/blogs' },
+    { name: "proof-of-work", link: "/projects" },
+    { name: "blogs", link: "/blogs" },
   ];
 
   const mobileNavItems = [
-    { name: 'Home', link: '/' },
-    { name: 'proof-of-work', link: '/projects' },
-    { name: 'blogs', link: '/blogs' },
+    { name: "Home", link: "/" },
+    { name: "proof-of-work", link: "/projects" },
+    { name: "blogs", link: "/blogs" },
   ];
 
   return (
@@ -60,10 +60,10 @@ export default function ResizablePortfolioNavigation() {
           <div className="flex flex-col gap-5 w-full">
             {mobileNavItems.map((item, idx) => (
               <div
-                key={`mobile-nav-${idx}`}
+                key={item.name}
                 className="transform transition-transform duration-400"
               >
-                <Link 
+                <Link
                   href={item.link}
                   onClick={handleItemClick}
                   className="text-lg font-[family-name:var(--font-instrument-serif)] hover:opacity-80 hover:underline transition-opacity duration-200 py-1"

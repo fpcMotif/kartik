@@ -1,1 +1,4 @@
-bunx lint-staged && bun run typecheck
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+bunx lint-staged

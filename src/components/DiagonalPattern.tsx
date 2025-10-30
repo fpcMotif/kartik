@@ -1,9 +1,9 @@
 "use client";
 
-interface DiagonalPatternProps {
+type DiagonalPatternProps = {
   side: "left" | "right";
   className?: string;
-}
+};
 
 export default function DiagonalPattern({
   side,

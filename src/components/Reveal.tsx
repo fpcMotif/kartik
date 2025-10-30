@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
-interface RevealProps {
+type RevealProps = {
   children: ReactNode;
   delay?: number;
   duration?: number;
@@ -11,7 +11,7 @@ interface RevealProps {
   y?: number;
   once?: boolean;
   amount?: number;
-}
+};
 
 export const Reveal = ({
   children,

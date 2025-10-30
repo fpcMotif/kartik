@@ -1,7 +1,8 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import { useMemo } from "react";
 import { cn } from "@/lib/utils";
 
-interface MarqueeProps extends ComponentPropsWithoutRef<"div"> {
+type MarqueeProps = ComponentPropsWithoutRef<"div"> & {
   /**
    * Optional CSS class name to apply custom styles
    */
@@ -19,7 +20,7 @@ interface MarqueeProps extends ComponentPropsWithoutRef<"div"> {
   /**
    * Content to be displayed in the marquee
    */
-  children: React.ReactNode;
+  children: ReactNode;
   /**
    * Whether to animate vertically instead of horizontally
    * @default false
@@ -30,7 +31,7 @@ interface MarqueeProps extends ComponentPropsWithoutRef<"div"> {
    * @default 4
    */
   repeat?: number;
-}
+};
 
 export function Marquee({
   className,
@@ -41,7 +42,7 @@ export function Marquee({
   repeat = 4,
   ...props
 }: MarqueeProps) {
-  const keys = React.useMemo(
+  const keys = useMemo(
     () => Array.from({ length: repeat }, () => crypto.randomUUID()),
     [repeat],
   );

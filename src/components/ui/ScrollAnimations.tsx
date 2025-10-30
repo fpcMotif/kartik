@@ -3,9 +3,9 @@
 import { motion, useScroll, useSpring } from "framer-motion";
 import { useEffect, useState } from "react";
 
-interface ScrollProgressProps {
+type ScrollProgressProps = {
   className?: string;
-}
+};
 
 export const ScrollProgress = ({ className = "" }: ScrollProgressProps) => {
   const { scrollYProgress } = useScroll();

@@ -7,9 +7,9 @@ import ResizablePortfolioNavigation from "@/components/ResizablePortfolioNavigat
 import { FadeInUp, SlideInFromLeft } from "@/components/ui/PageTransitions";
 import type { Project } from "@/types/project";
 
-interface ProjectDetailClientProps {
+type ProjectDetailClientProps = {
   project: Project;
-}
+};
 
 export default function ProjectDetailClient({
   project,

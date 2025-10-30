@@ -7,9 +7,9 @@ import ResizablePortfolioNavigation from "@/components/ResizablePortfolioNavigat
 import { FadeInUp, SlideInFromLeft } from "@/components/ui/PageTransitions";
 import type { BlogPost } from "@/types/blog";
 
-interface BlogPostClientProps {
+type BlogPostClientProps = {
   blog: BlogPost;
-}
+};
 
 export default function BlogPostClient({ blog }: BlogPostClientProps) {
   return (

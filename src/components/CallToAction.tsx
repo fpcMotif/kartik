@@ -3,13 +3,13 @@
 import Image from "next/image";
 import { useHapticFeedback } from "@/hooks/useHapticFeedback";
 
-interface CallToActionProps {
+type CallToActionProps = {
   profileImage?: string;
   profileAlt?: string;
   linkText?: string;
   linkUrl?: string;
   preText?: string;
-}
+};
 
 export default function CallToAction({
   profileImage = "/pfp.jpg",

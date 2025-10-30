@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { fallbackContributions } from "@/lib/github";
 
-interface Contribution {
+type Contribution = {
   title: string;
   description: string;
   repository: string;
@@ -14,7 +14,7 @@ interface Contribution {
   date: string;
   type?: "feature" | "fix" | "perf" | "docs" | "refactor" | "test" | "chore";
   state?: "open" | "closed" | "merged";
-}
+};
 
 export default function OpenSourceContributionsCard() {
   const [showAll, setShowAll] = useState(false);

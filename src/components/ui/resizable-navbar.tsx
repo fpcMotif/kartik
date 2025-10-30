@@ -7,43 +7,43 @@ import React, { useRef, useState } from "react";
 import { ModeToggle } from "@/components/theme-toggle";
 import { cn } from "@/lib/utils";
 
-interface NavbarProps {
+type NavbarProps = {
   children: React.ReactNode;
   className?: string;
-}
+};
 
-interface NavBodyProps {
+type NavBodyProps = {
   children: React.ReactNode;
   className?: string;
   visible?: boolean;
-}
+};
 
-interface NavItemsProps {
+type NavItemsProps = {
   items: {
     name: string;
     link: string;
   }[];
   className?: string;
   onItemClick?: () => void;
-}
+};
 
-interface MobileNavProps {
+type MobileNavProps = {
   children: React.ReactNode;
   className?: string;
   visible?: boolean;
-}
+};
 
-interface MobileNavHeaderProps {
+type MobileNavHeaderProps = {
   children: React.ReactNode;
   className?: string;
-}
+};
 
-interface MobileNavMenuProps {
+type MobileNavMenuProps = {
   children: React.ReactNode;
   className?: string;
   isOpen: boolean;
   onClose: () => void;
-}
+};
 
 export const Navbar = ({ children, className }: NavbarProps) => {
   const ref = useRef<HTMLDivElement>(null);

@@ -1,0 +1,39 @@
+{
+  "formatter": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "noMagicNumbers": {
+        "level": "error",
+        "options": {
+          "allowedNumbers": [0, 1, -1],
+          "detectObjects": true,
+          "detectEnums": true,
+          "ignoreArrayIndexes": false,
+          "ignoreDefaultValues": false,
+          "ignoreNumericLiterals": false,
+          "ignoreReadonlyClassProperties": false,
+          "ignoreTypeIndexes": false
+        }
+      },
+      "noInfiniteUseEffect": {
+        "level": "error"
+      },
+      "complexity": {
+        "level": "error",
+        "options": {
+          "maxComplexity": 15,
+          "maxStatements": 50
+        }
+      },
+      "maxLineLength": {
+        "level": "warn",
+        "options": {
+          "max": 100
+        }
+      }
+    }
+  }
+}

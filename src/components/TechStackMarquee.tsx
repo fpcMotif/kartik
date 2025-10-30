@@ -140,15 +140,15 @@ const techStack = [
   },
 ];
 
-interface TechIconProps {
+type TechIconProps = {
   tech: (typeof techStack)[0];
   className?: string;
-}
+};
 
 function TechIcon({ tech, className = "" }: TechIconProps) {
   return (
     <div
-      className={`flex flex-col items-center justify-center p-3 transition-all duration-300 hover:scale-105 min-w-[90px] group ${className}`}
+      className={`flex flex-col items-center justify-center p-3 transition-all duration-300 hover:scale-105 min-w-[90px] group/icon ${className}`}
     >
       {/* Icon Container */}
       <div className="relative w-10 h-10 mb-2 flex items-center justify-center">
@@ -159,7 +159,7 @@ function TechIcon({ tech, className = "" }: TechIconProps) {
             alt={tech.name}
             width={40}
             height={40}
-            className="w-full h-full object-contain grayscale opacity-70 hover:opacity-90 transition-opacity"
+            className="w-full h-full object-contain grayscale opacity-70 hover:grayscale-0 hover:opacity-100 group-hover/icon:grayscale-0 group-hover/icon:opacity-100 transition-all duration-300"
             onError={(e) => {
               // If image fails to load, replace with grey placeholder
               const target = e.target as HTMLImageElement;
@@ -178,16 +178,16 @@ function TechIcon({ tech, className = "" }: TechIconProps) {
       </div>
 
       {/* Tech Name */}
-      <span className="text-xs text-center font-medium text-gray-700 dark:text-gray-300 leading-tight group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
+      <span className="text-xs text-center font-medium text-gray-700 dark:text-gray-300 leading-tight group-hover/icon:text-gray-900 dark:group-hover/icon:text-white transition-colors">
         {tech.name}
       </span>
     </div>
   );
 }
 
-interface TechStackMarqueeProps {
+type TechStackMarqueeProps = {
   className?: string;
-}
+};
 
 export default function TechStackMarquee({
   className = "",

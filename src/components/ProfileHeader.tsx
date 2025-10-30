@@ -2,7 +2,7 @@
 import { FaGithub, FaLinkedin, FaPaperclip, FaXTwitter } from "react-icons/fa6";
 import { useHapticFeedback } from "@/hooks/useHapticFeedback";
 
-interface ProfileHeaderProps {
+type ProfileHeaderProps = {
   name?: string;
   age?: string;
   title?: string;
@@ -13,7 +13,7 @@ interface ProfileHeaderProps {
     github?: string;
     linkedin?: string;
   };
-}
+};
 
 export default function ProfileHeader({
   name = "Kartik Labhshetwar",

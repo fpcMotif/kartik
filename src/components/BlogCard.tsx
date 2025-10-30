@@ -2,9 +2,9 @@ import Link from "next/link";
 import type { FC } from "react";
 import type { BlogPost } from "@/types/blog";
 
-interface BlogCardProps {
+type BlogCardProps = {
   blog: BlogPost;
-}
+};
 
 export const BlogCard: FC<BlogCardProps> = ({ blog }) => {
   const CardContent = () => (

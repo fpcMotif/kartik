@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 import { type ReactNode, useEffect, useRef } from "react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
-interface AnimatedProjectCardProps {
+type AnimatedProjectCardProps = {
   children: ReactNode;
   projectId: string;
   index: number;
   className?: string;
-}
+};
 
 export const AnimatedProjectCard = ({
   children,

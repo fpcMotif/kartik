@@ -2,12 +2,12 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-interface UseInfiniteScrollOptions {
+type UseInfiniteScrollOptions = {
   initialItems: number;
   itemsPerLoad: number;
   threshold?: number;
   rootMargin?: string;
-}
+};
 
 export const useInfiniteScroll = <T>(
   items: T[],

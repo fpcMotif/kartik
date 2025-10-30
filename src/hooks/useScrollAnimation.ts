@@ -2,11 +2,11 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 
-interface UseScrollAnimationOptions {
+type UseScrollAnimationOptions = {
   threshold?: number;
   rootMargin?: string;
   staggerDelay?: number;
-}
+};
 
 export const useScrollAnimation = (options: UseScrollAnimationOptions = {}) => {
   const { threshold = 0.2, rootMargin = "50px", staggerDelay = 0.1 } = options;

@@ -1,33 +1,34 @@
-'use client'
+"use client";
 
-import { createContext, useContext, useState, ReactNode } from 'react'
-import { Howl } from 'howler'
+import type { Howl } from "howler";
+import { createContext, type ReactNode, useContext, useState } from "react";
 
-interface MusicContextType {
-  isPlaying: boolean
-  setIsPlaying: (playing: boolean) => void
-  soundInstance: Howl | null
-  setSoundInstance: (sound: Howl | null) => void
-}
+type MusicContextType = {
+  isPlaying: boolean;
+  setIsPlaying: (playing: boolean) => void;
+  soundInstance: Howl | null;
+  setSoundInstance: (sound: Howl | null) => void;
+};
 
-const MusicContext = createContext<MusicContextType | undefined>(undefined)
+const MusicContext = createContext<MusicContextType | undefined>(undefined);
 
 export function MusicProvider({ children }: { children: ReactNode }) {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [soundInstance, setSoundInstance] = useState<Howl | null>(null)
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [soundInstance, setSoundInstance] = useState<Howl | null>(null);
 
   return (
-    <MusicContext.Provider value={{ isPlaying, setIsPlaying, soundInstance, setSoundInstance }}>
+    <MusicContext.Provider
+      value={{ isPlaying, setIsPlaying, soundInstance, setSoundInstance }}
+    >
       {children}
     </MusicContext.Provider>
-  )
+  );
 }
 
 export function useMusic() {
-  const context = useContext(MusicContext)
+  const context = useContext(MusicContext);
   if (context === undefined) {
-    throw new Error('useMusic must be used within a MusicProvider')
+    throw new Error("useMusic must be used within a MusicProvider");
   }
-  return context
+  return context;
 }
-

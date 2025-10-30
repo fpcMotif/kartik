@@ -2,9 +2,9 @@
 
 import React from "react";
 
-interface ProjectSkeletonProps {
+type ProjectSkeletonProps = {
   className?: string;
-}
+};
 
 export const ProjectSkeleton = ({ className = "" }: ProjectSkeletonProps) => {
   return (
@@ -36,10 +36,10 @@ export const ProjectSkeleton = ({ className = "" }: ProjectSkeletonProps) => {
   );
 };
 
-interface MasonrySkeletonProps {
+type MasonrySkeletonProps = {
   count?: number;
   className?: string;
-}
+};
 
 export const MasonrySkeleton = ({
   count = 3,

@@ -19,6 +19,14 @@
   }
 }
 
+.animate-marquee {
+  animation: marquee var(--duration) linear infinite;
+}
+
+.animate-marquee-vertical {
+  animation: marquee-vertical var(--duration) linear infinite;
+}
+
 @keyframes shiny-text {
   0%,
   85%,

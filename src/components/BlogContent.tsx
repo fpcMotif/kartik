@@ -2,9 +2,9 @@ import type { FC } from "react";
 import ReactMarkdown from "react-markdown";
 import type { BlogPost } from "@/types/blog";
 
-interface BlogContentProps {
+type BlogContentProps = {
   blog: BlogPost;
-}
+};
 
 export const BlogContent: FC<BlogContentProps> = ({ blog }) => {
   return (

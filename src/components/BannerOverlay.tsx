@@ -1,9 +1,9 @@
 "use client";
 
-interface BannerOverlayProps {
+type BannerOverlayProps = {
   position: "top" | "bottom" | "left" | "right";
   className?: string;
-}
+};
 
 export default function BannerOverlay({
   position,

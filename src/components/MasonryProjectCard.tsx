@@ -15,10 +15,10 @@ import quotick from "@/videos/quotick.mp4";
 import rebatr from "@/videos/rebatr-short.mp4";
 import satyaCheckVideo from "@/videos/satya-check.mp4";
 
-interface MasonryProjectCardProps {
+type MasonryProjectCardProps = {
   project: Project;
   className?: string;
-}
+};
 
 // Map video IDs to imported video assets
 const getVideoSource = (videoId: string) => {

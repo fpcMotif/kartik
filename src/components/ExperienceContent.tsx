@@ -3,14 +3,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface ExperienceItem {
+type ExperienceItem = {
   company: string;
   position: string;
   duration: string;
   description: string;
   href?: string;
   logoUrl?: string;
-}
+};
 
 export default function ExperienceContent() {
   const experiences: ExperienceItem[] = [

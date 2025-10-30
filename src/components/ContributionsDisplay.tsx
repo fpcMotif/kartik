@@ -3,11 +3,11 @@
 import type React from "react";
 import GitHubContributions from "./ui/GitHubContributions";
 
-interface ContributionsDisplayProps {
+type ContributionsDisplayProps = {
   username: string;
   variant?: "full" | "compact" | "minimal";
   className?: string;
-}
+};
 
 const ContributionsDisplay: React.FC<ContributionsDisplayProps> = ({
   username,

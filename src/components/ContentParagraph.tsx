@@ -1,9 +1,9 @@
 "use client";
 
-interface ContentParagraphProps {
+type ContentParagraphProps = {
   children: React.ReactNode;
   className?: string;
-}
+};
 
 export default function ContentParagraph({
   children,

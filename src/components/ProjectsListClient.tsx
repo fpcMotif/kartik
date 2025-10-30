@@ -6,9 +6,9 @@ import OnekoCat from "@/components/OnekoCat";
 import ResizablePortfolioNavigation from "@/components/ResizablePortfolioNavigation";
 import type { Project } from "@/types/project";
 
-interface ProjectsListClientProps {
+type ProjectsListClientProps = {
   projects: Project[];
-}
+};
 
 export default function ProjectsListClient({
   projects,

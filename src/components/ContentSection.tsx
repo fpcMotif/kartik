@@ -1,12 +1,12 @@
 "use client";
 
-interface ContentSectionProps {
+type ContentSectionProps = {
   title?: string;
   subtitle?: string;
   children: React.ReactNode;
   className?: string;
   background?: boolean;
-}
+};
 
 export default function ContentSection({
   title,
