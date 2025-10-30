@@ -13,7 +13,7 @@
     "start": "next start",
     "lint": "bunx oxlint .",
     "lint:fix": "bunx oxlint --fix .",
-    "lint:next": "next lint .",
+    "lint:next": "next lint",
     "lint:check": "bunx oxlint .",
     "format": "bunx ultracite fix",
     "check": "bunx ultracite check",
