@@ -94,7 +94,7 @@ export default function NewHeroSection() {
               {/* Experience Section */}
               <Reveal delay={0.1}>
                 <div className="sm:px-12 py-2">
-                  <h2 className="text-base sm:text-xl mb-3 opacity-20 mt-4 sm:mt-6 px-4">
+                  <h2 className="text-base sm:text-xl mb-3 text-section-heading mt-4 sm:mt-6 px-4">
                     Professional Experience
                   </h2>
                   <div className="px-4">
@@ -110,7 +110,7 @@ export default function NewHeroSection() {
               {/* Technical Contributions */}
               <Reveal delay={0.1}>
                 <div className="sm:px-12 py-2">
-                  <h2 className="text-base sm:text-xl mb-3 opacity-20 mt-4 sm:mt-6 px-4">
+                  <h2 className="text-base sm:text-xl mb-3 text-section-heading mt-4 sm:mt-6 px-4">
                     Technical Contributions
                   </h2>
                   <div className="px-4 space-y-3 sm:space-y-4 dark:text-white/70 text-black/70 pb-4 sm:pb-6">
@@ -142,7 +142,7 @@ export default function NewHeroSection() {
                         <Link
                           href="https://github.com/KartikLabhshetwar"
                           target="_blank"
-                          className="text-[#006FEE] hover:underline"
+                          className="text-link hover:underline"
                         >
                           0→1
                         </Link>{" "}
@@ -165,8 +165,9 @@ export default function NewHeroSection() {
               {/* GitHub Contributions */}
               <Reveal delay={0.1}>
                 <div className="sm:px-12 px-0 mt-4">
-                  <h2 className="text-base sm:text-xl opacity-20 leading-relaxed -tracking-[0.01em] mb-4 px-4">
-                    GitHub Contributions <span className="opacity-20">●</span>{" "}
+                  <h2 className="text-base sm:text-xl text-section-heading leading-relaxed -tracking-[0.01em] mb-4 px-4">
+                    GitHub Contributions{" "}
+                    <span className="text-section-heading">●</span>{" "}
                     @KartikLabhshetwar
                   </h2>
                   <div className="mb-4 sm:mb-6">
@@ -199,9 +200,9 @@ export default function NewHeroSection() {
               {/* Open Source Contributions Section */}
               <Reveal delay={0.1}>
                 <div className="sm:px-12 mt-4">
-                  <h2 className="text-base sm:text-xl opacity-20 mt-4 sm:mt-8 sm:ml-5 leading-relaxed -tracking-[0.01em] mb-4 px-4">
+                  <h2 className="text-base sm:text-xl text-section-heading mt-4 sm:mt-8 sm:ml-5 leading-relaxed -tracking-[0.01em] mb-4 px-4">
                     Open Source Contributions{" "}
-                    <span className="opacity-20">●</span>{" "}
+                    <span className="text-section-heading">●</span>{" "}
                     {new Date().toLocaleDateString("en-US", {
                       day: "numeric",
                       month: "long",

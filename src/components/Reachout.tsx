@@ -39,10 +39,10 @@ export default function Reachout({
     <div className="sm:px-12 px-4 pb-8">
       <div className="text-left w-full">
         <div className="mb-4 sm:mb-6">
-          <h2 className="font-[family-name:var(--font-instrument-serif)] text-lg sm:text-xl mb-2 opacity-20 mt-4 sm:mt-6">
+          <h2 className="font-[family-name:var(--font-instrument-serif)] text-lg sm:text-xl mb-2 text-section-heading mt-4 sm:mt-6">
             {title}
           </h2>
-          <p className="opacity-20 text-md sm:text-lg mb-3 sm:mb-4">
+          <p className="text-section-heading text-md sm:text-lg mb-3 sm:mb-4">
             {subtitle}
           </p>
         </div>
@@ -60,7 +60,7 @@ export default function Reachout({
                 size={20}
                 className="sm:size-[18px] group-hover:scale-110 transition-transform duration-200 flex-shrink-0 text-gray-700 dark:text-gray-200 sm:text-gray-600 sm:dark:text-gray-300"
               />
-              <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-[#006FEE] transition-colors duration-200">
+              <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-link transition-colors duration-200">
                 GitHub
               </span>
             </a>
@@ -78,7 +78,7 @@ export default function Reachout({
                 size={20}
                 className="sm:size-[18px] group-hover:scale-110 transition-transform duration-200 flex-shrink-0 text-gray-700 dark:text-gray-200 sm:text-gray-600 sm:dark:text-gray-300"
               />
-              <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-[#006FEE] transition-colors duration-200">
+              <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-link transition-colors duration-200">
                 Twitter
               </span>
             </a>
@@ -96,7 +96,7 @@ export default function Reachout({
                 size={20}
                 className="sm:size-[18px] group-hover:scale-110 transition-transform duration-200 flex-shrink-0 text-gray-700 dark:text-gray-200 sm:text-gray-600 sm:dark:text-gray-300"
               />
-              <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-[#006FEE] transition-colors duration-200">
+              <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-link transition-colors duration-200">
                 LinkedIn
               </span>
             </a>
@@ -114,7 +114,7 @@ export default function Reachout({
                 size={20}
                 className="sm:size-[18px] group-hover:scale-110 transition-transform duration-200 flex-shrink-0 text-gray-700 dark:text-gray-200 sm:text-gray-600 sm:dark:text-gray-300"
               />
-              <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-[#006FEE] transition-colors duration-200">
+              <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-link transition-colors duration-200">
                 Mail
               </span>
             </a>
@@ -132,7 +132,7 @@ export default function Reachout({
                 size={20}
                 className="sm:size-[18px] group-hover:scale-110 transition-transform duration-200 flex-shrink-0 text-gray-700 dark:text-gray-200 sm:text-gray-600 sm:dark:text-gray-300"
               />
-              <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-[#006FEE] transition-colors duration-200">
+              <span className="hidden sm:inline text-sm font-medium dark:text-white/80 text-black/80 group-hover:text-link transition-colors duration-200">
                 Resume
               </span>
             </a>

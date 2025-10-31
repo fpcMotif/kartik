@@ -55,7 +55,7 @@ export default function OpenSourceContributionsCard() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="rounded-lg bg-white dark:bg-[hsl(0,3%,6.5%)] p-4 sm:p-6"
+      className="rounded-lg bg-white dark:bg-[hsl(0,3%,10%)] p-4 sm:p-6 border border-neutral-200 dark:border-neutral-800"
     >
       {loading ? (
         <div className="space-y-4">
@@ -73,7 +73,7 @@ export default function OpenSourceContributionsCard() {
                 <div className="w-8 h-8 bg-neutral-200 dark:bg-neutral-700 rounded"></div>
               </div>
               {i < 3 && (
-                <div className="mt-4 border-b border-neutral-300 dark:border-[#2E2E2E]" />
+                <div className="mt-4 border-b border-neutral-300 dark:border-neutral-700/50" />
               )}
             </div>
           ))}
@@ -91,15 +91,15 @@ export default function OpenSourceContributionsCard() {
               <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center gap-3 mb-2">
-                    <h4 className="text-md text-neutral-800 dark:text-neutral-200 group-hover:text-[#006FEE] transition-colors duration-200">
+                    <h4 className="text-md text-emphasis group-hover:text-link transition-colors duration-200">
                       {contribution.title}
                     </h4>
-                    <span className="text-xs text-neutral-500 dark:text-neutral-400">
+                    <span className="text-xs text-secondary">
                       {contribution.date}
                     </span>
                   </div>
 
-                  <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
+                  <p className="text-xs text-body-muted leading-relaxed">
                     {contribution.description}
                   </p>
                 </div>
@@ -108,14 +108,14 @@ export default function OpenSourceContributionsCard() {
                   href={contribution.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 p-2 rounded-lg bg-neutral-200 border-2 border-neutral-500 dark:bg-neutral-800 dark:border-neutral-500 hover:opacity-70 transition-all duration-200"
+                  className="flex-shrink-0 p-2 rounded-lg bg-neutral-200 border-2 border-neutral-400 dark:bg-neutral-700/50 dark:border-neutral-600 hover:opacity-70 transition-all duration-200"
                 >
-                  <ArrowUpRight className="w-4 h-4 text-neutral-600 dark:text-neutral-400" />
+                  <ArrowUpRight className="w-4 h-4 text-secondary" />
                 </Link>
               </div>
 
               {index < displayedContributions.length - 1 && (
-                <div className="mt-4 border-b border-neutral-300 dark:border-[#2E2E2E]" />
+                <div className="mt-4 border-b border-neutral-300 dark:border-neutral-700/50" />
               )}
             </motion.div>
           ))}
@@ -124,11 +124,11 @@ export default function OpenSourceContributionsCard() {
 
       {/* Show More/Less Toggle */}
       {!loading && contributions.length > 3 && (
-        <div className="mt-4 pt-4 border-t border-neutral-300 dark:border-[#2E2E2E]">
+        <div className="mt-4 pt-4 border-t border-neutral-300 dark:border-neutral-700/50">
           <button
             type="button"
             onClick={() => setShowAll(!showAll)}
-            className="inline-flex items-center gap-2 text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors duration-200 group"
+            className="inline-flex items-center gap-2 text-sm text-body-muted hover:text-emphasis transition-colors duration-200 group"
           >
             <span>
               {showAll

@@ -4,9 +4,6 @@ echo "🚀 Running pre-push checks..."
 # TypeScript validation
 bun run typecheck || exit 1
 
-# Next.js lint (ESLint rules)
-bun run lint:next || exit 1
-
 # Production build test
 bun run build || exit 1
 

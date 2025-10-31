@@ -26,7 +26,7 @@ export default function ExperienceContent() {
   ];
 
   return (
-    <div className="space-y-6 dark:text-white/70 text-black/70 pb-6">
+    <div className="space-y-6 pb-6">
       {experiences.map((exp) => (
         <div
           key={exp.company}
@@ -45,7 +45,7 @@ export default function ExperienceContent() {
                   className="w-full h-full object-cover"
                 />
               ) : (
-                <span className="text-sm sm:text-lg font-medium dark:text-white text-black">
+                <span className="text-sm sm:text-lg font-medium text-emphasis">
                   {exp.company.charAt(0)}
                 </span>
               )}
@@ -53,12 +53,12 @@ export default function ExperienceContent() {
 
             {/* Company Info */}
             <div className="flex-1 min-w-0">
-              <h3 className="font-medium dark:text-white text-black text-base sm:text-lg">
+              <h3 className="font-medium text-emphasis text-base sm:text-lg">
                 {exp.href ? (
                   <Link
                     href={exp.href}
                     target="_blank"
-                    className="hover:text-[#006FEE] transition-colors"
+                    className="hover:text-link transition-colors"
                   >
                     {exp.company}
                   </Link>
@@ -66,13 +66,17 @@ export default function ExperienceContent() {
                   exp.company
                 )}
               </h3>
-              <p className="text-xs sm:text-sm opacity-70">{exp.position}</p>
+              <p className="text-xs sm:text-sm dark:text-white/80 text-black/70">
+                {exp.position}
+              </p>
             </div>
           </div>
 
           {/* Right side - Duration */}
           <div className="pl-13 sm:pl-0 sm:text-right flex-shrink-0">
-            <p className="text-xs sm:text-sm opacity-50">{exp.duration}</p>
+            <p className="text-xs sm:text-sm dark:text-white/80 text-black/70">
+              {exp.duration}
+            </p>
           </div>
         </div>
       ))}

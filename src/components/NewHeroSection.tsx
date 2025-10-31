@@ -72,7 +72,7 @@ export default function NewHeroSection() {
               <Reveal delay={0.1} duration={0.6} amount={0.3}>
                 <ContentSection className="pb-8 pt-6">
                   <ContentParagraph className="mt-6 mb-6">
-                    <span className="font-medium dark:text-white text-black">
+                    <span className="font-medium text-emphasis">
                       I&apos;m not your average developer.
                     </span>{" "}
                     I&apos;d rather be crafting elegant code with a coffee in
@@ -82,7 +82,7 @@ export default function NewHeroSection() {
                     make sense.
                   </ContentParagraph>
                   <ContentParagraph className="mb-2">
-                    <span className="font-medium dark:text-white text-black">
+                    <span className="font-medium text-emphasis">
                       I build from zero.
                     </span>{" "}
                     Whether it&apos;s frontend, backend, full-stack
@@ -101,7 +101,7 @@ export default function NewHeroSection() {
               {/* Experience Section */}
               <Reveal delay={0.1} duration={0.6} amount={0.3}>
                 <div className="sm:px-12 px-6 py-4">
-                  <h2 className="text-lg sm:text-xl mb-4 opacity-20 mt-8">
+                  <h2 className="text-lg sm:text-xl mb-4 text-section-heading mt-8">
                     Professional Experience
                   </h2>
                   <ExperienceContent />
@@ -115,12 +115,12 @@ export default function NewHeroSection() {
               {/* Technical Contributions */}
               <Reveal delay={0.1} duration={0.6} amount={0.2}>
                 <div className="sm:px-12 px-6 py-4">
-                  <h2 className="text-lg sm:text-xl mb-4 opacity-20 mt-8">
+                  <h2 className="text-lg sm:text-xl mb-4 text-section-heading mt-8">
                     Technical Contributions
                   </h2>
-                  <div className="space-y-6 dark:text-white/70 text-black/70 pb-8">
+                  <div className="space-y-6 pb-8">
                     <ContentParagraph>
-                      <span className="font-medium dark:text-white text-black">
+                      <span className="font-medium text-emphasis">
                         At Turbo ML,
                       </span>{" "}
                       I spent 3 months building some pretty cool stuff. Think
@@ -131,7 +131,7 @@ export default function NewHeroSection() {
                       night because it&apos;s actually interesting.
                     </ContentParagraph>
                     <ContentParagraph>
-                      <span className="font-medium dark:text-white text-black">
+                      <span className="font-medium text-emphasis">
                         Here&apos;s where it gets interesting{" "}
                       </span>{" "}
                       I reverse engineered Blinkit and Swiggy APIs to understand
@@ -143,11 +143,11 @@ export default function NewHeroSection() {
                       of it.
                     </ContentParagraph>
                     <ContentParagraph>
-                      <span className="font-medium dark:text-white text-black">
+                      <span className="font-medium text-emphasis">
                         <Link
                           href="https://github.com/KartikLabhshetwar"
                           target="_blank"
-                          className="text-[#006FEE] hover:underline"
+                          className="text-link hover:underline"
                         >
                           0→1
                         </Link>{" "}
@@ -170,8 +170,9 @@ export default function NewHeroSection() {
               {/* GitHub Contributions */}
               <Reveal delay={0.1} duration={0.6} amount={0.2}>
                 <div className="sm:px-12 px-6 mt-4">
-                  <h2 className="text-lg sm:text-xl opacity-20 leading-relaxed -tracking-[0.01em] mb-4">
-                    GitHub Contributions <span className="opacity-20">●</span>{" "}
+                  <h2 className="text-lg sm:text-xl text-section-heading leading-relaxed -tracking-[0.01em] mb-4">
+                    GitHub Contributions{" "}
+                    <span className="text-section-heading">●</span>{" "}
                     @KartikLabhshetwar
                   </h2>
                   <div className="mb-6">
@@ -202,9 +203,9 @@ export default function NewHeroSection() {
               {/* Open Source Contributions Section */}
               <Reveal delay={0.1} duration={0.6} amount={0.2}>
                 <div className="sm:px-12 px-6 mt-4">
-                  <h2 className="text-lg sm:text-xl opacity-20 mt-8 ml-5 leading-relaxed -tracking-[0.01em] mb-4">
+                  <h2 className="text-lg sm:text-xl text-section-heading mt-8 ml-5 leading-relaxed -tracking-[0.01em] mb-4">
                     Open Source Contributions{" "}
-                    <span className="opacity-20">●</span>{" "}
+                    <span className="text-section-heading">●</span>{" "}
                     {new Date().toLocaleDateString("en-US", {
                       day: "numeric",
                       month: "long",
